@@ -2,6 +2,8 @@
 
 /**
  * Module dependencies.
+ * 
+ * モジュールの読み込み
  */
 
 var app = require('../app');
@@ -10,6 +12,8 @@ var http = require('http');
 
 /**
  * Get port from environment and store in Express.
+ * 
+ * ポートをセット
  */
 
 var port = normalizePort(process.env.PORT || '3000');
@@ -17,12 +21,16 @@ app.set('port', port);
 
 /**
  * Create HTTP server.
+ * 
+ * http モジュールで app を引数に createServer し server 変数に格納
  */
 
 var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
+ * 
+ * server を port にリッスンさせる
  */
 
 server.listen(port);
@@ -31,6 +39,8 @@ server.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.
+ * 
+ * port をノーマライズ
  */
 
 function normalizePort(val) {
@@ -51,6 +61,8 @@ function normalizePort(val) {
 
 /**
  * Event listener for HTTP server "error" event.
+ * 
+ * HTTP サーバーで error イベントが発生した時の処理
  */
 
 function onError(error) {
@@ -79,6 +91,8 @@ function onError(error) {
 
 /**
  * Event listener for HTTP server "listening" event.
+ * 
+ * HTTP サーバーで listening イベントが発生した時の処理
  */
 
 function onListening() {
