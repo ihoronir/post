@@ -102,11 +102,16 @@ a {
  */
 
 #aside {
-  background-color: darkgreen;
+  background-color: rgb(223, 223, 223);
   position: fixed;
   width: 280px;
   top: 60px;
   height: calc(100vh - 60px);
+  overflow-y: scroll;
+}
+#aside-nav li a {
+  display: block;
+  padding: 20px;
 }
 
 /*
@@ -127,4 +132,11 @@ a {
   background-color: blue;
   margin-left: 280px;
   padding-bottom: 280px;
+}
+
+/*
+ * aside color 暫定
+ */
+#aside-nav :nth-child(2n) {
+  background-color: lightblue;
 }

@@ -11,4 +11,34 @@ html
     //- description
     meta(name="description" content="description")
   body
-    block content
+    header#header
+      div#header-container.container
+        h1#header-logo: a(href="#") #{title}
+        ul#header-nav
+          li: a(href="#") ホーム
+          li: a(href="#") コミュニティ
+        div#header-search 検索
+        div#header-profile ログイン
+    aside#aside
+      ul#aside-nav
+        li: a(href="#") リンク1
+        li: a(href="#") リンク2
+        li: a(href="#") リンク3
+        li: a(href="#") リンク4
+        li: a(href="#") リンク5
+        li: a(href="#") リンク6
+        li: a(href="#") リンク7
+        li: a(href="#") リンク8
+        li: a(href="#") リンク9
+        li: a(href="#") リンク11
+        li: a(href="#") リンク12
+        li: a(href="#") リンク13
+        li: a(href="#") リンク14
+        li: a(href="#") リンク15
+        li: a(href="#") リンク16
+        li: a(href="#") リンク17
+        li: a(href="#") リンク18
+    main#main
+      block content
+    footer#footer
+      p This is Footer
