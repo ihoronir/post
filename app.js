@@ -3,7 +3,7 @@
  */
 
 
-// --------------- モジュールの読み込み
+// ------------------------------ モジュールの読み込み ------------------------------
 
 var createError   = require('http-errors');             // エラー作成
 var path          = require('path');                    // パスユーティリティ
@@ -19,7 +19,7 @@ var LocalStrategy = require('passport-local').Strategy; // passport ローカル
 
 
 
-// --------------- passport の処理
+// ------------------------------ passport の処理 ------------------------------
 
 // ローカルストラテジーを使用
 passport.use(new LocalStrategy(function(username, password, done) {
@@ -48,7 +48,7 @@ passport.deserializeUser(function(user, done) {
 
 
 
-// --------------- router モジュールを読み込み
+// ------------------------------ router モジュールを読み込み ------------------------------
 
 var indexRouter = require('./routes/index'); // / (index)
 var loginRouter = require('./routes/login'); // /login
@@ -56,7 +56,7 @@ var loginRouter = require('./routes/login'); // /login
 
 
 
-// --------------- アプリケーション作成
+// ------------------------------ アプリケーション作成 ------------------------------
 
 var app = express();
 
@@ -68,7 +68,7 @@ app.set('view engine', 'jade');
 
 
 
-// --------------- ミドルウェア
+// ------------------------------ ミドルウェア ------------------------------
 
 app.use(logger('dev')); // ログを表示
 
