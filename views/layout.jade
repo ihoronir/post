@@ -18,7 +18,10 @@ html
           li: a(href="#") ホーム
           li: a(href="#") コミュニティ
         div#header-search 検索
-        div#header-profile ログイン
+        if authenticated
+          div#header-profile ログイン済み
+        else 
+          div#header-profile 未ログイン
     aside#aside
       ul#aside-nav
         li: a(href="#") リンク1

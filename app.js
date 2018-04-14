@@ -28,6 +28,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
 }));
 
 // 未認証だったらリダイレクト
+/*
 function isAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {  // 認証済
     return next();
@@ -36,6 +37,7 @@ function isAuthenticated(req, res, next) {
     res.redirect('/login');  // ログイン画面にリダイレクト
   }
 }
+*/
 
 // シリアライズ済みのユーザー
 passport.serializeUser(function(user, done) {
@@ -78,14 +80,30 @@ app.use(cookieParser());                          // cookieParser
 
 app.use(express.static(path.join(__dirname, 'public'))); // 静的リソース
 
-app.use(passport.initialize()); // passport
+// express session
+app.use(session({
+  secret: 'sdahnviahavpinav',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 30 * 60 * 1000
+  } 
+}));
+
+app.use(passport.initialize()); // passport initialize
+app.use(passport.session());    // passport session
 
 
 // ルーティング
 
-app.use('/', indexRouter);      // / (index)
-app.use('/login', loginRouter); // /login
-app.post(                       // /login (post)
+// / (index)
+app.use('/', indexRouter);
+
+// /login
+app.use('/login', loginRouter);
+
+// /login (post)
+app.post(
   '/login', 
   passport.authenticate('local'),
   function(req, res) {
