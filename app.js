@@ -15,38 +15,6 @@ var logger        = require('morgan');                  // express logger
 var session       = require('express-session');         // express session
 
 var passport      = require('passport');                // passport 本体
-var LocalStrategy = require('passport-local').Strategy; // passport ローカルストラテジー
-
-
-
-// ------------------------------ passport の処理 ------------------------------
-
-// ローカルストラテジーを使用
-passport.use(new LocalStrategy(function(username, password, done) {
-  // 本来ここには認証処理
-  return done(null, 'shioleap');
-}));
-
-// 未認証だったらリダイレクト
-/*
-function isAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {  // 認証済
-    return next();
-  }
-  else {  // 認証されていない
-    res.redirect('/login');  // ログイン画面にリダイレクト
-  }
-}
-*/
-
-// シリアライズ済みのユーザー
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-// シリアライズされていないユーザー
-passport.deserializeUser(function(user, done) {
-  done(null, user);
-});
 
 
 
@@ -90,6 +58,8 @@ app.use(session({
   } 
 }));
 
+// passport の設定
+require('./config/passport/passport')();
 app.use(passport.initialize()); // passport initialize
 app.use(passport.session());    // passport session
 
