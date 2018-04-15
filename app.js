@@ -34,9 +34,9 @@ app.set('view engine', 'jade');
 
 app.use(logger('dev')); // ログを表示
 
-app.use(express.json());                          // express.json
-app.use(express.urlencoded({ extended: false })); // urlencoded
-app.use(cookieParser());                          // cookieParser
+app.use(bodyParser.json());                          // json
+app.use(bodyParser.urlencoded({ extended: false })); // urlencoded
+app.use(cookieParser());                             // cookieParser
 
 app.use(express.static(path.join(__dirname, 'public'))); // 静的リソース
 
