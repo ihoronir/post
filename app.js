@@ -18,14 +18,6 @@ var passport      = require('passport');                // passport 本体
 
 
 
-// ------------------------------ router モジュールを読み込み ------------------------------
-
-var indexRouter = require('./routes/index'); // / (index)
-var loginRouter = require('./routes/login'); // /login
-//var usersRouter = require('./routes/users');
-
-
-
 // ------------------------------ アプリケーション作成 ------------------------------
 
 var app = express();
