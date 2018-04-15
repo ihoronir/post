@@ -58,28 +58,16 @@ app.use(session({
   } 
 }));
 
-// passport の設定
-require('./config/passport/passport')();
-app.use(passport.initialize()); // passport initialize
-app.use(passport.session());    // passport session
+// passport 関連
+require('./config/passport/passport')(); // passport の設定
+app.use(passport.initialize());          // passport initialize
+app.use(passport.session());             // passport session
 
 
 // ルーティング
 
-// / (index)
-app.use('/', indexRouter);
+require('./config/routes/route')(app);
 
-// /login
-app.use('/login', loginRouter);
-
-// /login (post)
-app.post(
-  '/login', 
-  passport.authenticate('local'),
-  function(req, res) {
-    res.redirect('/');
-  }
-);
 //app.use('/users', usersRouter);
 
 
