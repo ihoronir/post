@@ -57,10 +57,8 @@ app.use(passport.session());             // passport session
 
 
 // ルーティング
-
 require('./config/routes/route')(app);
 
-//app.use('/users', usersRouter);
 
 
 // 404 エラーハンドラ
