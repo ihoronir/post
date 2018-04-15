@@ -1,0 +1,11 @@
+header#header
+  div#header-container.container
+    h1#header-logo: a(href="#") #{title}
+    ul#header-nav
+      li: a(href="#") ホーム
+      li: a(href="#") コミュニティ
+    div#header-search 検索
+    if authenticated
+      div#header-profile ログイン済み
+    else 
+      div#header-profile 未ログイン
