@@ -47,7 +47,7 @@ app.use(session({
   saveUninitialized: false,
   cookie: {
     maxAge: 30 * 60 * 1000
-  } 
+  }
 }));
 
 // passport 関連
@@ -55,8 +55,7 @@ require('./config/passport/passport')(); // passport の設定
 app.use(passport.initialize());          // passport initialize
 app.use(passport.session());             // passport session
 
-
-// ルーティング
+// ルーティング （コントローラーに分離するかも）
 require('./config/routes/route')(app);
 
 // エラーハンドラ
