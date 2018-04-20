@@ -6,3 +6,6 @@ secret:
 # MariaDB connection options
 
 mariadb:
+  database: post
+  user: nodejs
+  password: nodejsdevelop
