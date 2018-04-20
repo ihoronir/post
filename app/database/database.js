@@ -1,11 +1,13 @@
 var Sequelize = require('sequelize');
 
-module.exports = function() {
+module.exports = function(config) {
 
-  // TODO ユーザ、パスワードなどの環境変数化
-  // TODO Node-config を使う
-  var sequelize = new Sequelize('データベース名', 'ゆーざー', 'ぱすわーど', {
-    dialect:'mysql'
-  });
+  var sequelize = new Sequelize(
+    config.mariadb.database,   // データベース
+    config.mariadb.user,       // ユーザー
+    config.mariadb.password,   // パスワード
+    { dialect: 'mysql',        // mysql
+      operatorsAliases: false} // operatorAliase は今の所使わない
+  );
 
-}
+};

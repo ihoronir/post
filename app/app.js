@@ -59,6 +59,9 @@ app.use(session({
   }
 }));
 
+// データベース
+require('./database/database')(config);
+
 // passport 関連
 require('./passport/passport')(); // passport の設定
 app.use(passport.initialize());          // passport initialize
