@@ -1,0 +1,8 @@
+# secrets
+secret:
+  session: session-secret
+  cookie: cookie-secret
+
+# MariaDB connection options
+
+mariadb:

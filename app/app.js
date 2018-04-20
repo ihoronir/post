@@ -17,6 +17,15 @@ var session       = require('express-session');         // express session
 var passport      = require('passport');                // passport 本体
 
 
+// ------------------------------ 設定ファイル ------------------------------
+
+// 開発用
+process.env.NODE_ENV = 'development';
+
+var config = require('config');
+
+console.log(config.secret.session);
+
 
 // ------------------------------ アプリケーション作成 ------------------------------
 
@@ -36,13 +45,13 @@ app.use(logger('dev')); // ログを表示
 
 app.use(bodyParser.json());                          // json
 app.use(bodyParser.urlencoded({ extended: false })); // urlencoded
-app.use(cookieParser());                             // cookieParser
+app.use(cookieParser(config.secret.cookie));                             // cookieParser
 
 app.use(express.static(path.join(__dirname, '../public'))); // 静的リソース
 
 // express session
 app.use(session({
-  secret: 'sdahnviahavpinav',
+  secret: config.secret.session,
   resave: false,
   saveUninitialized: false,
   cookie: {
