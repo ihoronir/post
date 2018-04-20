@@ -23,7 +23,7 @@ var passport      = require('passport');                // passport 本体
 var app = express();
 
 // テンプレートフォルダを指定
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '../views'));
 
 // テンプレートエンジンを指定
 app.set('view engine', 'jade');
@@ -38,7 +38,7 @@ app.use(bodyParser.json());                          // json
 app.use(bodyParser.urlencoded({ extended: false })); // urlencoded
 app.use(cookieParser());                             // cookieParser
 
-app.use(express.static(path.join(__dirname, 'public'))); // 静的リソース
+app.use(express.static(path.join(__dirname, '../public'))); // 静的リソース
 
 // express session
 app.use(session({
@@ -51,15 +51,15 @@ app.use(session({
 }));
 
 // passport 関連
-require('./config/passport/passport')(); // passport の設定
+require('./passport/passport')(); // passport の設定
 app.use(passport.initialize());          // passport initialize
 app.use(passport.session());             // passport session
 
 // ルーティング （コントローラーに分離するかも）
-require('./config/routes/route')(app);
+require('./routes/route')(app);
 
 // エラーハンドラ
-require('./config/middlewares/notFoundHandler')(app); // 404
-require('./config/middlewares/errorHandler')(app);    // 404 以外
+require('./middlewares/notFoundHandler')(app); // 404
+require('./middlewares/errorHandler')(app);    // 404 以外
 
 module.exports = app;
