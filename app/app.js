@@ -36,6 +36,30 @@ app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'jade');
 
 
+// ------------------------------ データベース接続 ------------------------------
+
+// require('./database/database')(config);
+
+var User = require('./database/database').user;
+
+var sequelize = require('./database/database').sequelize;
+
+sequelize.sync({force: true})/*.then(function(err) {
+  User.build({
+    name: 'shioleapdayo',
+    screenName: 'shioleap_view',
+    email: 'shiotsuka.iroha@gmail.com',
+    password: 'password'
+  }).save().then(function(err) {
+    User.findAll().then(function(users) {
+      console.log(users[0].name);
+    });
+  });
+}).catch(function(err) {
+  console.log('An error occurred while creating the table:', err);
+});*/
+
+
 
 // ------------------------------ ミドルウェア ------------------------------
 
@@ -59,9 +83,6 @@ app.use(session({
 
 // csrf 対策
 app.use(csrf());
-
-// データベース
-require('./database/database')(config);
 
 // passport 関連
 require('./passport/passport')(); // passport の設定
