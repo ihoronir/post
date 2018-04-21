@@ -13,7 +13,7 @@ module.exports = function(config) {
   );
 
   
-  sequelize.define('users', {
+  var User = sequelize.define('users', {
     // id
     id: {
       type: Sequelize.INTEGER.UNSIGNED, // data type
@@ -62,5 +62,19 @@ module.exports = function(config) {
     underscored: true,
   });
 
-  sequelize.sync({force: true});
+  sequelize.sync({force: true}).then(function(err) {
+    User.build({
+      id: 1,
+      name: 'shioleap',
+      screenName: 'shioleap_view',
+      email: 'shiotsuka.iroha@gmail.com',
+      password: 'password'
+    }).save().then(function(err) {
+      User.findAll().then(function(users) {
+        console.log(users[0].name);
+      });
+    });
+  }).catch(function(err) {
+    console.log('An error occurred while creating the table:', err);
+  });
 };

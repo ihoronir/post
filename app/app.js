@@ -24,9 +24,6 @@ process.env.NODE_ENV = 'development';
 
 var config = require('config');
 
-console.log(config.secret.session);
-
-
 // ------------------------------ アプリケーション作成 ------------------------------
 
 var app = express();
