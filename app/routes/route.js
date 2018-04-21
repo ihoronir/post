@@ -1,7 +1,10 @@
-var indexRouter = require('./index'); // / (index)
-var loginRouter = require('./login'); // /login
+var indexRouter  = require('./pages/index');  // / (index)
+var loginRouter  = require('./pages/login');  // /login
+var signupRouter = require('./pages/signup'); // /signup 
+
+var loginController = require('./controllers/login') // login
+
 var passport = require('passport');
-//var usersRouter = require('./routes/users');
 
 
 module.exports = function(app) {
@@ -10,13 +13,7 @@ module.exports = function(app) {
 
   // /login
   app.use('/login', loginRouter);
-
+  
   // /login (post)
-  app.post(
-    '/login', 
-    passport.authenticate('local'),
-    function(req, res) {
-      res.redirect('/');
-    }
-  );
+  app.post('/login', loginController);
 };
