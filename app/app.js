@@ -35,6 +35,9 @@ app.set('views', path.join(__dirname, '../views'));
 // テンプレートエンジンを指定
 app.set('view engine', 'jade');
 
+// X-Powered-By ヘッダを無効に
+app.disable('x-powered-by');
+
 
 // ------------------------------ データベース接続 ------------------------------
 
