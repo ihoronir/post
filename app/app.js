@@ -13,6 +13,7 @@ var cookieParser  = require('cookie-parser');           // express クッキー
 var bodyParser    = require('body-parser');             // express body parser
 var logger        = require('morgan');                  // express logger
 var session       = require('express-session');         // express session
+var csrf          = require('csurf');                   // express csrf 対策
 
 var passport      = require('passport');                // passport 本体
 
@@ -42,7 +43,7 @@ app.use(logger('dev')); // ログを表示
 
 app.use(bodyParser.json());                          // json
 app.use(bodyParser.urlencoded({ extended: false })); // urlencoded
-app.use(cookieParser(config.secret.cookie));                             // cookieParser
+app.use(cookieParser(config.secret.cookie));         // cookieParser
 
 app.use(express.static(path.join(__dirname, '../public'))); // 静的リソース
 
@@ -56,13 +57,16 @@ app.use(session({
   }
 }));
 
+// csrf 対策
+app.use(csrf());
+
 // データベース
 require('./database/database')(config);
 
 // passport 関連
 require('./passport/passport')(); // passport の設定
-app.use(passport.initialize());          // passport initialize
-app.use(passport.session());             // passport session
+app.use(passport.initialize());   // passport initialize
+app.use(passport.session());      // passport session
 
 // ルーティング （コントローラーに分離するかも）
 require('./routes/route')(app);
