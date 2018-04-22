@@ -17,3 +17,6 @@ block content
     div
       input(type='submit', value='登録')
       input(type='hidden', name='_csrf' value=csrftoken)
+  - if (flashmessage)
+    .message.info
+      span= flashmessage

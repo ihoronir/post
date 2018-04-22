@@ -14,6 +14,7 @@ var bodyParser    = require('body-parser');             // express body parser
 var logger        = require('morgan');                  // express logger
 var session       = require('express-session');         // express session
 var csrf          = require('csurf');                   // express csrf 対策
+var flash         = require('express-flash');           // express flash
 
 var passport      = require('passport');                // passport 本体
 
@@ -25,18 +26,6 @@ process.env.NODE_ENV = 'development';
 
 var config = require('config');
 
-// ------------------------------ アプリケーション作成 ------------------------------
-
-var app = express();
-
-// テンプレートフォルダを指定
-app.set('views', path.join(__dirname, '../views'));
-
-// テンプレートエンジンを指定
-app.set('view engine', 'jade');
-
-// X-Powered-By ヘッダを無効に
-app.disable('x-powered-by');
 
 
 // ------------------------------ データベース接続 ------------------------------
@@ -67,6 +56,21 @@ sequelize.sync({force: true});/*.then(function() {
 
 
 
+// ------------------------------ アプリケーション作成 ------------------------------
+
+var app = express();
+
+// テンプレートフォルダを指定
+app.set('views', path.join(__dirname, '../views'));
+
+// テンプレートエンジンを指定
+app.set('view engine', 'jade');
+
+// X-Powered-By ヘッダを無効に
+app.disable('x-powered-by');
+
+
+
 // ------------------------------ ミドルウェア ------------------------------
 
 app.use(logger('dev')); // ログを表示
@@ -89,6 +93,9 @@ app.use(session({
 
 // csrf 対策
 app.use(csrf());
+
+// flash
+app.use(flash());
 
 // passport 関連
 require('./passport/passport')(); // passport の設定
