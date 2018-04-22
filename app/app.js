@@ -47,16 +47,19 @@ var User = require('./database/database').user;
 
 var sequelize = require('./database/database').sequelize;
 
-sequelize.sync({force: true})/*.then(function(err) {
+sequelize.sync({force: true});/*.then(function() {
   User.build({
     name: 'shioleapdayo',
     screenName: 'shioleap_view',
     email: 'shiotsuka.iroha@gmail.com',
     password: 'password'
-  }).save().then(function(err) {
+  }).save().then(function() {
     User.findAll().then(function(users) {
       console.log(users[0].name);
+    }).catch(function(err) {
+      console.log('An error occurred while finding the table:', err);
     });
+    return null;
   });
 }).catch(function(err) {
   console.log('An error occurred while creating the table:', err);
