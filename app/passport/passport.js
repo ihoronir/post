@@ -3,13 +3,17 @@ var local = require('./local');
 
 module.exports = function() {
     
-  // シリアライズ済みのユーザー
+  // シリアライズ（login 時にセッションに保存）
   passport.serializeUser(function(user, done) {
-    done(null, user);
+    // id をセッションに保存
+    done(null, user.id);
   });
-  // シリアライズされていないユーザー
-  passport.deserializeUser(function(user, done) {
-    done(null, user);
+
+  // デシリアライズ（セッションにシリアライズした情報を req.user に入れる）
+  passport.deserializeUser(function(id, done) {
+    // id から db を検索してユーザーオブジェクトを格納する予定
+    // done(null, user);
+    done(null, id);
   });
 
   passport.use(local);
