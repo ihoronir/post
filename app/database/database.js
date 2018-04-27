@@ -6,7 +6,7 @@ var sequelize = new Sequelize(
   config.mariadb.user,        // ユーザー
   config.mariadb.password,    // パスワード
   { dialect: 'mysql',         // mysql
-    //operatorsAliases: false,  // operatorAliase は今の所使わない
+    operatorsAliases: false,  // operatorAliase は今の所使わない
     //logging: false,
   }
 );
