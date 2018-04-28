@@ -4,9 +4,13 @@ var router = express.Router();
 var passport = require('passport');
 
 router.post('/login',
-  passport.authenticate('local'),
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true
+  }),
   function(req, res) {
-    res.redirect('/');
+    // res.redirect('/');
 });
 
 module.exports = router;
