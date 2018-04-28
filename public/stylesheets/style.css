@@ -30,6 +30,11 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+  background-color: #eee;
+  color: #3f3e3e;
+  font: 500 100%/1.4 Avenir, "Open Sans", "Helvetica Neue", Helvetica, Arial, Verdana, Roboto, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "Meiryo UI", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-feature-settings : "palt" 1;
+  -webkit-font-smoothing: antialiased;
 }
 ol, ul {
 	list-style: none;
@@ -51,7 +56,7 @@ a {
   text-decoration: none;
 }
 .container {
-  width: 1280px;
+  max-width: 1280px;
   margin: auto;
 }
 
@@ -60,12 +65,9 @@ a {
  */
 
 #header {
-  background-color: #24292f;
-  position: fixed;
-  width: 100vw;
-  height: 60px;
+  background-color: #4a148c;
+  height: 56px;
   color: white;
-  line-height: 60px;
 }
 #header-container {
   display: flex;
@@ -73,45 +75,26 @@ a {
 #header-logo {
   font-size: 24px;
   margin-right: 32px;
+  line-height: 56px;
 }
 #header-nav {
   display: flex;
   margin-right: 16px;
+  line-height: 56px;
 }
 #header-nav li {
   margin-right: 16px;
 }
 #header-search {
-  background-color: #fefefe;
-  color: #000;
-  border-radius: 4px;
   margin: 12px auto 12px 0;
+  border: none;
   width: 400px;
-  line-height: 1;
+  height: 32px;
 }
 #header-profile {
   background-color: #fefefe;
   color: #000;
-  border-radius: 4px;
-  margin: 12px 12px 12px 0;
-  line-height: 1;
-}
-
-/*
- * Aside
- */
-
-#aside {
-  background-color: rgb(223, 223, 223);
-  position: fixed;
-  width: 280px;
-  top: 60px;
-  height: calc(100vh - 60px);
-  overflow-y: scroll;
-}
-#aside-nav li a {
-  display: block;
-  padding: 20px;
+  margin: 12px;
 }
 
 /*
@@ -119,9 +102,8 @@ a {
  */
 
 #main {
-  background-color: rgb(217, 236, 217);
+  background-color: #fefefe;
   padding: 60px 0 500px;
-  margin-left: 280px;
 }
 
 /*
@@ -129,14 +111,15 @@ a {
  */
 
 #footer {
-  background-color: blue;
-  margin-left: 280px;
-  padding-bottom: 280px;
+  margin-top: 10px;
+  border-top: #aaa 1px solid;
+  padding: 20px 0;
+  display: flex;
+  font-size: 80%;
 }
-
-/*
- * aside color 暫定
- */
-#aside-nav :nth-child(2n) {
-  background-color: lightblue;
+#footer-start, #footer-end {
+  display: flex;
+}
+#footer-start li, #footer-end li {
+  margin: 0 8px;
 }

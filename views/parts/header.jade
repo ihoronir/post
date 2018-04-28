@@ -1,11 +1,13 @@
 header#header
-  div#header-container.container
-    h1#header-logo: a(href="#") #{title}
-    ul#header-nav
-      li: a(href="#") ホーム
-      li: a(href="#") コミュニティ
-    div#header-search 検索
-    if authenticated
-      div#header-profile ログイン済み
-    else 
-      div#header-profile 未ログイン
+  form(action='/search', method='get')
+    div#header-container.container
+      //- h1#header-logo: a(href="#") #{title}
+      h1#header-logo: a(href="#") Indie9
+      ul#header-nav
+        li: a(href="#") ホーム
+        li: a(href="#") コミュニティ
+      input(type="text" name="q")#header-search
+      if authenticated
+        div#header-profile ログイン済み
+      else 
+        div#header-profile 未ログイン
