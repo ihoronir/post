@@ -65,9 +65,14 @@ a {
  */
 
 #header {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
   background-color: #4a148c;
   height: 56px;
   color: white;
+  box-shadow: 0 1px 5px rgba(0,0,0,.08);
 }
 #header-container {
   display: flex;
@@ -98,12 +103,37 @@ a {
 }
 
 /*
+ * Aside
+ */
+#aside {
+  background-color: #64389b;
+  color: #8f8d8d;
+  position: fixed;
+  top: 56px;
+  width: 280px;
+  height: calc(100vh - 56px);
+  left: 0;
+  overflow-y: scroll;
+}
+
+/*
  * Main
  */
 
 #main {
-  background-color: #fefefe;
-  padding: 60px 0 500px;
+  margin: 56px 0 0 280px;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  grid-column-gap: 16px;
+}
+.widget {
+  background-color: #fff;
+  box-shadow: 0 1px 5px rgba(0,0,0,.08);
+  padding: 8px;
+}
+#mainwid {
+  grid-column: 1 / 2;
 }
 
 /*
@@ -111,15 +141,21 @@ a {
  */
 
 #footer {
-  margin-top: 10px;
-  border-top: #aaa 1px solid;
-  padding: 20px 0;
-  display: flex;
+  margin-top: 30px;
+  border-top: rgba(0,0,0,.2) 1px solid;
+  padding: 4px;
   font-size: 80%;
 }
 #footer-start, #footer-end {
-  display: flex;
+  overflow: hidden;
 }
 #footer-start li, #footer-end li {
-  margin: 0 8px;
+  float: left;
+  margin: 10px;
+}
+@media screen and (min-width: 900px) {
+  #footer {
+    display: flex;
+    justify-content: space-between;
+  }
 }
