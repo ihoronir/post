@@ -10,11 +10,12 @@ var passport = require('passport');
 
 
 module.exports = function(app) {
-  // /user
-  app.use('/user', userRouter);
-  
+
   // / (index)
   app.use('/', indexRouter);
+
+  // /user
+  app.use('/user', userRouter);
 
   // /login
   app.use('/login', loginRouter);
