@@ -102,7 +102,7 @@ require('./passport/passport')(); // passport の設定
 app.use(passport.initialize());   // passport initialize
 app.use(passport.session());      // passport session
 
-// ルーティング （コントローラーに分離するかも）
+// ルーティング
 require('./routes/route')(app);
 
 // エラーハンドラ

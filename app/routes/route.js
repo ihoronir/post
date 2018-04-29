@@ -1,4 +1,5 @@
 var indexRouter  = require('./pages/index');  // / (index)
+var userRouter   = require('./pages/user');   // /user
 var loginRouter  = require('./pages/login');  // /login
 var signupRouter = require('./pages/signup'); // /signup 
 
@@ -9,8 +10,9 @@ var passport = require('passport');
 
 
 module.exports = function(app) {
-
-  var outhello = 'Hello';
+  // /user
+  app.use('/user', userRouter);
+  
   // / (index)
   app.use('/', indexRouter);
 
@@ -25,4 +27,5 @@ module.exports = function(app) {
   
   // /signup (post)
   app.post('/signup', signupController);
+  
 };
