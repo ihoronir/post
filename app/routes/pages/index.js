@@ -1,11 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
+var variables = require('../variables');
+
 router.get('/', function(req, res, next) {
-  console.log(req.user);
-  res.render('index', {
-    authenticated: req.isAuthenticated()
-  });
+  res.render('index', variables(req, {
+    user: 'Useruser',
+    custom: 'Custom Object'
+  }));
+
+  console.log(variables(req));
 });
 
 module.exports = router;

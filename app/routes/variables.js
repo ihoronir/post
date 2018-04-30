@@ -2,7 +2,7 @@ var config = require('config');
 
 var User = require('../database/database').user;
 
-var safe = function(source) {
+var safe = function(obj, source) {
   Array.prototype.forEach.call(arguments, function(source) {
     for (var property in source) {
       if (this[property] === undefined) this[property] = source[property];
@@ -13,7 +13,6 @@ var safe = function(source) {
 
 module.exports = function(req, obj) {
 
-  var authenticated = req.isAuthenticated();
   var user;
   User.findOne({
     where: {
@@ -25,10 +24,13 @@ module.exports = function(req, obj) {
     console.log(err);
   });
 
-  var variables = obj.safe({
-    authenticated: authenticated,
+  var variables = {
     user: user
-  });
+  }
+
+  if (obj) {
+    variables = safe(obj, variables);
+  }
 
   return variables;
 }
