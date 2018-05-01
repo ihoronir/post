@@ -20,6 +20,7 @@ module.exports = function(req, obj) {
     }
   }).then(function(user) {
     user = user;
+    console.log(user);
   }).catch(function(err) {
     console.log(err);
   });

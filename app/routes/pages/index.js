@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
     custom: 'Custom Object'
   }));
 
-  console.log(variables(req));
+  console.log(req.user);
 });
 
 module.exports = router;

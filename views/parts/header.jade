@@ -7,7 +7,7 @@ header#header
         li: a(href="#") ホーム
         li: a(href="#") コミュニティ
       input(type="text" name="q")#header-search
-      if user !== undefined
-        div#header-profile ログイン済み（#{user.screenName}）
+      if user
+        div#header-profile ログイン済み（#{user.name}）
       else 
         div#header-profile 未ログイン
