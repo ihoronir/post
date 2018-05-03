@@ -7,7 +7,9 @@ header#header
         li: a(href="#") ホーム
         li: a(href="#") コミュニティ
       input(type="text" name="q")#header-search
-      if user
-        div#header-profile ログイン済み（#{user.name}）
+      if isAuthenticated
+        div#header-end ログイン済み（#{user.name}）
       else 
-        div#header-profile 未ログイン
+        div#header-end
+          div#header-signup ユーザー登録
+          div#header-login ログイン

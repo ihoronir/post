@@ -36,7 +36,7 @@ var User = require('./database/database').user;
 
 var sequelize = require('./database/database').sequelize;
 
-sequelize.sync({force: true});/*.then(function() {
+sequelize.sync(/*{force: true}*/);/*.then(function() {
   User.build({
     name: 'shioleapdayo',
     screenName: 'shioleap_view',
