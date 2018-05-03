@@ -66,8 +66,11 @@ app.set('views', path.join(__dirname, '../views'));
 // テンプレートエンジンを指定
 app.set('view engine', 'jade');
 
+// strict ルーティング 調査中
+app.set('strict routing', true);
+
 // X-Powered-By ヘッダを無効に
-app.disable('x-powered-by');
+app.set('x-powered-by', false);
 
 
 

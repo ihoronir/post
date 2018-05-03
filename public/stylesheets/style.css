@@ -96,10 +96,17 @@ a {
   width: 400px;
   height: 32px;
 }
-#header-profile {
-  background-color: #fefefe;
-  color: #000;
+#header-end {
+  display: flex;
   margin: 12px;
+}
+.header-button {
+  display: block;
+  border: #fff 2px solid;
+  line-height: 28px;
+  margin-right: 12px;
+  padding: 0 6px;
+  border-radius: 3px;
 }
 
 /*

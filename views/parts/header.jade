@@ -2,7 +2,7 @@ header#header
   form(action='/search', method='get')
     div#header-container.container
       //- h1#header-logo: a(href="#") #{title}
-      h1#header-logo: a(href="#") Indie9
+      h1#header-logo: a(href="/") Indie9
       ul#header-nav
         li: a(href="#") ホーム
         li: a(href="#") コミュニティ
@@ -11,5 +11,5 @@ header#header
         div#header-end ログイン済み（#{user.name}）
       else 
         div#header-end
-          div#header-signup ユーザー登録
-          div#header-login ログイン
+          a(href="/signup").header-button ユーザー登録
+          a(href="/login").header-button ログイン

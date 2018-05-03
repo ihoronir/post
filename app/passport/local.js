@@ -18,8 +18,6 @@ module.exports = new LocalStrategy({
         return done(null, false, {message: 'ユーザーIDが間違っています。'});
       }
 
-      console.log(encrypt(password, user.passwordSalt));
-      console.log(user.password);
       if (!(encrypt(password, user.passwordSalt) === user.password)) {
         return done(null, false, {message: 'パスワードが間違っています。'});
       }

@@ -17,7 +17,6 @@ module.exports = function(view, req, res) {
       user: user
     }
 
-    console.log(variables.user);
     res.render(view, variables);
 
   }).catch(function(err) {
