@@ -1,22 +1,30 @@
 extends layout
 
 block content
-  form(action='/signup', method='post')
-    div
-      label ユーザー名: 
-      input(type='text', name='screen_name')
-    div
-      label ユーザーID: 
-      input(type='text', name='name')
-    div
-      label メールアドレス: 
-      input(type='text', name='email')
-    div
-      label パスワード: 
-      input(type='password', name='password')
-    div
-      input(type='submit', value='登録')
-      input(type='hidden', name='_csrf' value=csrftoken)
-  - if (flashmessage)
-    .message.info
-      span= flashmessage
+  div.auth-grid
+    div.widget#auth-header
+      h1 Indie9 へようこそ
+      p 新規登録（無料）して利用をはじめましょう！
+    div.widget#auth-left ここには他サービスとの連携サインアップのボタンを置く予定だよ！！
+    form(action='/signup', method='post').widget#auth-right.form
+      div
+        label ユーザー名
+        input(type='text', name='screen_name')
+      div
+        label ユーザーID
+        input(type='text', name='name')
+      div
+        label メールアドレス
+        input(type='text', name='email')
+      div
+        label パスワード
+        input(type='password', name='password')
+      div
+        label パスワード（確認）
+        input(type='password', name='password_confirmation')
+      div
+        input(type='submit', value='利用規約に同意して登録')
+        input(type='hidden', name='_csrf' value=csrftoken)
+    - if (flashmessage)
+      .message.info
+        span= flashmessage
