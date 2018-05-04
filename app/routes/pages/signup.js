@@ -1,13 +1,16 @@
 var express = require('express');
 var router = express.Router();
 
+var render = require('../render');
+
 router.get('/', function(req, res, next) {
-  res.render('signup', {
-    title: 'Express',
-    csrftoken: req.csrfToken(),
-    authenticated: req.isAuthenticated(),
-    flashmessage: req.flash('signup')
-  });
+  if (req.isAuthenticated()) {
+    res.redirect('/');
+  } else {
+    render('signup', req, res, {
+      flashmessage: req.flash('signup')
+    })
+  }
 });
 
 module.exports = router;

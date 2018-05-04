@@ -5,9 +5,7 @@ var render = require('../render');
 
 router.get('/', function(req, res, next) {
 
-  render('index', req, res, {
-    custom: 'Custom Object'
-  });
+  render('index', req, res);
 
 });
 

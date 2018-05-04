@@ -17,32 +17,27 @@ var encrypt = require('../../utils/encrypt');
 var saltgen = require('../../utils/salt');
 
 router.post('/signup', function(req, res, next) {
+  var salt = saltgen();
+  var password = encrypt(req.body.password, salt);
+  User.build({
+    name: req.body.name,
+    screenName: req.body.screen_name,
+    email: req.body.email,
+    password: password, // パスワード
+    passwordSalt: salt  // ソルト
+  }).save().then(function() {
 
-  if (req.isAuthenticated()) {
-    return res.redirect('/');
-  } else {
-    var salt = saltgen();
-    var password = encrypt(req.body.password, salt);
-    User.build({
-      name: req.body.name,
-      screenName: req.body.screen_name,
-      email: req.body.email,
-      password: password, // パスワード
-      passwordSalt: salt  // ソルト
-    }).save().then(function() {
+    res.redirect('/login');
 
-      res.redirect('/login');
+  }).catch(function(err) {
 
-    }).catch(function(err) {
-
-      if (err.name === 'SequelizeUniqueConstraintError') {
-        req.flash('signup', 'そのユーザー名はすでに使用されています。');
-        res.redirect('/signup');
-      } else {
-        next(err);
-      }
-    });
-  }
+    if (err.name === 'SequelizeUniqueConstraintError') {
+      req.flash('signup', 'そのユーザー名はすでに使用されています。');
+      res.redirect('/signup');
+    } else {
+      next(err);
+    }
+  });
 });
 
 module.exports = router;

@@ -2,9 +2,10 @@ var config = require('config');
 
 var User = require('../database/database').user;
 
-module.exports = function(view, req, res) {
+module.exports = function(view, req, res, source) {
 
-  isAuthenticated = req.isAuthenticated();
+  var isAuthenticated = req.isAuthenticated();
+  var csrftoken       = req.csrfToken();
 
   User.findOne({
     where: {
@@ -14,8 +15,12 @@ module.exports = function(view, req, res) {
 
     var variables = {
       isAuthenticated: isAuthenticated,
+      csrftoken: csrftoken,
       user: user
     }
+
+    // source で拡張
+    Object.assign(variables, source);
 
     res.render(view, variables);
 
