@@ -12,9 +12,13 @@ block content
       div
         label ユーザーID
         input(type='text', name='username', placeholder='Your user ID').big
+        if authErrName
+          span.flash= authErrName
       div
         label パスワード
         input(type='password', name='password', placeholder='Your password' required).big
+        if authErrPassword
+          span.flash= authErrPassword
       div
         input(type='submit', value='ログイン').big
         input(type='hidden', name='_csrf' value=csrftoken)

@@ -6,20 +6,24 @@ var encrypt = require('../utils/encrypt');
 
 module.exports = new LocalStrategy({
     usernameField: 'username', 
-    passwordField: 'password'
-  }, function(username, password, done) {
+    passwordField: 'password',
+    passReqToCallback: true
+  }, function(req, username, password, done) {
 
     User.findOne({
       where: {
         name: username
       }
     }).then(function(user) {
+
       if (!user) {
-        return done(null, false, {message: 'ユーザーIDが間違っています。'});
+        req.flash('authErrName', 'ユーザーIDが間違っています。');
+        return done(null, false/*, {authErrName: 'ユーザーIDが間違っています。'}*/);
       }
 
       if (!(encrypt(password, user.passwordSalt) === user.password)) {
-        return done(null, false, {message: 'パスワードが間違っています。'});
+        req.flash('authErrPassword', 'パスワードが間違っています。')
+        return done(null, false/*, {message: 'パスワードが間違っています。'}*/);
       }
       
       return done(null, user);
