@@ -46,6 +46,13 @@ module.exports = function(sequelize) {
       type: Sequelize.CHAR(64),
       field: 'password_salt',
       allowNull: false
+    },
+
+    // description
+    description: {
+      type: Sequelize.CHAR(160),
+      field: 'description',
+      allowNull: false
     }
   }, {
     // createdAt, updatedAt

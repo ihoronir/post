@@ -8,7 +8,11 @@ router.get('/', function(req, res, next) {
     res.redirect('/');
   } else {
     render('signup', req, res, {
-      flashmessage: req.flash('signup')
+      validationErrName                : req.flash('validationErrName'),
+      validationErrScreenName          : req.flash('validationErrScreenName'),
+      validationErrEmail               : req.flash('validationErrEmail'),
+      validationErrPassword            : req.flash('validationErrPassword'),
+      validationErrPasswordConfirmation: req.flash('validationErrPasswordConfirmation')
     })
   }
 });

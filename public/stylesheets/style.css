@@ -154,6 +154,9 @@ a {
 }
 
 /* form */
+.form div {
+  margin-bottom: 20px;
+}
 .form label {
   display: block;
 }
@@ -165,7 +168,6 @@ a {
   font-size: inherit;
   font-family: inherit;
   border-radius: 4px;
-  margin-bottom: 20px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -183,6 +185,11 @@ a {
   background-color: #fff;
   color: #4a148c;
   transition: 250ms;
+}
+.form .flash {
+  display: block;
+  margin: 4px;
+  color: #ff0000;
 }
 .form .big {
   padding: 0.7rem;

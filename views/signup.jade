@@ -5,26 +5,36 @@ block content
     div.widget#auth-header
       h1 Indie9 へようこそ
       p 新規登録（無料）して利用をはじめましょう！
+        br
+        | アカウントをお持ちの方は
+        a(href="/login") ログイン
     div.widget#auth-left ここには他サービスとの連携サインアップのボタンを置く予定だよ！！
     form(action='/signup', method='post').widget#auth-right.form
       div
-        label ユーザー名
-        input(type='text', name='screen_name')
-      div
         label ユーザーID
-        input(type='text', name='name')
+        input(type='text', name='name', pattern="^[0-9A-Za-z]+$", placeholder="username  [a-zA-Z0-9_-]{3,15}", required).big
+        if validationErrName
+          span.flash= validationErrName
+      div
+        label ユーザー名
+        input(type='text', name='screen_name', placeholder="screen username", required).big
+        if validationErrScreenName
+          span.flash= validationErrScreenName
       div
         label メールアドレス
-        input(type='text', name='email')
+        input(type='email', name='email', placeholder="email", required).big
+        if validationErrEmail
+          span.flash= validationErrEmail
       div
-        label パスワード
-        input(type='password', name='password')
+        label パスワード（小文字、大文字、数字をそれぞれ含み8文字以上）
+        input(type='password', name='password', pattern='(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}', placeholder="password  (?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}", required).big
+        if validationErrPassword
+          span.flash= validationErrPassword
       div
         label パスワード（確認）
-        input(type='password', name='password_confirmation')
+        input(type='password', name='password_confirmation', pattern='(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}', placeholder="password  (?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}", required).big
+        if validationErrPasswordConfirmation
+          span.flash= validationErrPasswordConfirmation
       div
-        input(type='submit', value='利用規約に同意して登録')
+        input(type='submit', value='利用規約に同意して登録').big
         input(type='hidden', name='_csrf' value=csrftoken)
-    - if (flashmessage)
-      .message.info
-        span= flashmessage
