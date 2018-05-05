@@ -18,12 +18,12 @@ module.exports = new LocalStrategy({
 
       if (!user) {
         req.flash('authErrName', 'ユーザーIDが間違っています。');
-        return done(null, false/*, {authErrName: 'ユーザーIDが間違っています。'}*/);
+        return done(null, false);
       }
 
       if (!(encrypt(password, user.passwordSalt) === user.password)) {
         req.flash('authErrPassword', 'パスワードが間違っています。')
-        return done(null, false/*, {message: 'パスワードが間違っています。'}*/);
+        return done(null, false);
       }
       
       return done(null, user);
