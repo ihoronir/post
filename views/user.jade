@@ -1,4 +1,14 @@
 extends layout
 
 block content
-  div.widget userpage
+  div
+    div.widget
+      p= profile.id
+      p= profile.name
+      p= profile.screenName
+      p= profile.email
+      p= profile.password
+      p= profile.passwordSalt
+      p= profile.description
+      p= profile.created_at //- TODO: キャメルケース
+      p= profile.updated_at
