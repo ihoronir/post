@@ -2,7 +2,7 @@ var config = require('config');
 
 var User = require('../database/database').user;
 
-module.exports = function(view, req, res, source) {
+module.exports = function(view, req, res, next, source) {
 
   var isAuthenticated = req.isAuthenticated();
   var csrftoken       = req.csrfToken();
@@ -25,6 +25,6 @@ module.exports = function(view, req, res, source) {
     res.render(view, variables);
 
   }).catch(function(err) {
-    console.log(err);
+    next(err)
   });
 }

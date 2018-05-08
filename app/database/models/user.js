@@ -53,6 +53,18 @@ module.exports = function(sequelize) {
       type: Sequelize.CHAR(160),
       field: 'description',
       allowNull: false
+    },
+
+    // createdAt
+    createdAt: {
+      type: Sequelize.DATE(),
+      field: 'created_at'
+    },
+
+    // updatedAt
+    updatedAt: {
+      type: Sequelize.DATE(),
+      field: 'updated_at'
     }
   }, {
     // createdAt, updatedAt
