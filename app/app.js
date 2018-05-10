@@ -5,7 +5,6 @@
 
 // ------------------------------ モジュールの読み込み ------------------------------
 
-var createError   = require('http-errors');             // エラー作成
 var path          = require('path');                    // パスユーティリティ
 
 var express       = require('express');                 // express 本体
@@ -32,7 +31,7 @@ var config = require('config');
 
 // require('./database/database')(config);
 
-var User = require('./database/database').user;
+// var User = require('./database/database').user;
 
 var sequelize = require('./database/database').sequelize;
 

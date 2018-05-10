@@ -8,9 +8,6 @@ var loginController    = require('./controllers/login');    // login
 var signupController   = require('./controllers/signup');   // signup
 var settingsController = require('./controllers/settings'); // settings
 
-var passport = require('passport');
-
-
 module.exports = function(app) {
 
   // / (index)

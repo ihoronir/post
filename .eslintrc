@@ -1,0 +1,15 @@
+{
+  "extends": ["eslint:recommended"],
+  "plugins": [],
+  "parserOptions": {},
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "globals": {},
+  "rules": {
+    "no-unused-vars": ["error", {
+      "argsIgnorePattern": "req|res|next"
+    }]
+  }
+}
