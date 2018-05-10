@@ -68,10 +68,6 @@ a {
  */
 
 #header {
-  position: fixed;
-  width: 100vw;
-  top: 0;
-  left: 0;
   background-color: #4a148c;
   height: 56px;
   color: white;
@@ -117,7 +113,6 @@ a {
  */
 
 #main {
-  margin-top: 56px;
   padding: 16px;
 }
 .widget {
@@ -193,7 +188,7 @@ a {
   .profile-grid {
     grid-column-gap: 16px;
     grid-template-columns: 240px;
-    grid-template-rows: max-content max-content;
+    grid-template-rows: max-content;
   }
   #profile-left {
     grid-column: 1 / 2;
