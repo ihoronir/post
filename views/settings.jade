@@ -13,7 +13,9 @@ block content
       form(action='/', method='post').form
         div
           label ユーザーID
-          input(type='text', name='', placeholder='Your user ID')
+          div.input-group
+            span.input-group-addon @
+            input(type='text', name='', placeholder='Your user ID')
           if authErrName
             span.flash= authErrName
         div

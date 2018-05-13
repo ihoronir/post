@@ -11,7 +11,9 @@ block content
     form(action='/login', method='post')#auth-right.widget.form
       div
         label ユーザーID
-        input(type='text', name='username', placeholder='Your user ID').big
+        div.input-group.big
+          span.input-group-addon @
+          input(type='text', name='username', placeholder='Your user ID').big
         if authErrName
           span.flash= authErrName
       div
