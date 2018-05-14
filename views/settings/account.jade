@@ -1,0 +1,16 @@
+extends layout
+
+block settings-content
+  h1.widget-hd: span アカウント設定
+  form(action='/', method='post').form
+    div
+      label ユーザーID
+      div.input-group
+        span.input-group-addon @
+        input(type='text', name='', placeholder='Your user ID')
+      if authErrName
+        span.flash= authErrName
+    div
+      input(type='submit', value='変更を保存する')
+      input(type='hidden', name='_csrf' value=csrftoken)
+  h2.widget-hd: span 外部サービス連携
