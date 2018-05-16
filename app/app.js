@@ -57,11 +57,11 @@ app.set('x-powered-by', false);
 
 app.use(logger('dev')); // ログを表示
 
+app.use(express.static(path.join(__dirname, '../public'))); // 静的リソース
+
 app.use(bodyParser.json());                          // json
 app.use(bodyParser.urlencoded({ extended: false })); // urlencoded
 app.use(cookieParser(config.secret.cookie));         // cookieParser
-
-app.use(express.static(path.join(__dirname, '../public'))); // 静的リソース
 
 // express session
 app.use(session({

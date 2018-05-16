@@ -1,30 +1,19 @@
 // var config = require('config');
 
-var User = require('../database/database').user;
-
 module.exports = function(view, req, res, next, source) {
 
   var isAuthenticated = req.isAuthenticated();
   var csrftoken       = req.csrfToken();
+  var user            = req.user;
 
-  User.findOne({
-    where: {
-      id: req.user
-    }
-  }).then(function(user) {
+  var variables = {
+    isAuthenticated: isAuthenticated,
+    csrftoken: csrftoken,
+    user: user
+  }
 
-    var variables = {
-      isAuthenticated: isAuthenticated,
-      csrftoken: csrftoken,
-      user: user
-    }
+  // source で拡張
+  Object.assign(variables, source);
 
-    // source で拡張
-    Object.assign(variables, source);
-
-    res.render(view, variables);
-
-  }).catch(function(err) {
-    next(err)
-  });
+  res.render(view, variables);
 }
