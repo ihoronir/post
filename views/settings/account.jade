@@ -2,12 +2,12 @@ extends layout
 
 block settings-content
   h1.widget-hd: span アカウント設定
-  form(action='/', method='post').form
+  form(action='/settings', method='post').form
     div
       label ユーザーID
       div.input-group
         span.input-group-addon @
-        input(type='text', name='', placeholder='Your user ID')
+        input(type='text', name='username', placeholder='Your user ID')
       if authErrName
         span.flash= authErrName
     div
