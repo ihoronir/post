@@ -18,11 +18,11 @@ module.exports = function(app) {
 
   // /login
   app.use('/login', loginRouter);
-  app.post('/login', loginController);
+  app.use('/login', loginController);
 
   // /signup
   app.use('/signup', signupRouter);
-  app.post('/signup', signupController);
+  app.use('/signup', signupController);
 
   // /settings
   app.use('/settings', settingsRouter);

@@ -16,7 +16,7 @@ var User = require('../../database/database').user;
 var encrypt = require('../../utils/encrypt');
 var saltgen = require('../../utils/salt');
 
-router.post('/signup', function(req, res, next) {
+router.post('/', function(req, res, next) {
 
   // validation check
   var errFlag = false;
