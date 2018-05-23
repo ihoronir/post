@@ -4,9 +4,10 @@ var loginRouter    = require('./pages/login');    // /login
 var signupRouter   = require('./pages/signup');   // /signup 
 var settingsRouter = require('./pages/settings'); // /settings
 
-var loginController    = require('./controllers/login');    // login
-var signupController   = require('./controllers/signup');   // signup
-var settingsController = require('./controllers/settings'); // settings
+var loginController    = require('./controllers/login');        // login
+var signupController   = require('./controllers/signup');       // signup
+var settingsController = require('./controllers/settings');     // settings
+var onlyLoggedIn       = require('./controllers/onlyLoggedIn'); // onlyLoggedIn 
 
 module.exports = function(app) {
 
@@ -25,7 +26,7 @@ module.exports = function(app) {
   app.use('/signup', signupController);
 
   // /settings
-  app.use('/settings', settingsRouter);
-  app.use('/settings', settingsController);
+  app.use('/settings', onlyLoggedIn, settingsRouter);
+  app.use('/settings', onlyLoggedIn, settingsController);
   
 };

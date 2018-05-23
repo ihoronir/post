@@ -5,12 +5,12 @@ var passport = require('passport');
 
 router.post('/',
   passport.authenticate('local', {
-    successRedirect: '/',
+    // successRedirect: '/',
     failureRedirect: '/login',
     failureFlash: true
   }),
   function(req, res) {
-    // res.redirect('/');
+    res.redirect(decodeURIComponent(req.body.redirect_to));
 });
 
 module.exports = router;
