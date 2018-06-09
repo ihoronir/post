@@ -1,4 +1,4 @@
-var express = require('express');
+const express = require('express');
 
 /*
  * パスワードハッシュ計算方法
@@ -9,17 +9,17 @@ var express = require('express');
  * 
  */
 
-var router = express.Router();
+const router = express.Router();
 
-var User = require('../../database/database').user;
+const User = require('../../database/database').user;
 
-var encrypt = require('../../utils/encrypt');
-var saltgen = require('../../utils/salt');
+const encrypt = require('../../utils/encrypt');
+const saltgen = require('../../utils/salt');
 
 router.post('/', function(req, res, next) {
 
   // validation check
-  var errFlag = false;
+  let errFlag = false;
   if (!(/^[0-9A-Za-z]+$/.test(req.body.name)) || !req.body.name) {
     req.flash('validationErrName', '指定されている形式でユーザー ID を入力してください。');
     errFlag = true;
@@ -44,8 +44,8 @@ router.post('/', function(req, res, next) {
     return res.redirect('/signup');
   }
 
-  var salt = saltgen();
-  var password = encrypt(req.body.password, salt);
+  const salt = saltgen();
+  const password = encrypt(req.body.password, salt);
   User.build({
     name: req.body.name,
     screenName: req.body.screen_name,

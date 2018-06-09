@@ -1,8 +1,8 @@
-var Sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 
 module.exports = function(sequelize) {
 
-  var Game = sequelize.define('games', {
+  const Game = sequelize.define('games', {
     // id
     id: {
       type: Sequelize.INTEGER.UNSIGNED, // data type

@@ -1,7 +1,7 @@
-var passport = require('passport');
-var local = require('./local');
+const passport = require('passport');
+const local = require('./local');
 
-var User = require('../database/database').user;
+const User = require('../database/database').user;
 
 module.exports = function() {
     

@@ -1,13 +1,13 @@
-var indexRouter    = require('./pages/index');    // / (index)
-var userRouter     = require('./pages/user');     // /user
-var loginRouter    = require('./pages/login');    // /login
-var signupRouter   = require('./pages/signup');   // /signup 
-var settingsRouter = require('./pages/settings'); // /settings
+const indexRouter    = require('./pages/index');    // / (index)
+const userRouter     = require('./pages/user');     // /user
+const loginRouter    = require('./pages/login');    // /login
+const signupRouter   = require('./pages/signup');   // /signup 
+const settingsRouter = require('./pages/settings'); // /settings
 
-var loginController    = require('./controllers/login');        // login
-var signupController   = require('./controllers/signup');       // signup
-var settingsController = require('./controllers/settings');     // settings
-var onlyLoggedIn       = require('./controllers/onlyLoggedIn'); // onlyLoggedIn 
+const loginController    = require('./controllers/login');        // login
+const signupController   = require('./controllers/signup');       // signup
+const settingsController = require('./controllers/settings');     // settings
+const onlyLoggedIn       = require('./controllers/onlyLoggedIn'); // onlyLoggedIn 
 
 module.exports = function(app) {
 

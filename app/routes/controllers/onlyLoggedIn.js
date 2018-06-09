@@ -1,6 +1,6 @@
-var express = require('express');
-var url = require('url');
-var router = express.Router();
+const express = require('express');
+const url = require('url');
+const router = express.Router();
 
 router.use('/', function(req, res, next) {
   if (!req.isAuthenticated()) {

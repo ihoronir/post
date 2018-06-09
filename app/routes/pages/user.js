@@ -1,11 +1,11 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-var User = require('../../database/database').user;
+const User = require('../../database/database').user;
 
-var render = require('../render');
+const render = require('../render');
 
-var createError = require('http-errors');
+const createError = require('http-errors');
 
 router.get('/:name', function(req, res, next) {
   User.findOne({

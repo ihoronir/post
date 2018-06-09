@@ -5,17 +5,17 @@
 
 // ------------------------------ モジュールの読み込み ------------------------------
 
-var path          = require('path');                    // パスユーティリティ
+const path          = require('path');                    // パスユーティリティ
 
-var express       = require('express');                 // express 本体
-var cookieParser  = require('cookie-parser');           // express クッキー
-var bodyParser    = require('body-parser');             // express body parser
-var logger        = require('morgan');                  // express logger
-var session       = require('express-session');         // express session
-var csrf          = require('csurf');                   // express csrf 対策
-var flash         = require('express-flash');           // express flash
+const express       = require('express');                 // express 本体
+const cookieParser  = require('cookie-parser');           // express クッキー
+const bodyParser    = require('body-parser');             // express body parser
+const logger        = require('morgan');                  // express logger
+const session       = require('express-session');         // express session
+const csrf          = require('csurf');                   // express csrf 対策
+const flash         = require('express-flash');           // express flash
 
-var passport      = require('passport');                // passport 本体
+const passport      = require('passport');                // passport 本体
 
 
 // ------------------------------ 設定ファイル ------------------------------
@@ -23,13 +23,13 @@ var passport      = require('passport');                // passport 本体
 // 開発用
 process.env.NODE_ENV = 'development';
 
-var config = require('config');
+const config = require('config');
 
 
 
 // ------------------------------ データベース接続 ------------------------------
 
-var sequelize = require('./database/database').sequelize;
+const sequelize = require('./database/database').sequelize;
 
 sequelize.sync(/*{force: true}*/);
 
@@ -37,7 +37,7 @@ sequelize.sync(/*{force: true}*/);
 
 // ------------------------------ アプリケーション作成 ------------------------------
 
-var app = express();
+const app = express();
 
 // テンプレートフォルダを指定
 app.set('views', path.join(__dirname, '../views'));

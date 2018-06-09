@@ -1,7 +1,7 @@
-var Sequelize = require('sequelize');
-var config = require('config');
+const Sequelize = require('sequelize');
+const config = require('config');
 
-var sequelize = new Sequelize(
+const sequelize = new Sequelize(
   config.mariadb.database,    // データベース
   config.mariadb.user,        // ユーザー
   config.mariadb.password,    // パスワード

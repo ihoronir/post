@@ -10,6 +10,7 @@
   "rules": {
     "no-unused-vars": ["error", {
       "argsIgnorePattern": "req|res|next"
-    }]
+    }],
+    "no-var": 2
   }
 }

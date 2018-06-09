@@ -1,4 +1,4 @@
-var createError = require('http-errors');
+const createError = require('http-errors');
 
 module.exports = function(app) {
   // 404 エラーハンドラ

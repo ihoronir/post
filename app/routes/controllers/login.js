@@ -1,7 +1,7 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-var passport = require('passport');
+const passport = require('passport');
 
 /*
 router.post('/',
@@ -16,7 +16,7 @@ router.post('/',
 */
 
 router.post('/', function(req, res, next) {
-  var redirectURL = decodeURIComponent(req.body.redirect_to) || '/';
+  const redirectURL = decodeURIComponent(req.body.redirect_to) || '/';
   passport.authenticate('local', {
     successRedirect: redirectURL,
     failureRedirect: '/login',
