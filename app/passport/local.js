@@ -8,13 +8,13 @@ module.exports = new LocalStrategy({
     usernameField: 'username', 
     passwordField: 'password',
     passReqToCallback: true
-  }, function(req, username, password, done) {
+  }, (req, username, password, done) => {
 
     User.findOne({
       where: {
         name: username
       }
-    }).then(function(user) {
+    }).then(user => {
 
       if (!user) {
         req.flash('authErrName', 'ユーザーIDが間違っています。');
@@ -28,7 +28,7 @@ module.exports = new LocalStrategy({
       
       return done(null, user);
 
-    }).catch(function(err) {
+    }).catch(err => {
       return done(err);
     });
 });

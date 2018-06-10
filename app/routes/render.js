@@ -1,5 +1,5 @@
 // var config = require('config');
-module.exports = function(view, req, res, next, source) {
+module.exports = (view, req, res, next, source) => {
 
   const isAuthenticated = req.isAuthenticated();
   const csrftoken       = req.csrfToken();

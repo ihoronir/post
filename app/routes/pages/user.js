@@ -12,7 +12,7 @@ router.get('/:name', (req, res, next) => {
     where: {
       name: req.params.name
     }
-  }).then(function(user) {
+  }).then((user) => {
     if (!user) {
       return next(createError(404));
     }
@@ -20,7 +20,7 @@ router.get('/:name', (req, res, next) => {
     render('user', req, res, next, {
       profile: user
     });
-  }).catch(function(err) {
+  }).catch((err) => {
     next(err);
   })
 })

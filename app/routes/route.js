@@ -9,7 +9,7 @@ const signupController   = require('./controllers/signup');       // signup
 const settingsController = require('./controllers/settings');     // settings
 const onlyLoggedIn       = require('./controllers/onlyLoggedIn'); // onlyLoggedIn 
 
-module.exports = function(app) {
+module.exports = app => {
 
   // / (index)
   app.use('/', indexRouter);

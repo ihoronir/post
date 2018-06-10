@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-module.exports = function(sequelize) {
+module.exports = sequelize => {
 
   const User = sequelize.define('users', {
     // id

@@ -6,7 +6,7 @@ const validation = require('../../utils/validation');
 const encrypt    = require('../../utils/encrypt');
 const saltgen    = require('../../utils/salt');
 
-router.post('/', function(req, res, next) {
+router.post('/', (req, res, next) => {
 
   validation(req, [
     {

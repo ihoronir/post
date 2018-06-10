@@ -3,7 +3,7 @@ const router = express.Router();
 
 const render = require('../render');
 
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next) => {
   if (req.isAuthenticated()) {
     res.redirect('/');
   } else {
