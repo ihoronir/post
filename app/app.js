@@ -31,7 +31,7 @@ const config = require('config');
 
 const sequelize = require('./database/database').sequelize;
 
-sequelize.sync({force: true});
+sequelize.sync({force: false});
 
 
 

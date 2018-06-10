@@ -1,0 +1,4 @@
+# This is Mariadb Config File
+database: post
+user: nodejs
+password: nodejsdevelop
