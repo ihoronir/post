@@ -7,7 +7,7 @@ const render = require('../render');
 
 const createError = require('http-errors');
 
-router.get('/:name', function(req, res, next) {
+router.get('/:name', (req, res, next) => {
   User.findOne({
     where: {
       name: req.params.name
@@ -20,10 +20,6 @@ router.get('/:name', function(req, res, next) {
     render('user', req, res, next, {
       profile: user
     });
-
-    // BlueBird の警告対策
-    // でもなんか気持ち悪い...
-    return null;
   }).catch(function(err) {
     next(err);
   })

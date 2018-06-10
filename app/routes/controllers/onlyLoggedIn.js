@@ -4,11 +4,12 @@ const router = express.Router();
 
 router.use('/', function(req, res, next) {
   if (!req.isAuthenticated()) {
-    res.redirect(url.format({
+    return res.redirect(url.format({
       pathname: '/login', 
-      query: { redirect_to: decodeURIComponent('/user/shioleap') }
+      query: { redirect_to: decodeURIComponent(req.originalUrl) }
     }));
   }
+  next();
 });
 
 module.exports = router;
