@@ -1,3 +1,59 @@
-# japanese
+# site
+site:
+  title: Xenon
+  description: ゲームを投稿できるサイトだよ！！
+  copyright: © 2018 shioleap
 
-hello: Hello! World!!!
+
+# message
+message:
+  error:
+  validationError:
+
+# view
+view:
+  word:
+    home: ホーム
+    community: コミュニティ
+    terms: 利用規約
+    privacy: プライバシー
+    help: ヘルプ
+    contact: お問い合わせ
+    category: カテゴリ
+    categories: カテゴリ
+    tag: タグ
+    tags: タグ
+    blog: ブログ
+    user: ユーザー
+    users: ユーザー
+    name: 名前
+    screenName: ユーザー名
+    email: メールアドレス
+    password: パスワード
+
+  footer:
+    about: Xenon について
+
+  auth:
+    login: ログイン
+    signup: ユーザー登録
+
+  login:
+    title: ログイン
+    header: Xenon にログイン
+    message: Indie9 のアカウントを持っていない方は<a href="/signup">ユーザー登録</a>
+    screenNameLabel: ユーザー名
+    passwordLabel: パスワード 
+    submitLabel: ログイン
+
+  signup:
+    title: ユーザー登録
+    header: Xenon へようこそ
+    message: 新規登録（無料）して利用をはじめましょう！アカウントをお持ちの方は<a href="/login">ログイン</a>
+    screenNameLabel: ユーザー名
+    nameLabel: 名前
+    emailLabel: メールアドレス
+    passwordLabel: パスワード（小文字、大文字、数字をそれぞれ含み8文字以上）
+    passwordConfirmLabel: パスワード（確認）
+    submitLabel: 利用規約に同意して登録
+
