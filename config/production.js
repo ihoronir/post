@@ -1,3 +1,5 @@
+'use strict';
+
 class Config {
   constructor(environment) {
     this.environment = environment;

@@ -1,3 +1,5 @@
+'use strict';
+
 const indexRouter    = require('./pages/index');    // / (index)
 const userRouter     = require('./pages/user');     // /user
 const loginRouter    = require('./pages/login');    // /login

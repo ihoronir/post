@@ -1,3 +1,5 @@
+'use strict';
+
 const path   = require('path');
 const Config = require('./config');
 const config = new Config();

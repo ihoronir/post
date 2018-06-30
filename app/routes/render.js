@@ -1,3 +1,5 @@
+'use strict';
+
 // var config = require('config');
 module.exports = (view, req, res, next, source) => {
 
@@ -15,6 +17,6 @@ module.exports = (view, req, res, next, source) => {
 
   // source で拡張
   Object.assign(variables, source);
-
+  
   res.render(view, variables);
 }

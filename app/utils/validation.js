@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = (req, input) => {
   let errFlag = false;
   for (let i = 0 , length = input.length; i < length; i ++) {

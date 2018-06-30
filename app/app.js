@@ -1,3 +1,5 @@
+'use strict';
+
 /*
  * app.js アプリケーションプログラム
  */
@@ -41,6 +43,13 @@ const app = express();
 
 // テンプレートフォルダを指定
 app.set('views', path.join(__dirname, '../views'));
+
+// render 拡張
+const res = express.response;
+res.originalRender = res.render;
+res.render = function(view, opts, fn) {
+  res.originalRender.call(this, view, opts, fn);
+};
 
 // テンプレートエンジンを指定
 app.set('view engine', 'jade');

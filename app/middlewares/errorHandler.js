@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function(app) {
   // 404 以外のエラーハンドラ
   app.use((err, req, res) => {

@@ -1,3 +1,5 @@
+'use strict';
+
 const createError = require('http-errors');
 
 module.exports = function(app) {
