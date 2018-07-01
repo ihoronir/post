@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
-  res.render('settings/index');
+  res.redirect('/settings/account');
 });
 
 router.get('/account', (req, res, next) => {
