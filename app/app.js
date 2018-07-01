@@ -17,7 +17,6 @@ const session       = require('express-session');         // express session
 const csrf          = require('csurf');                   // express csrf 対策
 const flash         = require('express-flash');           // express flash
 
-const passport      = require('passport');                // passport 本体
 
 
 // ------------------------------ 設定ファイル ------------------------------
@@ -44,22 +43,14 @@ const app = express();
 // テンプレートフォルダを指定
 app.set('views', path.join(__dirname, '../views'));
 
-// render 拡張
-const res = express.response;
-res.originalRender = res.render;
-res.render = function(view, opts, fn) {
-  res.originalRender.call(this, view, opts, fn);
-};
-
-// テンプレートエンジンを指定
-app.set('view engine', 'jade');
-
 // strict ルーティング 調査中
 app.set('strict routing', true);
 
 // X-Powered-By ヘッダを無効に
 app.set('x-powered-by', false);
 
+// render 設定 & 拡張
+require('./render/render')(app);
 
 
 // ------------------------------ ミドルウェア ------------------------------
@@ -89,9 +80,7 @@ app.use(csrf());
 app.use(flash());
 
 // passport 関連
-require('./passport/passport')(); // passport の設定
-app.use(passport.initialize());   // passport initialize
-app.use(passport.session());      // passport session
+require('./passport/passport')(app);
 
 // ルーティング
 require('./routes/route')(app);

@@ -3,13 +3,11 @@
 const express = require('express');
 const router = express.Router();
 
-const render = require('../render');
-
 router.get('/', (req, res, next) => {
   if (req.isAuthenticated()) {
     res.redirect('/');
   } else {
-    render('signup', req, res, next, {
+    res.render('signup', {
       validationErrName                : req.flash('validationErrName'),
       validationErrScreenName          : req.flash('validationErrScreenName'),
       validationErrEmail               : req.flash('validationErrEmail'),

@@ -5,8 +5,6 @@ const router = express.Router();
 
 const User = require('../../database/database').user;
 
-const render = require('../render');
-
 const createError = require('http-errors');
 
 router.get('/:name', (req, res, next) => {
@@ -19,7 +17,7 @@ router.get('/:name', (req, res, next) => {
       return next(createError(404));
     }
 
-    render('user', req, res, next, {
+    res.render('user', {
       profile: user
     });
   }).catch((err) => {
