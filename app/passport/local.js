@@ -7,14 +7,14 @@ const User = require('../database/database').user;
 const encrypt = require('../utils/encrypt');
 
 module.exports = new LocalStrategy({
-    usernameField: 'username', 
+    usernameField: 'screen_name', 
     passwordField: 'password',
     passReqToCallback: true
   }, (req, username, password, done) => {
 
     User.findOne({
       where: {
-        name: username
+        screenName: username
       }
     }).then(user => {
 

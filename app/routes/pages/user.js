@@ -7,12 +7,12 @@ const User = require('../../database/database').user;
 
 const createError = require('http-errors');
 
-router.get('/:name', (req, res, next) => {
+router.get('/:screen_name', (req, res, next) => {
   User.findOne({
     where: {
-      name: req.params.name
+      screenName: req.params.screen_name
     }
-  }).then((user) => {
+  }).then(user => {
     if (!user) {
       return next(createError(404));
     }
@@ -20,9 +20,9 @@ router.get('/:name', (req, res, next) => {
     res.render('user', {
       profile: user
     });
-  }).catch((err) => {
+  }).catch(err => {
     next(err);
   })
-})
+});
 
 module.exports = router;

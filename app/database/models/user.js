@@ -14,18 +14,18 @@ module.exports = sequelize => {
       allowNull: false                  // not null
     },
 
-    // name
-    name: {
+    // screenName
+    screenName: {
       type: Sequelize.CHAR(15),
-      field: 'name',
+      field: 'screen_name',
       unique: true, // unique
       allowNull: false
     },
 
-    // screenName
-    screenName: {
+    // Name
+    name: {
       type: Sequelize.STRING(50),
-      field: 'screen_name',
+      field: 'name',
       allowNull: false
     },
 

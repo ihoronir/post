@@ -12,12 +12,12 @@ router.post('/', (req, res, next) => {
 
   validation(req, [
     {
-      text: req.body.name,
+      text: req.body.screen_name,
       pattern: /^[0-9A-Za-z]+$/,
       flash: 'validationErrName',
       flashMessage: '指定されている形式でユーザー ID を入力してください。'
     }, {
-      text: req.body.screen_name,
+      text: req.body.name,
       pattern: /.*/,
       flash: 'validationErrScreenName',
       flashMessage: 'ユーザー名を入力してください。'
