@@ -28,7 +28,7 @@ router.post('/', (req, res, next) => {
       flashMessage: 'メールアドレスを入力してください。'
     }, {
       text: req.body.password,
-      pattern: /(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}/,
+      pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}/,
       flash: 'validationErrPassword',
       flashMessage: '小文字、大文字、数字をそれぞれ含む8文字以上のパスワードを入力してください。'
     }, {

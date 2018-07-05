@@ -32,8 +32,9 @@ body {
 	line-height: 1;
   background-color: #eee;
   color: #3f3e3e;
-  /*font: 500 100%/1.4 Avenir, "Open Sans", "Helvetica Neue", Helvetica, Arial, Verdana, Roboto, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "Meiryo UI", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;*/
-  font: normal 100%/1.4 -apple-system,BlinkMacSystemFont,"游ゴシック","Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font: 500 100%/1.4 Avenir, "Open Sans", "Helvetica Neue", Helvetica, Arial, Verdana, Roboto, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "Meiryo UI", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  /*font: 500 100%/1.4 -apple-system,BlinkMacSystemFont,"游ゴシック","Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  */
   font-feature-settings : "palt" 1;
   -webkit-font-smoothing: antialiased;
 }
@@ -295,6 +296,87 @@ h2.widget-hd {
 }
 
 /* form */
+.input-group {
+  margin-bottom: 16px;
+}
+.input-group label {
+  display: block;
+  margin-bottom: 2px;
+}
+.input-text {
+  background-color: transparent;
+  border: #9a9b9b 0.5px solid;
+  outline: none;
+  padding: 0.5rem;
+  font-size: inherit;
+  font-family: inherit;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.input-text.big {
+  line-height: 1.7rem;
+  width: 100%;
+}
+.input-text-with-addon {
+  display: flex;
+  border: #9b9b9b 0.5px solid;
+  border-radius: 4px;
+  overflow: hidden;
+  width: max-content;
+  box-sizing: border-box;
+  align-items: center;
+  background-color: #ddd;
+}
+.input-text-with-addon span {
+  display: block;
+  padding: 0 0.4rem;
+  font-size: inherit;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+.input-text-with-addon input {
+  outline: none;
+  padding: 0.5em;
+  font-size: inherit;
+  font-family: inherit;
+  outline: none;
+  border: none;
+  background-color: #fff;
+  border-left: #9b9b9b 0.5px solid;
+  flex: 1 1 auto;
+  size: 1;
+}
+.input-text-with-addon.big {
+  width: 100%;
+}
+.input-text-with-addon.big input {
+  line-height: 1.7rem;
+}
+.input-text-with-addon.big span {
+  line-height: 1.7rem;
+}
+.input-submit {
+  background-color: #4a148c;
+  color: #fff;
+  font-size: inherit;
+  border: #4a148c 2px solid;
+  padding: 0.3rem 1rem;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-weight: bolder;
+  margin-top: 24px;
+}
+.input-submit:hover {
+  background-color: white;
+  color: #4a148c;
+  transition: 250ms;
+  cursor: pointer;
+}
+.input-submit.big {
+  line-height: 1.7rem;
+  width: 100%;
+}
+/*
 .form div {
   margin-bottom: 12px;
 }
@@ -361,7 +443,7 @@ h2.widget-hd {
 }
 .big .input-group-addon {
   line-height: 2.4rem;
-}
+}*/
 
 /*
  * Footer

@@ -9,32 +9,32 @@ block content
         | アカウントをお持ちの方は
         a(href="/login") ログイン
     div.widget#auth-left ここには他サービスとの連携サインアップのボタンを置く予定だよ！！
-    form(action='/signup', method='post').widget#auth-right.form
-      div
+    form(action='/signup', method='post').widget#auth-right
+      div.input-group
         label ユーザーID
-        input(type='text', name='name', pattern="^[0-9A-Za-z]+$", placeholder="username  [a-zA-Z0-9_-]{3,15}", required).big
+        input(type='text', name='name', pattern="^[0-9A-Za-z]+$", placeholder="username  [a-zA-Z0-9_-]{3,15}", required).input-text.big
         if validationErrName
           span.flash= validationErrName
-      div
+      div.input-group
         label ユーザー名
-        input(type='text', name='screen_name', placeholder="screen username", required).big
+        input(type='text', name='screen_name', placeholder="screen username", required).input-text.big
         if validationErrScreenName
           span.flash= validationErrScreenName
-      div
+      div.input-group
         label メールアドレス
-        input(type='email', name='email', placeholder="email", required).big
+        input(type='email', name='email', placeholder="email", required).input-text.big
         if validationErrEmail
           span.flash= validationErrEmail
-      div
+      div.input-group
         label パスワード（小文字、大文字、数字をそれぞれ含み8文字以上）
-        input(type='password', name='password', pattern='(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}', placeholder="password  (?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}", required).big
+        input(type='password', name='password', pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}', placeholder="password  (?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}", required).input-text.big
         if validationErrPassword
           span.flash= validationErrPassword
-      div
+      div.input-group
         label パスワード（確認）
-        input(type='password', name='password_confirmation', pattern='(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}', placeholder="password  (?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}", required).big
+        input(type='password', name='password_confirmation', pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}', placeholder="password  (?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}", required).input-text.big
         if validationErrPasswordConfirmation
           span.flash= validationErrPasswordConfirmation
-      div
-        input(type='submit', value='利用規約に同意して登録').big
+      div.input-group
+        input(type='submit', value='利用規約に同意して登録').input-submit.big
         input(type='hidden', name='_csrf' value=csrftoken)

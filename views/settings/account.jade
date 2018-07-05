@@ -3,14 +3,14 @@ extends layout
 block settings-content
   h1.widget-hd: span アカウント設定
   form(action='/settings', method='post').form
-    div
+    div.input-group
       label ユーザーID
-      div.input-group
-        span.input-group-addon @
+      div.input-text-with-addon
+        span @
         input(type='text', name='username', placeholder='Your user ID')
       if authErrName
         span.flash= authErrName
-    div
-      input(type='submit', value='変更を保存する')
+    div.input-group
+      input(type='submit', value='変更を保存する').input-submit
       input(type='hidden', name='_csrf' value=csrftoken)
   h2.widget-hd: span 外部サービス連携

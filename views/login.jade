@@ -8,20 +8,20 @@ block content
         a(href="/signup") 新規登録
         | から
     div.widget#auth-left ここには他サービスとの連携ログインのボタンを置く予定だよ！！
-    form(action='/login', method='post')#auth-right.widget.form
-      div
+    form(action='/login', method='post')#auth-right.widget
+      div.input-group
         label ユーザーID
-        div.input-group.big
-          span.input-group-addon @
-          input(type='text', name='username', placeholder='Your user ID').big
+        div.input-text-with-addon.big
+          span @
+          input(type='text', name='username', placeholder='Your user ID')
         if authErrName
           span.flash= authErrName
-      div
+      div.input-group
         label パスワード
-        input(type='password', name='password', placeholder='Your password' required).big
+        input(type='password', name='password', placeholder='Your password' required).input-text.big
         if authErrPassword
           span.flash= authErrPassword
-      div
-        input(type='submit', value='ログイン').big
+      div.input-group
+        input(type='submit', value='ログイン').input-submit.big
         input(type='hidden', name='_csrf' value=csrftoken)
         input(type='hidden', name='redirect_to' value=query.redirect_to)
