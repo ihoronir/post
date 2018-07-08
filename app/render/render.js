@@ -26,5 +26,5 @@ res.render = function(view, opts, fn) {
 };
 
 module.exports = app => {
-  app.set('view engine', 'jade');
+  app.set('view engine', 'pug');
 }
