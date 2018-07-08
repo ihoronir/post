@@ -4,7 +4,7 @@ const LocalStrategy = require('passport-local').Strategy;
 
 const User = require('../database/database').user;
 
-const encrypt = require('../utils/encrypt');
+const encrypt = require('../utils/hash').encrypt;
 
 module.exports = new LocalStrategy({
     usernameField: 'screen_name', 

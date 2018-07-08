@@ -5,8 +5,8 @@ const router  = express.Router();
 
 const User       = require('../../database/database').user;
 const validation = require('../../utils/validation');
-const encrypt    = require('../../utils/encrypt');
-const saltgen    = require('../../utils/salt');
+const encrypt    = require('../../utils/hash').encrypt;
+const saltgen    = require('../../utils/hash').salt;
 
 router.post('/', (req, res, next) => {
 
@@ -15,12 +15,12 @@ router.post('/', (req, res, next) => {
       text: req.body.screen_name,
       pattern: /^[0-9A-Za-z]+$/,
       flash: 'validationErrName',
-      flashMessage: '指定されている形式でユーザー ID を入力してください。'
+      flashMessage: '指定されている形式でユーザー名を入力してください。'
     }, {
       text: req.body.name,
       pattern: /.*/,
       flash: 'validationErrScreenName',
-      flashMessage: 'ユーザー名を入力してください。'
+      flashMessage: '名前を入力してください。'
     }, {
       text: req.body.email,
       pattern: /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/,
