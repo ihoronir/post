@@ -1,12 +1,13 @@
 'use strict';
 
-const path   = require('path');
 const Config = require('./config');
+
+const languages = new Config();
+languages.addFromPath('ja', './languages/ja');
+
 const config = new Config();
-
-
-config.addFromPath('mariadb', path.join(__dirname, './environment/devMariaDB'))
-      .addFromPath('secret' , path.join(__dirname, './environment/devSecrets'));
-
+config.addFromPath('mariadb' , './environment/devMariaDB')
+      .addFromPath('secret'  , './environment/devSecrets')
+      .addFromObject('languages', languages);
 
 module.exports = config;

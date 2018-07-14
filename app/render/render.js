@@ -1,6 +1,7 @@
 'use strict'
 
 const express = require('express');
+const config = require('config');
 
 const res = express.response;
 
@@ -12,11 +13,16 @@ res.render = function(view, opts, fn) {
   const user            = this.req.user;
   const query           = this.req.query;
 
+  const lang = this.req.acceptsLanguages('en', 'ja');
+  const strings = config.languages[lang];
+
   const variables = {
     isAuthenticated: isAuthenticated,
     csrftoken: csrftoken,
     user: user,
-    query: query
+    query: query,
+    lang: lang,
+    strings: strings
   }
 
   // source で拡張

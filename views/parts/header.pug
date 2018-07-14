@@ -2,7 +2,7 @@ header#header
   form(action='/search', method='get')
     div#header-container.container
       //- h1#header-logo: a(href="#") #{title}
-      h1#header-logo: a(href="/") Indie9
+      h1#header-logo: a(href="/")= strings.site.title
       ul#header-nav
         li: a(href="#") ホーム
         li: a(href="#") コミュニティ
