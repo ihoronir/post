@@ -2,3 +2,19 @@ extends layout
 
 block settings-content
   h1.widget-hd: span プロフィール設定
+  form(action='/settings', method='post').form
+    div.input-group
+      label 名前
+      input(type='text', name='current_password', placeholder='Your name' required).input-text
+    div.input-group
+      label サイト / ブログ
+      input(type='url', name='url', placeholder='URL' required).input-text
+    div.input-group
+      label 場所
+      input(type='text', name='place', placeholder='Your place' required).input-text
+    div.input-group
+      label 自己紹介
+      textarea(name="description", placeholder='Your description ...').input-textarea
+    div.input-group
+      input(type='submit', value='変更を保存する').input-submit
+      input(type='hidden', name='_csrf' value=csrftoken)

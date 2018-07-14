@@ -7,10 +7,11 @@ block settings-content
       label ユーザーID
       div.input-text-with-addon
         span @
-        input(type='text', name='username', placeholder='Your user ID')
+        input(type='text', name='username', placeholder='Your user ID' required)
       if authErrName
         span.flash= authErrName
     div.input-group
       input(type='submit', value='変更を保存する').input-submit
       input(type='hidden', name='_csrf' value=csrftoken)
   h2.widget-hd: span 外部サービス連携
+  p ここはそのうち整備するよ！
