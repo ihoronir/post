@@ -10,26 +10,27 @@ message:
   error:
   validationError:
 
+word:
+  home: ホーム
+  community: コミュニティ
+  terms: 利用規約
+  privacy: プライバシー
+  help: ヘルプ
+  contact: お問い合わせ
+  category: カテゴリ
+  categories: カテゴリ
+  tag: タグ
+  tags: タグ
+  blog: ブログ
+  user: ユーザー
+  users: ユーザー
+  name: 名前
+  screenName: ユーザー名
+  email: メールアドレス
+  password: パスワード
+
 # view
 view:
-  word:
-    home: ホーム
-    community: コミュニティ
-    terms: 利用規約
-    privacy: プライバシー
-    help: ヘルプ
-    contact: お問い合わせ
-    category: カテゴリ
-    categories: カテゴリ
-    tag: タグ
-    tags: タグ
-    blog: ブログ
-    user: ユーザー
-    users: ユーザー
-    name: 名前
-    screenName: ユーザー名
-    email: メールアドレス
-    password: パスワード
 
   footer:
     about: Xenon について
@@ -56,4 +57,8 @@ view:
     passwordLabel: パスワード（小文字、大文字、数字をそれぞれ含み8文字以上）
     passwordConfirmLabel: パスワード（確認）
     submitLabel: 利用規約に同意して登録
+
+  user:
+    title: ユーザー
+    joinDate: 登録日
 

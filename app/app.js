@@ -13,7 +13,6 @@ const express       = require('express');                 // express 本体
 const cookieParser  = require('cookie-parser');           // express クッキー
 const bodyParser    = require('body-parser');             // express body parser
 const logger        = require('morgan');                  // express logger
-const session       = require('express-session');         // express session
 const csrf          = require('csurf');                   // express csrf 対策
 const flash         = require('express-flash');           // express flash
 
@@ -63,15 +62,8 @@ app.use(bodyParser.json());                          // json
 app.use(bodyParser.urlencoded({ extended: false })); // urlencoded
 app.use(cookieParser(config.secret.cookie));         // cookieParser
 
-// express session
-app.use(session({
-  secret: config.secret.session,
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    maxAge: 30 * 60 * 1000
-  }
-}));
+// session
+require('./middlewares/session')(app);
 
 // csrf 対策
 app.use(csrf());

@@ -3,40 +3,37 @@ extends layout
 block content
   div.auth-grid
     div.widget#auth-header
-      h1 Indie9 へようこそ
-      p 新規登録（無料）して利用をはじめましょう！
-        br
-        | アカウントをお持ちの方は
-        a(href="/login") ログイン
+      h1= string.view.signup.header
+      p!= string.view.signup.message
     div.widget#auth-left ここには他サービスとの連携サインアップのボタンを置く予定だよ！！
     form(action='/signup', method='post').widget#auth-right
       div.input-group
-        label ユーザー名
+        label= string.view.signup.screenNameLabel
         div.input-text-with-addon.big
           span @
           input(type='text', name='screen_name', pattern="^[0-9A-Za-z]+$", placeholder="screen name  [a-zA-Z0-9_-]{3,15}", required)
         if validationErrName
           span.flash= validationErrName
       div.input-group
-        label 名前
+        label= string.view.signup.nameLabel
         input(type='text', name='name', placeholder="name", required).input-text.big
         if validationErrScreenName
           span.flash= validationErrScreenName
       div.input-group
-        label メールアドレス
+        label= string.view.signup.emailLabel
         input(type='email', name='email', placeholder="email", required).input-text.big
         if validationErrEmail
           span.flash= validationErrEmail
       div.input-group
-        label パスワード（小文字、大文字、数字をそれぞれ含み8文字以上）
-        input(type='password', name='password', pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}', placeholder="password  (?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}", required).input-text.big
+        label= string.view.signup.passwordLabel
+        input(type='password', name='password', pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}', placeholder="password  (?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}", required).input-text.big
         if validationErrPassword
           span.flash= validationErrPassword
       div.input-group
-        label パスワード（確認）
-        input(type='password', name='password_confirmation', pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}', placeholder="password  (?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}", required).input-text.big
+        label= string.view.signup.passwordConfirmLabel
+        input(type='password', name='password_confirmation', pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}', placeholder="password  (?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}", required).input-text.big
         if validationErrPasswordConfirmation
           span.flash= validationErrPasswordConfirmation
       div.input-group
-        input(type='submit', value='利用規約に同意して登録').input-submit.big
+        input(type='submit', value=string.view.signup.submitLabel).input-submit.big
         input(type='hidden', name='_csrf' value=csrftoken)

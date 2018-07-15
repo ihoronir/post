@@ -9,20 +9,19 @@ const User = require('../database/database').user;
 passport.serializeUser((user, done) => {
   // id をセッションに保存
   done(null, user.id);
+  return null;
 });
 
 // デシリアライズ（セッションにシリアライズした情報を req.user に入れる）
 passport.deserializeUser((id, done) => {
-  User.findOne({
-    where: {
-      id: id
-    }
-  }).then(user => {
+  User.findById(id).then(user => {
     // req.user に ユーザーオブジェクト保存
     done(null, user);
+    return null; // Measure for Bluebird warning
   }).catch(err => {
     // エラー
     done(err);
+    return null; // Measure for Bluebird warning
   });
 });
 

@@ -14,7 +14,7 @@ res.render = function(view, opts, fn) {
   const query           = this.req.query;
 
   const lang = this.req.acceptsLanguages('en', 'ja');
-  const strings = config.languages[lang];
+  const string = config.languages[lang];
 
   const variables = {
     isAuthenticated: isAuthenticated,
@@ -22,7 +22,7 @@ res.render = function(view, opts, fn) {
     user: user,
     query: query,
     lang: lang,
-    strings: strings
+    string: string
   }
 
   // source で拡張

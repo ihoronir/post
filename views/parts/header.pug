@@ -1,15 +1,14 @@
 header#header
   form(action='/search', method='get')
     div#header-container.container
-      //- h1#header-logo: a(href="#") #{title}
-      h1#header-logo: a(href="/")= strings.site.title
+      h1#header-logo: a(href="/")= string.site.title
       ul#header-nav
-        li: a(href="#") ホーム
-        li: a(href="#") コミュニティ
+        li: a(href="#")= string.word.home
+        li: a(href="#")= string.word.community
       input(type="text" name="q")#header-search
       if isAuthenticated
         div#header-end ログイン済み（#{user.name}）
       else 
         div#header-end
-          a(href="/signup").header-button ユーザー登録
-          a(href="/login").header-button ログイン
+          a(href="/signup").header-button= string.view.auth.signup
+          a(href="/login").header-button= string.view.auth.login

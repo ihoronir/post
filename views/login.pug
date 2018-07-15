@@ -3,25 +3,23 @@ extends layout
 block content
   div.auth-grid
     div.widget#auth-header
-      h1 Indie9 にログイン
-      p Indie9 のアカウントを持っていない方は
-        a(href="/signup") 新規登録
-        | から
+      h1= string.view.login.header
+      p!= string.view.login.message
     div.widget#auth-left ここには他サービスとの連携ログインのボタンを置く予定だよ！！
     form(action='/login', method='post')#auth-right.widget
       div.input-group
-        label ユーザー名
+        label= string.view.login.screenNameLabel
         div.input-text-with-addon.big
           span @
           input(type='text', name='screen_name', placeholder='Your screen name')
         if authErrName
           span.flash= authErrName
       div.input-group
-        label パスワード
+        label= string.view.login.passwordLabel
         input(type='password', name='password', placeholder='Your password' required).input-text.big
         if authErrPassword
           span.flash= authErrPassword
       div.input-group
-        input(type='submit', value='ログイン').input-submit.big
+        input(type='submit', value=string.view.login.submitLabel).input-submit.big
         input(type='hidden', name='_csrf' value=csrftoken)
         input(type='hidden', name='redirect_to' value=query.redirect_to)
