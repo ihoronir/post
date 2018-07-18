@@ -8,7 +8,7 @@
  * モジュールの読み込み
  */
 
-const app = require('../app/app'); // 変更検討
+const app = require('../app/app');
 const debug = require('debug')('post:server');
 const http = require('http');
 

@@ -14,7 +14,7 @@ const cookieParser  = require('cookie-parser');           // express クッキ�
 const bodyParser    = require('body-parser');             // express body parser
 const logger        = require('morgan');                  // express logger
 const csrf          = require('csurf');                   // express csrf 対策
-const flash         = require('express-flash');           // express flash
+const flash         = require('connect-flash');           // express flash
 
 
 
@@ -58,8 +58,8 @@ app.use(logger('dev')); // ログを表示
 
 app.use(express.static(path.join(__dirname, '../public'))); // 静的リソース
 
-app.use(bodyParser.json());                          // json
 app.use(bodyParser.urlencoded({ extended: false })); // urlencoded
+app.use(bodyParser.json());                          // json
 app.use(cookieParser(config.secret.cookie));         // cookieParser
 
 // session

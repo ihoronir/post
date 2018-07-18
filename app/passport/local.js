@@ -20,17 +20,21 @@ module.exports = new LocalStrategy({
 
       if (!user) {
         req.flash('authErrName', 'ユーザーIDが間違っています。');
-        return done(null, false);
+        done(null, false);
+        return null; // Measure for Bluebird warning
       }
 
       if (!(encrypt(password, user.passwordSalt) === user.password)) {
         req.flash('authErrPassword', 'パスワードが間違っています。')
-        return done(null, false);
+        done(null, false);
+        return null; // Measure for Bluebird warning
       }
       
-      return done(null, user);
+      done(null, user);
+      return null; // Measure for Bluebird warning
 
     }).catch(err => {
-      return done(err);
+      done(err);
+      return null; // Measure for Bluebird warning
     });
 });

@@ -35,9 +35,7 @@ body {
   background-color: #eee;
   color: #3f3e3e;
   font: 500 100%/1.4 arial, sans-serif;
-  /*font: 500 100%/1.4 -apple-system,BlinkMacSystemFont,"游ゴシック","Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  */
-  font-feature-settings : "palt" 1;
+  font-feature-settings : 'palt' 1;
   -webkit-font-smoothing: antialiased;
 }
 ol, ul {
