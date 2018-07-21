@@ -1,17 +1,16 @@
 extends layout
 
 block settings-content
-  h1.widget-hd: span アカウント設定
-  form(action='/settings', method='post').form
+  h1.widget-hd: span= string.view.settings.account.title
+  form(action='/settings/account', method='post').form
     div.input-group
-      label ユーザーID
+      label= string.input.user.screenNameLabel
       div.input-text-with-addon
         span @
-        input(type='text', name='username', placeholder='Your user ID' required)
-      if authErrName
-        span.flash= authErrName
+        input(type='text', name='screen_name', pattern=config.pattern.user.screenName.string, maxlength=config.pattern.user.screenName.maxlength, title=string.input.user.screenNameTitle, value=user.screenName, placeholder=string.input.user.screenNameTitle, required)
     div.input-group
-      input(type='submit', value='変更を保存する').input-submit
+      input(type='submit', value=string.word.saveChanges).input-submit
       input(type='hidden', name='_csrf' value=csrftoken)
+  //- TODO: そのうち整備
   h2.widget-hd: span 外部サービス連携
   p ここはそのうち整備するよ！

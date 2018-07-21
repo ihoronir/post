@@ -1,20 +1,20 @@
 extends layout
 
 block settings-content
-  h1.widget-hd: span プロフィール設定
+  h1.widget-hd: span= string.view.settings.profile.title
   form(action='/settings', method='post').form
     div.input-group
-      label 名前
-      input(type='text', name='current_password', placeholder='Your name' required).input-text
+      label= string.input.user.nameLabel
+      input(type='text', name='name', maxlength=config.pattern.user.name.maxlength, title=string.input.user.nameTitle, value=user.name, placeholder=string.input.user.nameTitle, required).input-text
     div.input-group
-      label サイト / ブログ
-      input(type='url', name='url', placeholder='URL' required).input-text
+      label= string.input.user.urlLabel
+      input(type='url', name='url', maxlength=config.pattern.user.url.maxlength, title=string.input.user.urlTitle, value=user.url, placeholder=string.input.user.urlTitle).input-text
     div.input-group
-      label 場所
-      input(type='text', name='place', placeholder='Your place' required).input-text
+      label= string.input.user.locationLabel
+      input(type='text', name='location', maxlength=config.pattern.user.location.maxlength, title=string.input.user.locationTitle, value=user.location, placeholder=string.input.user.locationTitle).input-text
     div.input-group
-      label 自己紹介
-      textarea(name="description", placeholder='Your description ...').input-textarea
+      label= string.input.user.descriptionLabel
+      textarea(name="description", maxlength=config.pattern.user.description.maxlength, title=string.input.user.descriptionTitle, value=user.description, placeholder=string.input.user.descriptionTitle).input-textarea
     div.input-group
-      input(type='submit', value='変更を保存する').input-submit
+      input(type='submit', value=string.word.saveChanges).input-submit
       input(type='hidden', name='_csrf' value=csrftoken)

@@ -28,6 +28,35 @@ word:
   screenName: ユーザー名
   email: メールアドレス
   password: パスワード
+  login: ログイン
+  signup: ユーザー登録
+  saveChanges: 変更を保存する
+
+input:
+  user:
+    screenNameLabel: ユーザー名
+    screenNameTitle: 半角英数または_のみで15字以下
+    nameLabel: 名前
+    nameTitle: 50字以下
+    emailLabel: メールアドレス
+    emailTitle: メールアドレス
+    publicEmailLabel: メールアドレスの公開
+    publicEmailMessage: 誰もがあなたのメールアドレスを見られる状態になります。
+    publicEmailString: メールアドレスを全体に公開する
+    passwordLabel: パスワード
+    passwordTitle: 小文字、大文字、数字をそれぞれ含み8字以上
+    passwordConfirmLabel: パスワード（確認）
+    passwordConfirmTitle: パスワード（確認）
+    currentPasswordLabel: 現在のパスワード
+    newPasswordLabel: 新しいパスワード
+    newPasswordConfirmLabel: 新しいパスワード（確認）
+    newPasswordConfirmTitle: 新しいパスワード（確認）
+    descriptionLabel: 自己紹介
+    descriptionTitle: 160字まで
+    urlLabel: サイト / ブログ
+    urlTitle: 255字まで
+    locationLabel: 場所
+    locationTitle: 30字まで
 
 # view
 view:
@@ -35,28 +64,33 @@ view:
   footer:
     about: Xenon について
 
-  auth:
-    login: ログイン
-    signup: ユーザー登録
-
   login:
     title: ログイン
     header: Xenon にログイン
-    message: Indie9 のアカウントを持っていない方は<a href="/signup">ユーザー登録</a>
-    screenNameLabel: ユーザー名
-    passwordLabel: パスワード 
+    message: Xenon のアカウントを持っていない方は<a href="/signup">ユーザー登録</a>
     submitLabel: ログイン
 
   signup:
     title: ユーザー登録
     header: Xenon へようこそ
     message: 新規登録（無料）して利用をはじめましょう！アカウントをお持ちの方は<a href="/login">ログイン</a>
-    screenNameLabel: ユーザー名
-    nameLabel: 名前
-    emailLabel: メールアドレス
-    passwordLabel: パスワード（小文字、大文字、数字をそれぞれ含み8文字以上）
-    passwordConfirmLabel: パスワード（確認）
     submitLabel: 利用規約に同意して登録
+
+  settings:
+    account:
+      title: アカウント設定
+      linkTitle: アカウント
+    notifications:
+      title: メールアドレスと通知
+      linkTitle: メールアドレスと通知
+      email: メールアドレス設定
+      notifications: 通知設定
+    password:
+      title: パスワード
+      linkTitle: パスワード
+    profile:
+      title: プロフィール設定
+      linkTitle: プロフィール
 
   user:
     title: ユーザー

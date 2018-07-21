@@ -1,22 +1,23 @@
 extends layout
 
 block settings-content
-  h1.widget-hd: span メールアドレス設定
-  form(action='/settings', method='post').form
+  h1.widget-hd: span= string.view.settings.notifications.email
+  form(action='/settings/email', method='post').form
     div.input-group
-      label メールアドレス
-      input(type='email', name='email', placeholder="Your E-mail adress", required).input-text
+      label= string.input.user.emailLabel
+      input(type='email', name='email', maxlength=config.pattern.user.email.maxlength, value=user.email, title=string.input.user.emailTitle, placeholder=string.input.user.emailTitle, required).input-text
     div.input-group
-      label メールアドレスの公開
-      p 誰もがあなたのメールアドレスを見られる状態になります。
+      label= string.input.user.publicEmailLabel
+      p= string.input.user.publicEmailMessage
       div.input-checkbox
-        input(type='checkbox')
-        label メールアドレスを全体に公開する
+        input(type='checkbox' name='public_email' value=user.publicEmail)
+        label= string.input.user.publicEmailString
     div.input-group
-      input(type='submit', value='変更を保存する').input-submit
+      input(type='submit', value=string.word.saveChanges).input-submit
       input(type='hidden', name='_csrf' value=csrftoken)
-  h1.widget-hd: span 通知設定
-  form(action='/settings', method='post').form
+  //- 通知設定は未実装
+  h1.widget-hd: span= string.view.settings.notifications.notifications
+  form(action='/settings/notifications', method='post').form
     div.input-group
       label NAMEからのお知らせ
       p NAME からお知らせメールが届きます。
@@ -26,21 +27,5 @@ block settings-content
         input(type='checkbox')
         label Web
     div.input-group
-      label NAMEからのお知らせ
-      p NAME からお知らせメールが届きます。
-      div.input-checkbox
-        input(type='checkbox')
-        label メール
-        input(type='checkbox')
-        label Web
-    div.input-group
-      label NAMEからのお知らせ
-      p NAME からお知らせメールが届きます。
-      div.input-checkbox
-        input(type='checkbox')
-        label メール
-        input(type='checkbox')
-        label Web
-    div.input-group
-      input(type='submit', value='変更を保存する').input-submit
+      input(type='submit', value=string.word.saveChanges).input-submit
       input(type='hidden', name='_csrf' value=csrftoken)

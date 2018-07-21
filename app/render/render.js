@@ -21,8 +21,9 @@ res.render = function(view, opts, fn) {
     csrftoken: csrftoken,
     user: user,
     query: query,
-    lang: lang,
+    config: config,
     string: string
+
   }
 
   // source で拡張

@@ -4,9 +4,9 @@ block content
   div.settings-grid
     div.widget#settings-left
       ul#settings-list
-        li: a(href="/settings/account") アカウント
-        li: a(href="/settings/password") パスワード
-        li: a(href="/settings/profile") プロフィール
-        li: a(href="/settings/notifications") メールアドレスと通知
+        li: a(href='/settings/account')= string.view.settings.account.linkTitle
+        li: a(href='/settings/password')= string.view.settings.password.linkTitle
+        li: a(href='/settings/profile')= string.view.settings.profile.linkTitle
+        li: a(href='/settings/notifications')= string.view.settings.notifications.linkTitle
     div.widget#settings-right
       block settings-content

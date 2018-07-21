@@ -8,6 +8,7 @@ languages.addFromPath('ja', './languages/ja');
 const config = new Config();
 config.addFromPath('mariadb' , './environment/devMariaDB')
       .addFromPath('secret'  , './environment/devSecrets')
+      .addFromPath('pattern' , './pattern/pattern')
       .addFromObject('languages', languages);
 
 module.exports = config;

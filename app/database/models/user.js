@@ -5,7 +5,7 @@ const Sequelize = require('sequelize');
 module.exports = sequelize => {
 
   const User = sequelize.define('users', {
-    // id
+
     id: {
       type: Sequelize.INTEGER.UNSIGNED, // data type
       field: 'id',                      // field
@@ -14,7 +14,6 @@ module.exports = sequelize => {
       allowNull: false                  // not null
     },
 
-    // screenName
     screenName: {
       type: Sequelize.CHAR(15),
       field: 'screen_name',
@@ -22,48 +21,64 @@ module.exports = sequelize => {
       allowNull: false
     },
 
-    // Name
     name: {
       type: Sequelize.STRING(50),
       field: 'name',
       allowNull: false
     },
 
-    // email
     email: {
       type: Sequelize.STRING(256),
       field: 'email',
       allowNull: false
     },
 
-    // password
+    
+    publicEmail: {
+      type: Sequelize.BOOLEAN(),
+      field: 'public_email',
+      defaultValue: false, // default
+      allowNull: false
+    },
+
     password: {
       type: Sequelize.CHAR(64),
       field: 'password',
       allowNull: false
     },
-
-    // passwordSalt
+  
     passwordSalt: {
       type: Sequelize.CHAR(64),
       field: 'password_salt',
       allowNull: false
     },
 
-    // description
     description: {
       type: Sequelize.CHAR(160),
       field: 'description',
+      defaultValue: '',
       allowNull: false
     },
 
-    // createdAt
+    url: {
+      type: Sequelize.STRING(255),
+      field: 'url',
+      defaultValue: '',
+      allowNull: false
+    },
+
+    location: {
+      type: Sequelize.STRING(30),
+      field: 'location',
+      defaultValue: '',
+      allowNull: false
+    },
+
     createdAt: {
       type: Sequelize.DATE(),
       field: 'created_at'
     },
 
-    // updatedAt
     updatedAt: {
       type: Sequelize.DATE(),
       field: 'updated_at'

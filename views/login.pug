@@ -8,14 +8,14 @@ block content
     div.widget#auth-left ここには他サービスとの連携ログインのボタンを置く予定だよ！！
     form(action='/login', method='post')#auth-right.widget
       div.input-group
-        label= string.view.login.screenNameLabel
+        label= string.input.user.screenNameLabel
         div.input-text-with-addon.big
           span @
           input(type='text', name='screen_name', placeholder='Your screen name')
         if authErrName
           span.flash= authErrName
       div.input-group
-        label= string.view.login.passwordLabel
+        label= string.input.user.passwordLabel
         input(type='password', name='password', placeholder='Your password' required).input-text.big
         if authErrPassword
           span.flash= authErrPassword

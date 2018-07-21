@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "lint": "eslint src"
+    "lint": "eslint ./app ./config"
   },
   "dependencies": {
     "body-parser": "^1.18.3",

@@ -3,6 +3,7 @@
 const express = require('express');
 const router  = express.Router();
 
+const config     = require('config');
 const User       = require('../../database/database').user;
 const validation = require('../../utils/validation');
 const encrypt    = require('../../utils/hash').encrypt;
@@ -13,22 +14,22 @@ router.post('/', (req, res, next) => {
   validation(req, [
     {
       text: req.body.screen_name,
-      pattern: /^[0-9A-Za-z]+$/,
+      pattern: config.pattern.user.screenName.regExp,
       flash: 'validationErrName',
       flashMessage: '指定されている形式でユーザー名を入力してください。'
     }, {
       text: req.body.name,
-      pattern: /.*/,
+      pattern: config.pattern.user.name.regExp,
       flash: 'validationErrScreenName',
       flashMessage: '名前を入力してください。'
     }, {
       text: req.body.email,
-      pattern: /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/,
+      pattern: config.pattern.user.email.regExp,
       flash: 'validationErrEmail',
       flashMessage: 'メールアドレスを入力してください。'
     }, {
       text: req.body.password,
-      pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}/,
+      pattern: config.pattern.user.password.regExp,
       flash: 'validationErrPassword',
       flashMessage: '小文字、大文字、数字をそれぞれ含む8文字以上のパスワードを入力してください。'
     }, {
@@ -46,10 +47,10 @@ router.post('/', (req, res, next) => {
       email: req.body.email,
       password: password, // パスワード
       passwordSalt: salt, // ソルト
-      description: ''     // プロフィール
     }).save().then(() => {
 
       res.redirect('/login');
+      return null; // Measure for Bluebird warning
 
     }).catch((err) => {
 
@@ -59,6 +60,8 @@ router.post('/', (req, res, next) => {
       } else {
         next(err);
       }
+      return null; // Measure for Bluebird warning
+
     });
   }).catch(() => {
     return res.redirect('/signup');

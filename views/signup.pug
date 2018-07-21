@@ -8,30 +8,31 @@ block content
     div.widget#auth-left ここには他サービスとの連携サインアップのボタンを置く予定だよ！！
     form(action='/signup', method='post').widget#auth-right
       div.input-group
-        label= string.view.signup.screenNameLabel
+        label= string.input.user.screenNameLabel
         div.input-text-with-addon.big
           span @
-          input(type='text', name='screen_name', pattern="^[0-9A-Za-z]+$", placeholder="screen name  [a-zA-Z0-9_-]{3,15}", required)
+          input(type='text', name='screen_name', pattern=config.pattern.user.screenName.string, maxlength=config.pattern.user.screenName.maxlength, title=string.input.user.screenNameTitle, placeholder=string.input.user.screenNameTitle, required)
         if validationErrName
           span.flash= validationErrName
       div.input-group
-        label= string.view.signup.nameLabel
-        input(type='text', name='name', placeholder="name", required).input-text.big
+        label= string.input.user.nameLabel
+        input(type='text', name='name', maxlength=config.pattern.user.name.maxlength, title=string.input.user.nameTitle, placeholder=string.input.user.nameTitle, required).input-text.big
         if validationErrScreenName
           span.flash= validationErrScreenName
       div.input-group
-        label= string.view.signup.emailLabel
-        input(type='email', name='email', placeholder="email", required).input-text.big
+        label= string.input.user.emailLabel
+        input(type='email', name='email', maxlength=config.pattern.user.email.maxlength, title=string.input.user.emailTitle, placeholder=string.input.user.emailTitle, required).input-text.big
         if validationErrEmail
           span.flash= validationErrEmail
       div.input-group
-        label= string.view.signup.passwordLabel
-        input(type='password', name='password', pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}', placeholder="password  (?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}", required).input-text.big
+        label= string.input.user.passwordLabel
+        input(type='password', name='password', pattern=config.pattern.user.password.string, title=string.input.user.passwordTitle, placeholder=string.input.user.passwordTitle, required).input-text.big
         if validationErrPassword
           span.flash= validationErrPassword
+      //- TODO: validation 強化
       div.input-group
-        label= string.view.signup.passwordConfirmLabel
-        input(type='password', name='password_confirmation', pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}', placeholder="password  (?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}", required).input-text.big
+        label= string.input.user.passwordConfirmLabel
+        input(type='password', name='password_confirmation', title=string.input.user.passwordConfirmTitle, placeholder=string.input.user.passwordConfirmTitle, required).input-text.big
         if validationErrPasswordConfirmation
           span.flash= validationErrPasswordConfirmation
       div.input-group
