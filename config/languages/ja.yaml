@@ -8,7 +8,21 @@ site:
 # message
 message:
   error:
+    notFoundUser: ユーザー名が間違っています。
+    notMatchedPassword: パスワードが間違っています。
   validationError:
+    emptyScreenName: ユーザー名を入力してください。
+    isScreenName: 半角英数または_のみで15字以下のユーザー名を入力してください。
+    usedScreenName: ユーザー名（%s）はすでに使用されています。
+    emptyName: 名前を入力してください。
+    isName: 50字以下の名前を入力してください。
+    emptyEmail: メールアドレスを入力してください。
+    isEmail: メールアドレスのフォーマットが正しくありません。
+    usedEmail: メールアドレス（%s）はすでに使用されています。
+    emptyPassword: パスワードを入力してください。
+    isPassword: 小文字、大文字、数字をそれぞれ含み8字以上のパスワードを入力してください。
+    matchedPassword: 同じパスワードを入力してください。
+
 
 word:
   home: ホーム

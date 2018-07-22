@@ -31,7 +31,7 @@ const config = require('config');
 
 const sequelize = require('./database/database').sequelize;
 
-sequelize.sync({force: false});
+sequelize.sync({force: true});
 
 
 
@@ -70,6 +70,9 @@ app.use(csrf());
 
 // flash
 app.use(flash());
+
+// lang
+app.use(require('./middlewares/language'));
 
 // passport 関連
 require('./passport/passport')(app);

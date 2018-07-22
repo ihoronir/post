@@ -17,7 +17,7 @@ module.exports = sequelize => {
     screenName: {
       type: Sequelize.CHAR(15),
       field: 'screen_name',
-      unique: true, // unique
+      unique: true,
       allowNull: false
     },
 
@@ -28,16 +28,22 @@ module.exports = sequelize => {
     },
 
     email: {
-      type: Sequelize.STRING(256),
+      type: Sequelize.STRING(255),
       field: 'email',
       allowNull: false
     },
 
-    
+    emailHash: {
+      type: Sequelize.CHAR(64),
+      field: 'email_hash',
+      unique: true,
+      allowNull: false
+    },
+
     publicEmail: {
       type: Sequelize.BOOLEAN(),
       field: 'public_email',
-      defaultValue: false, // default
+      defaultValue: false,
       allowNull: false
     },
 
@@ -54,7 +60,7 @@ module.exports = sequelize => {
     },
 
     description: {
-      type: Sequelize.CHAR(160),
+      type: Sequelize.STRING(160),
       field: 'description',
       defaultValue: '',
       allowNull: false

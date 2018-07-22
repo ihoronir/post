@@ -3,7 +3,8 @@
 const crypto = require('crypto');
 
 module.exports = {
-  encrypt: (text, salt) => {
+  encrypt: (text, _salt) => {
+    const salt = _salt || '';
     for (let i = 0; i < 10; i ++) {
       text = crypto.createHash('sha256').update(text + salt).digest('hex');
     }
