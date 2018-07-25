@@ -3,11 +3,15 @@ extends layout
 block settings-content
   h1.widget-hd: span= string.view.settings.account.title
   form(action='/settings/account', method='post').form
+    if successSaveChanges
+      p.success= successSaveChanges
     div.input-group
       label= string.input.user.screenNameLabel
       div.input-text-with-addon
         span @
-        input(type='text', name='screen_name', pattern=config.pattern.user.screenName.string, maxlength=config.pattern.user.screenName.maxlength, title=string.input.user.screenNameTitle, value=user.screenName, placeholder=string.input.user.screenNameTitle, required)
+        input(type='text', name='screen_name', maxlength=config.pattern.user.screenName.maxlength, pattern=config.pattern.user.screenName.string, title=string.input.user.screenNameTitle, value=user.screenName, placeholder=string.input.user.screenNameTitle, required)
+      if validationErrScreenName
+        span.flash= validationErrScreenName
     div.input-group
       input(type='submit', value=string.word.saveChanges).input-submit
       input(type='hidden', name='_csrf' value=csrftoken)

@@ -13,6 +13,7 @@ router.post('/', (req, res, next) => {
 
   let errFlag = false;
 
+  // ユーザー名
   if (!req.body.screen_name) {
     req.flash('validationErrScreenName', req.string.message.validationError.emptyScreenName);
     errFlag = true;
@@ -20,6 +21,7 @@ router.post('/', (req, res, next) => {
     req.flash('validationErrScreenName', req.string.message.validationError.isScreenName);
     errFlag = true;
   }
+  // 名前
   if (!req.body.name) {
     req.flash('validationErrName', req.string.message.validationError.emptyName);
     errFlag = true;
@@ -27,6 +29,7 @@ router.post('/', (req, res, next) => {
     req.flash('validationErrName', req.string.message.validationError.isName);
     errFlag = true;
   }
+  // メアド
   if (!req.body.email) {
     req.flash('validationErrEmail', req.string.message.validationError.emptyEmail);
     errFlag = true;
@@ -34,6 +37,7 @@ router.post('/', (req, res, next) => {
     req.flash('validationErrEmail', req.string.message.validationError.isEmail);
     errFlag = true;
   }
+  // パスワード
   if (!req.body.password) {
     req.flash('validationErrPassword', req.string.message.validationError.emptyPassword);
     errFlag = true;

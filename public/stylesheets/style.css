@@ -308,6 +308,9 @@ h2.widget-hd {
 .input-group p {
   margin: 4px;
 }
+.input-group .flash {
+  color: #f00;
+}
 /* text */
 .input-text {
   background-color: transparent;
@@ -404,6 +407,13 @@ h2.widget-hd {
 .input-submit.big {
   line-height: 1.7rem;
   width: 100%;
+}
+.success {
+  background-color: #4a148c;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 24px;
 }
 
 /*

@@ -8,8 +8,8 @@ router.get('/', (req, res, next) => {
     res.redirect('/');
   } else {
     res.render('login', {
-      authErrName: req.flash('authErrName'),
-      authErrPassword: req.flash('authErrPassword')
+      authErrName: req.flash('authErrName')[0],
+      authErrPassword: req.flash('authErrPassword')[0]
     });
   }
 });

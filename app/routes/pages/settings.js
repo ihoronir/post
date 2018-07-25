@@ -8,7 +8,10 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/account', (req, res, next) => {
-  res.render('settings/account');
+  res.render('settings/account', {
+    successSaveChanges     : req.flash('successSaveChanges')[0],
+    validationErrScreenName: req.flash('validationErrScreenName')[0]
+  });
 })
 
 router.get('/password', (req, res, next) => {

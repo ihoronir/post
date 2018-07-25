@@ -7,6 +7,8 @@ site:
 
 # message
 message:
+  success:
+    saveChanges: 変更を保存しました。
   error:
     notFoundUser: ユーザー名が間違っています。
     notMatchedPassword: パスワードが間違っています。
