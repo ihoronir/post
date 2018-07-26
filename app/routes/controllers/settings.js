@@ -50,8 +50,55 @@ router.post('/account', (req, res, next) => {
   
 });
 
-router.post('/settings', (req, res, next) => {
+router.post('/profile', (req, res, next) => {
 
+  let errFlag = false;
+
+  // 名前
+  if (!req.body.name) {
+    req.flash('validationErrName', req.string.message.validationError.emptyName);
+    errFlag = true;
+  } else if (req.body.name.length > config.pattern.user.name.maxlength) {
+    req.flash('validationErrName', req.string.message.validationError.isName);
+    errFlag = true;
+  }
+
+  // 説明
+  if (req.body.name.length > config.pattern.user.description.maxlength) {
+    req.flash('validationErrDescription', req.string.message.validationError.isDescription);
+    errFlag = true;
+  }
+
+  // サイト / ブログ
+  if (req.body.name.length > config.pattern.user.description.maxlength) {
+    req.flash('validationErrDescription', req.string.message.validationError.isDescription);
+    errFlag = true;
+  }
+
+  // 場所
+
+  if (errFlag) {
+    res.redirect('/settings/profile');
+  } else {
+    User.update({
+      name: req.body.name,
+      description: req.body.description,
+      url: req.body.url,
+      location: req.body.location
+    }, {
+      where: {
+        id: req.user.id
+      }
+    }).then(() => {
+      req.flash('successSaveChanges', req.string.message.success.saveChanges);
+      res.redirect('/settings/account');
+      return null; // Measure for Bluebird warning
+    }).catch(err => {
+      next(err);
+      return null; // Measure for Bluebird warning
+    });
+
+  }
 });
 
 module.exports = router;

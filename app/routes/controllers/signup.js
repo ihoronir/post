@@ -25,18 +25,19 @@ router.post('/', (req, res, next) => {
   if (!req.body.name) {
     req.flash('validationErrName', req.string.message.validationError.emptyName);
     errFlag = true;
-  } else if (req.body.name.length > 50) {
+  } else if (req.body.name.length > config.pattern.user.name.maxlength) {
     req.flash('validationErrName', req.string.message.validationError.isName);
     errFlag = true;
   }
   // メアド
+  /*
   if (!req.body.email) {
     req.flash('validationErrEmail', req.string.message.validationError.emptyEmail);
     errFlag = true;
-  } else if (!config.pattern.user.email.regExp.test(req.body.email)) {
+  } else if (!config.pattern.user.email.regExp.test(req.body.email) || req.body.email > config.pattern.user.email.maxlength) {
     req.flash('validationErrEmail', req.string.message.validationError.isEmail);
     errFlag = true;
-  }
+  }*/
   // パスワード
   if (!req.body.password) {
     req.flash('validationErrPassword', req.string.message.validationError.emptyPassword);

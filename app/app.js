@@ -31,7 +31,24 @@ const config = require('config');
 
 const sequelize = require('./database/database').sequelize;
 
-sequelize.sync({force: false});
+sequelize.sync({force: true});
+
+//- TODO validate チェック & sequelize に validate をまかせる
+const User = require('./database/database').user;
+User.build({
+  screenName: 'sssss',
+  name: 'req.body.name',
+  email: 'shioleap@body.email',
+  emailHash: 'emailHash',
+  password: 'password',
+  passwordSalt: 'salt'
+}).save().then(() => {
+  console.log('success');
+
+}).catch((err) => {
+  console.log(err);
+
+});
 
 
 
