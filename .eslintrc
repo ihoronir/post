@@ -11,6 +11,12 @@
     "no-unused-vars": ["error", {
       "argsIgnorePattern": "req|res|next"
     }],
-    "no-var": 2
+    "no-var": 2,
+    "semi": ["error", "always"],
+    "semi-spacing": ["error", {"after": true, "before": false}],
+    "semi-style": ["error", "last"],
+    "no-extra-semi": "error",
+    "no-unexpected-multiline": "error",
+    "no-unreachable": "error"
   }
 }

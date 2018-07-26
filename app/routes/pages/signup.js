@@ -13,7 +13,7 @@ router.get('/', (req, res, next) => {
       validationErrEmail          : req.flash('validationErrEmail')[0],
       validationErrPassword       : req.flash('validationErrPassword')[0],
       validationErrPasswordConfirm: req.flash('validationErrPasswordConfirm'[0])
-    })
+    });
   }
 });
 

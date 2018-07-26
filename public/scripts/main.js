@@ -1,3 +1,1 @@
-function formSubmit(form) {
-  form.disabled = true;
-}
+'use strict';

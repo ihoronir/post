@@ -52,6 +52,6 @@ router.post('/account', (req, res, next) => {
 
 router.post('/settings', (req, res, next) => {
 
-})
+});
 
 module.exports = router;

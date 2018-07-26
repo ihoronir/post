@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const express = require('express');
 const config = require('config');
@@ -16,7 +16,7 @@ res.render = function(view, opts, fn) {
     query          : this.req.query,
     string         : this.req.string,
     config         : config
-  }
+  };
 
   Object.assign(variables, opts);
 
@@ -25,4 +25,4 @@ res.render = function(view, opts, fn) {
 
 module.exports = app => {
   app.set('view engine', 'pug');
-}
+};

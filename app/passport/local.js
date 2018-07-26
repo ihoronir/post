@@ -25,7 +25,7 @@ module.exports = new LocalStrategy({
       }
 
       if (!(encrypt(password, user.passwordSalt) === user.password)) {
-        req.flash('authErrPassword', 'パスワードが間違っています。')
+        req.flash('authErrPassword', 'パスワードが間違っています。');
         done(null, false);
         return null; // Measure for Bluebird warning
       }

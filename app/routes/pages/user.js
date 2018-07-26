@@ -24,7 +24,7 @@ router.get('/:screen_name', (req, res, next) => {
   }).catch(err => {
     next(err);
     return null; // Measure for Bluebird warning
-  })
+  });
 });
 
 module.exports = router;

@@ -35,4 +35,4 @@ module.exports = app => {
       maxAge: 30 * 60 * 1000
     }
   }));
-}
+};
