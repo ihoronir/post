@@ -1,10 +1,6 @@
 'use strict';
 
 const Sequelize = require('sequelize');
-const config = require('config');
-const isURL = require('validator/lib/isURL');
-const encrypt = require('../../utils/hash').encrypt;
-const saltgen = require('../../utils/hash').salt;
 
 module.exports = sequelize => {
 
@@ -28,11 +24,7 @@ module.exports = sequelize => {
     name: {
       type: Sequelize.STRING(50),
       field: 'name',
-      allowNull: false,
-      validate: {
-        len: [1,50],
-        notEmpty: true
-      }
+      allowNull: false
     },
 
     emailHash: {
@@ -80,9 +72,6 @@ module.exports = sequelize => {
       field: 'location',
       defaultValue: '',
       allowNull: false,
-      validate: {
-        len: [0, 30]
-      }
     },
 
     createdAt: {
