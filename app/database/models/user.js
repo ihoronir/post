@@ -23,11 +23,6 @@ module.exports = sequelize => {
       field: 'screen_name',
       unique: true,
       allowNull: false,
-      validate: {
-        is: config.pattern.user.screenName.regExp,
-        len: [1,15],
-        notEmpty: true
-      }
     },
 
     name: {
@@ -36,22 +31,6 @@ module.exports = sequelize => {
       allowNull: false,
       validate: {
         len: [1,50],
-        notEmpty: true
-      }
-    },
-
-    email: {
-      type: Sequelize.STRING(254),
-      field: 'email',
-      allowNull: false,
-      set: function(val) {
-        const emailHash = encrypt(val);
-        this.setDataValue('emailHash', emailHash);
-        this.setDataValue('email', val);
-      },
-      validate: {
-        isEmail: true,
-        len: [1, 254],
         notEmpty: true
       }
     },
@@ -68,20 +47,6 @@ module.exports = sequelize => {
       field: 'public_email',
       defaultValue: false,
       allowNull: false
-    },
-    
-    password: {
-      type: Sequelize.VIRTUAL(),
-      set: function(val) {
-        const salt = saltgen();
-        const password = encrypt(val, salt);
-        this.setDataValue('passwordHash', password);
-        this.setDataValue('passwordSalt', salt);
-      },
-      validate: {
-        is: config.pattern.user.screenName.regExp,
-        notEmpty: true,
-      }
     },
 
     passwordHash: {
@@ -100,31 +65,14 @@ module.exports = sequelize => {
       type: Sequelize.STRING(160),
       field: 'description',
       defaultValue: '',
-      allowNull: false,
-      validate: {
-        len: [0, 160],
-      }
+      allowNull: false
     },
 
     url: {
       type: Sequelize.STRING(2100),
       field: 'url',
       defaultValue: '',
-      allowNull: false,
-      validate: {
-        isEven: val => {
-          if (val !== '' && !isURL(val)) {
-            const validationErrorItem = new Sequelize.ValidationErrorItem(
-              'Validation isUrl on url failed', // message
-              'Validation error', // type
-              'url', // path
-              val // value
-            );
-            throw new Sequelize.ValidationError('Validation isUrl on url failed', validationErrorItem);
-          }
-        },
-        len: [0, 2100]
-      }
+      allowNull: false
     },
 
     location: {
