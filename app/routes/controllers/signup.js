@@ -30,13 +30,14 @@ router.post('/', (req, res, next) => {
     errFlag = true;
   }
   // メアド
+  /*
   if (!req.body.email) {
     req.flash('validationErrEmail', req.string.message.validationError.emptyEmail);
     errFlag = true;
   } else if (!config.pattern.user.email.regExp.test(req.body.email) || req.body.email > config.pattern.user.email.maxlength) {
     req.flash('validationErrEmail', req.string.message.validationError.isEmail);
     errFlag = true;
-  }
+  }*/
   // パスワード
   if (!req.body.password) {
     req.flash('validationErrPassword', req.string.message.validationError.emptyPassword);
