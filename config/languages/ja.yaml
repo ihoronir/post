@@ -24,6 +24,9 @@ message:
     emptyPassword: パスワードを入力してください。
     isPassword: 小文字、大文字、数字をそれぞれ含み8字以上のパスワードを入力してください。
     matchedPassword: 同じパスワードを入力してください。
+    isDescription: 160字以下の自己紹介を入力してください。
+    isUrl: URLの形式かつ255字以下で入力してください。
+    isLocation: 30字以下で入力してください。
 
 
 word:
