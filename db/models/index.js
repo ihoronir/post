@@ -15,6 +15,6 @@ const sequelize = new Sequelize(
 
 module.exports = {
   sequelize: sequelize,
-  user: require('./models/user')(sequelize),
-  games: require('./models/game')(sequelize)
+  user: require('./user')(sequelize),
+  games: require('./game')(sequelize)
 };

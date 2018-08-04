@@ -5,7 +5,7 @@ const router = express.Router();
 
 const util = require('util');
 const config = require('config');
-const User = require('../../database/database').user;
+const User = require('../../../db/models').user;
 
 router.post('/', (req, res) => {
   res.redirect('/');

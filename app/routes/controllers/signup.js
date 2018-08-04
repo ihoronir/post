@@ -5,9 +5,9 @@ const router  = express.Router();
 
 const util       = require('util');
 const config     = require('config');
-const User       = require('../../database/database').user;
-const encrypt    = require('../../utils/hash').encrypt;
-const saltgen    = require('../../utils/hash').salt;
+const User       = require('../../../db/models').user;
+const encrypt    = require('../../../util/hash').encrypt;
+const saltgen    = require('../../../util/hash').salt;
 
 router.post('/', (req, res, next) => {
 

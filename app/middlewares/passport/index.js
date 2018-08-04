@@ -3,7 +3,7 @@
 const passport = require('passport');
 const local = require('./local');
 
-const User = require('../database/database').user;
+const User = require('../../../db/models').user;
 
 // シリアライズ（login 時にセッションに保存）
 passport.serializeUser((user, done) => {

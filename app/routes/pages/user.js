@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 
-const User = require('../../database/database').user;
+const User = require('../../../db/models').user;
 
 const createError = require('http-errors');
 

@@ -29,12 +29,12 @@ const config = require('config');
 
 // ------------------------------ データベース接続 ------------------------------
 
-const sequelize = require('./database/database').sequelize;
+const sequelize = require('../db/models').sequelize;
 
 sequelize.sync({force: true});
 
 //- TODO validate チェック & sequelize に validate をまかせる
-const User = require('./database/database').user;
+const User = require('../db/models').user;
 User.build({
   screenName: 'sssss',
   name: 'req.body.name',
@@ -66,7 +66,7 @@ app.set('strict routing', true);
 app.set('x-powered-by', false);
 
 // render 設定 & 拡張
-require('./render/render')(app);
+require('./expand/render')(app);
 
 
 // ------------------------------ ミドルウェア ------------------------------
@@ -92,10 +92,10 @@ app.use(flash());
 app.use(require('./middlewares/language'));
 
 // passport 関連
-require('./passport/passport')(app);
+require('./middlewares/passport')(app);
 
 // ルーティング
-require('./routes/route')(app);
+require('./routes')(app);
 
 // エラーハンドラ
 require('./middlewares/notFoundHandler')(app); // 404
