@@ -12,6 +12,6 @@ password:
 description:
   maxlength: 160
 url:
-  maxlength: 254
+  maxlength: 2100
 location:
   maxlength: 30

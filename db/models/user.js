@@ -27,6 +27,12 @@ module.exports = sequelize => {
       allowNull: false
     },
 
+    email: {
+      type: Sequelize.STRING(254),
+      field: 'email',
+      allowNull: false
+    },
+
     emailHash: {
       type: Sequelize.CHAR(64),
       field: 'email_hash',

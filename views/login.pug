@@ -12,13 +12,13 @@ block content
         div.input-text-with-addon.big
           span @
           input(type='text', name='screen_name', placeholder='Your screen name')
-        if authErrName
-          span.flash= authErrName
+        if notFoundUser
+          span.flash= notFoundUser
       div.input-group
         label= string.input.user.passwordLabel
         input(type='password', name='password', placeholder='Your password' required).input-text.big
-        if authErrPassword
-          span.flash= authErrPassword
+        if notMatchedPassword
+          span.flash= notMatchedPassword
       div.input-group
         input(type='submit', value=string.view.login.submitLabel).input-submit.big
         input(type='hidden', name='_csrf' value=csrftoken)

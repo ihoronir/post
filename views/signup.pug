@@ -12,27 +12,32 @@ block content
         div.input-text-with-addon.big
           span @
           input(type='text', name='screen_name', maxlength=config.pattern.user.screenName.maxlength, pattern=config.pattern.user.screenName.string, title=string.input.user.screenNameTitle, placeholder=string.input.user.screenNameTitle, required)
+          //- input(type='text', name='screen_name', title=string.input.user.screenNameTitle, placeholder=string.input.user.screenNameTitle)
         if validationErrScreenName
           span.flash= validationErrScreenName
       div.input-group
         label= string.input.user.nameLabel
         input(type='text', name='name', maxlength=config.pattern.user.name.maxlength, title=string.input.user.nameTitle, placeholder=string.input.user.nameTitle, required).input-text.big
+        //- input(type='text', name='name', title=string.input.user.nameTitle, placeholder=string.input.user.nameTitle).input-text.big
         if validationErrName
           span.flash= validationErrName
       div.input-group
         label= string.input.user.emailLabel
         input(type='email', name='email', maxlength=config.pattern.user.email.maxlength, title=string.input.user.emailTitle, placeholder=string.input.user.emailTitle, required).input-text.big
+        //- input(type='text', name='email', title=string.input.user.emailTitle, placeholder=string.input.user.emailTitle).input-text.big
         if validationErrEmail
           span.flash= validationErrEmail
       div.input-group
         label= string.input.user.passwordLabel
         input(type='password', name='password', pattern=config.pattern.user.password.string, title=string.input.user.passwordTitle, placeholder=string.input.user.passwordTitle, required).input-text.big
+        //- input(type='password', name='password', title=string.input.user.passwordTitle, placeholder=string.input.user.passwordTitle).input-text.big
         if validationErrPassword
           span.flash= validationErrPassword
       //- TODO: validation 強化
       div.input-group
         label= string.input.user.passwordConfirmLabel
-        input(type='password', name='password_confirm', title=string.input.user.passwordConfirmTitle, placeholder=string.input.user.passwordConfirmTitle, required).input-text.big
+        sinput(type='password', name='password_confirm', title=string.input.user.passwordConfirmTitle, placeholder=string.input.user.passwordConfirmTitle, required).input-text.big
+        //- input(type='password', name='password_confirm', title=string.input.user.passwordConfirmTitle, placeholder=string.input.user.passwordConfirmTitle).input-text.big
         if validationErrPasswordConfirm
           span.flash= validationErrPasswordConfirm
       div.input-group

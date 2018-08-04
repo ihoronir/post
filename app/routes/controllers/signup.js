@@ -3,11 +3,11 @@
 const express = require('express');
 const router  = express.Router();
 
-const util       = require('util');
-const config     = require('config');
-const User       = require('../../../db/models').user;
-const encrypt    = require('../../../util/hash').encrypt;
-const saltgen    = require('../../../util/hash').salt;
+const util      = require('util');
+const User      = require('../../../db/models').user;
+const encrypt   = require('../../../util/hash').encrypt;
+const saltgen   = require('../../../util/hash').salt;
+const uservalid = require('../../../util/validation').user;
 
 router.post('/', (req, res, next) => {
 
@@ -17,7 +17,7 @@ router.post('/', (req, res, next) => {
   if (!req.body.screen_name) {
     req.flash('validationErrScreenName', req.string.message.validationError.emptyScreenName);
     errFlag = true;
-  } else if (!config.pattern.user.screenName.regExp.test(req.body.screen_name)) {
+  } else if (!uservalid.isScreenName(req.body.screen_name)) {
     req.flash('validationErrScreenName', req.string.message.validationError.isScreenName);
     errFlag = true;
   }
@@ -25,7 +25,7 @@ router.post('/', (req, res, next) => {
   if (!req.body.name) {
     req.flash('validationErrName', req.string.message.validationError.emptyName);
     errFlag = true;
-  } else if (req.body.name.length > config.pattern.user.name.maxlength) {
+  } else if (!uservalid.isName(req.body.name)) {
     req.flash('validationErrName', req.string.message.validationError.isName);
     errFlag = true;
   }
@@ -33,7 +33,7 @@ router.post('/', (req, res, next) => {
   if (!req.body.email) {
     req.flash('validationErrEmail', req.string.message.validationError.emptyEmail);
     errFlag = true;
-  } else if (!config.pattern.user.email.regExp.test(req.body.email) || req.body.email > config.pattern.user.email.maxlength) {
+  } else if (!uservalid.isEmail(req.body.email)) {
     req.flash('validationErrEmail', req.string.message.validationError.isEmail);
     errFlag = true;
   }
@@ -41,7 +41,7 @@ router.post('/', (req, res, next) => {
   if (!req.body.password) {
     req.flash('validationErrPassword', req.string.message.validationError.emptyPassword);
     errFlag = true;
-  } else if (!config.pattern.user.password.regExp.test(req.body.password)) {
+  } else if (!uservalid.isPassword(req.body.password)) {
     req.flash('validationErrPassword', req.string.message.validationError.isPassword);
     errFlag = true;
   } else if (req.body.password !== req.body.password_confirm) {
@@ -53,8 +53,8 @@ router.post('/', (req, res, next) => {
     res.redirect('/signup');
   } else {
 
-    const salt = saltgen();
-    const password = encrypt(req.body.password, salt);
+    const passwordSalt = saltgen();
+    const passwordHash = encrypt(req.body.password, passwordSalt);
     const emailHash = encrypt(req.body.email);
 
     User.build({
@@ -62,8 +62,8 @@ router.post('/', (req, res, next) => {
       name: req.body.name,
       email: req.body.email,
       emailHash: emailHash,
-      password: password,
-      passwordSalt: salt,
+      passwordHash: passwordHash,
+      passwordSalt: passwordSalt
     }).save().then(() => {
 
       res.redirect('/login');

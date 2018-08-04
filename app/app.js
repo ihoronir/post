@@ -31,24 +31,7 @@ const config = require('config');
 
 const sequelize = require('../db/models').sequelize;
 
-sequelize.sync({force: true});
-
-//- TODO validate チェック & sequelize に validate をまかせる
-const User = require('../db/models').user;
-User.build({
-  screenName: 'sssss',
-  name: 'req.body.name',
-  email: 'shioleap@body.email',
-  emailHash: 'emailHash',
-  password: 'password',
-  passwordSalt: 'salt'
-}).save().then(() => {
-  console.log('success');
-
-}).catch((err) => {
-  console.log(err);
-
-});
+sequelize.sync({force: false});
 
 
 
@@ -67,6 +50,7 @@ app.set('x-powered-by', false);
 
 // render 設定 & 拡張
 require('./expand/render')(app);
+
 
 
 // ------------------------------ ミドルウェア ------------------------------
