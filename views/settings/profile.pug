@@ -2,19 +2,27 @@ extends layout
 
 block settings-content
   h1.widget-hd: span= string.view.settings.profile.title
-  form(action='/settings', method='post').form
+  form(action='/settings/profile', method='post').form
+    if successSaveChanges
+      p.success= successSaveChanges
     div.input-group
       label= string.input.user.nameLabel
       input(type='text', name='name', maxlength=config.pattern.user.name.maxlength, title=string.input.user.nameTitle, value=user.name, placeholder=string.input.user.nameTitle, required).input-text
+      if validationErrName
+        span.flash= validationErrName
     div.input-group
       label= string.input.user.urlLabel
       input(type='url', name='url', maxlength=config.pattern.user.url.maxlength, title=string.input.user.urlTitle, value=user.url, placeholder=string.input.user.urlTitle).input-text
+      if validationErrUrl
+        span.flash= validationErrUrl
     div.input-group
       label= string.input.user.locationLabel
       input(type='text', name='location', maxlength=config.pattern.user.location.maxlength, title=string.input.user.locationTitle, value=user.location, placeholder=string.input.user.locationTitle).input-text
+      if validationErrLocation
+        span.flash= validationErrLocation
     div.input-group
-      label= string.input.user.descriptionLabel
-      textarea(name="description", maxlength=config.pattern.user.description.maxlength, title=string.input.user.descriptionTitle, value=user.description, placeholder=string.input.user.descriptionTitle).input-textarea
+      label= string.input.user.descriptionLabel 
+      textarea(name='description', maxlength=config.pattern.user.description.maxlength, title=string.input.user.descriptionTitle, placeholder=string.input.user.descriptionTitle).input-textarea= user.description
     div.input-group
       input(type='submit', value=string.word.saveChanges).input-submit
       input(type='hidden', name='_csrf' value=csrftoken)

@@ -22,7 +22,7 @@ module.exports = new LocalStrategy({
         return null; // Measure for Bluebird warning
       }
 
-      if (!(encrypt(password, user.passwordSalt) === user.passwordHash)) {
+      if (encrypt(password, user.passwordSalt) !== user.passwordHash) {
         req.flash('notMatchedPassword', req.string.message.error.notMatchedPassword);
         done(null, false);
         return null; // Measure for Bluebird warning

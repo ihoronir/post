@@ -309,6 +309,7 @@ h2.widget-hd {
   margin: 4px;
 }
 .input-group .flash {
+  display: block;
   color: #f00;
 }
 /* text */

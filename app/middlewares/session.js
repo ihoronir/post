@@ -1,25 +1,14 @@
 'use strict';
 
-const config = require('config');
-const session  = require('express-session');
+const config  = require('config');
+const session = require('express-session');
 
-// sessionStore 用 DB
-const Sequelize = require('sequelize');
-const sessionStoreDB = new Sequelize(
-  config.mariadb.sessionStore, // データベース
-  config.mariadb.user,         // ユーザー
-  config.mariadb.password,     // パスワード
-  { dialect: 'mysql',          // mysql
-    operatorsAliases: false,   // operatorAliase は今の所使わない
-    logging: false,
-  }
-);
-sessionStoreDB.sync({force: false}); // 同期
-
-// sessionStore
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const sessionStore = new SequelizeStore({
-  db: sessionStoreDB
+// Redis Session Store
+const RedisStore = require('connect-redis')(session);
+const sessionStore = new RedisStore({
+  host: '127.0.0.1',
+  port: 6379,
+  prefix: 'sid:'
 });
 
 module.exports = app => {

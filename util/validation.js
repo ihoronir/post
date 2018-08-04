@@ -20,11 +20,11 @@ module.exports = {
     isDescription: val => {
       return val.length <= config.pattern.user.description.maxlength;
     },
-    isuUrlOrEmpty: val => {
+    isUrlOrEmpty: val => {
       return validator.isURL(val) && val.length <= config.pattern.user.url.maxlength;
     },
     isLocatioin: val => {
-      return val.length <= config.pattern.user.locatioin.maxlength;
+      return val.length <= config.pattern.user.location.maxlength;
     }
   }
 };
