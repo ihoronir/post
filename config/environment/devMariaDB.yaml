@@ -1,5 +1,4 @@
 # This is MariaDB config file
 database: post
-sessionStore: post_session
 user: nodejs
 password: nodejsdevelop

@@ -6,9 +6,9 @@ const session = require('express-session');
 // Redis Session Store
 const RedisStore = require('connect-redis')(session);
 const sessionStore = new RedisStore({
-  host: '127.0.0.1',
-  port: 6379,
-  prefix: 'sid:'
+  host: config.redis.host,
+  port: config.redis.port,
+  prefix: config.redis.prefix
 });
 
 module.exports = app => {
