@@ -15,6 +15,7 @@ res.render = function(view, opts, fn) {
     user           : this.req.user,
     query          : this.req.query,
     string         : this.req.string,
+    originalUrl    : this.req.originalUrl,
     config         : config
   };
 

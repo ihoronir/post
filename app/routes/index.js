@@ -7,6 +7,7 @@ const signupRouter   = require('./pages/signup');   // /signup
 const settingsRouter = require('./pages/settings'); // /settings
 
 const loginController    = require('./controllers/login');        // login
+const logoutController   = require('./controllers/logout');
 const signupController   = require('./controllers/signup');       // signup
 const settingsController = require('./controllers/settings');     // settings
 const onlyLoggedIn       = require('./controllers/onlyLoggedIn'); // onlyLoggedIn 
@@ -22,6 +23,9 @@ module.exports = app => {
   // /login
   app.use('/login', loginRouter);
   app.use('/login', loginController);
+
+  // /logout
+  app.use('/logout', logoutController);
 
   // /signup
   app.use('/signup', signupRouter);

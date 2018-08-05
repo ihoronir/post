@@ -22,4 +22,4 @@ block content
       div.input-group
         input(type='submit', value=string.view.login.submitLabel).input-submit.big
         input(type='hidden', name='_csrf' value=csrftoken)
-        input(type='hidden', name='redirect_to' value=query.redirect_to)
+        input(type='hidden', name='redirect_to' value=decodeURIComponent(query.redirect_to))

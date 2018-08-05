@@ -6,12 +6,13 @@ const router = express.Router();
 
 router.use('/', (req, res, next) => {
   if (!req.isAuthenticated()) {
-    return res.redirect(url.format({
+    res.redirect(url.format({
       pathname: '/login', 
-      query: { redirect_to: decodeURIComponent(req.originalUrl) }
+      query: { redirect_to: encodeURIComponent(req.originalUrl) }
     }));
+  } else {
+    next();
   }
-  next();
 });
 
 module.exports = router;

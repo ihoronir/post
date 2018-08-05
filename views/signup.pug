@@ -36,7 +36,7 @@ block content
       //- TODO: validation 強化
       div.input-group
         label= string.input.user.passwordConfirmLabel
-        sinput(type='password', name='password_confirm', title=string.input.user.passwordConfirmTitle, placeholder=string.input.user.passwordConfirmTitle, required).input-text.big
+        input(type='password', name='password_confirm', title=string.input.user.passwordConfirmTitle, placeholder=string.input.user.passwordConfirmTitle, required).input-text.big
         //- input(type='password', name='password_confirm', title=string.input.user.passwordConfirmTitle, placeholder=string.input.user.passwordConfirmTitle).input-text.big
         if validationErrPasswordConfirm
           span.flash= validationErrPasswordConfirm
