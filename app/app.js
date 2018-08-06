@@ -48,7 +48,9 @@ require('./expand/render')(app);
 
 app.use(logger('dev')); // ログを表示
 
-app.use(express.static(path.join(__dirname, '../public'))); // 静的リソース
+// 本番ではリソースは nginx を使って配信する
+app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '../uploads')));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
