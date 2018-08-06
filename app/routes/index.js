@@ -6,33 +6,32 @@ const loginRouter    = require('./pages/login');    // /login
 const signupRouter   = require('./pages/signup');   // /signup 
 const settingsRouter = require('./pages/settings'); // /settings
 
-const loginController    = require('./controllers/login');        // login
-const logoutController   = require('./controllers/logout');
-const signupController   = require('./controllers/signup');       // signup
-const settingsController = require('./controllers/settings');     // settings
-const onlyLoggedIn       = require('./controllers/onlyLoggedIn'); // onlyLoggedIn 
+const loginController  = require('./controllers/login');  // /login
+const logoutController = require('./controllers/logout'); // /logout
+const signupController = require('./controllers/signup'); // /signup
+const accountSettingsController  = require('./controllers/settings/account');  // /settings/account
+const passwordSettingsController = require('./controllers/settings/password'); // /settings/password
+const profileSettingsController  = require('./controllers/settings/profile');  // /settings/profile
+const emailSettingsController    = require('./controllers/settings/email');    // /settings/email
+const onlyLoggedIn = require('./controllers/onlyLoggedIn'); // onlyLoggedIn 
 
 module.exports = app => {
 
-  // / (index)
+  // router
   app.use('/', indexRouter);
-
-  // /user
   app.use('/user', userRouter);
-
-  // /login
   app.use('/login', loginRouter);
-  app.use('/login', loginController);
-
-  // /logout
-  app.use('/logout', logoutController);
-
-  // /signup
   app.use('/signup', signupRouter);
-  app.use('/signup', signupController);
-
-  // /settings
   app.use('/settings', onlyLoggedIn, settingsRouter);
-  app.use('/settings', onlyLoggedIn, settingsController);
-  
+
+  // controller
+  // ここでは application/x-www-form-urlencoded の post を扱う。
+  app.use('/login', loginController);
+  app.use('/logout', logoutController);
+  app.use('/signup', signupController);
+  app.use('/settings/account', onlyLoggedIn, accountSettingsController);
+  app.use('/settings/password', onlyLoggedIn, passwordSettingsController);
+  app.use('/settings/profile', onlyLoggedIn, profileSettingsController);
+  app.use('/settings/email', onlyLoggedIn, emailSettingsController);
+
 };

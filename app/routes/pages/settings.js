@@ -29,7 +29,8 @@ router.get('/profile', (req, res, next) => {
     validationErrName       : req.flash('validationErrName')[0],
     validationErrDescription: req.flash('validationErrDescription')[0],
     validationErrUrl        : req.flash('validationErrUrl')[0],
-    validationErrLocation   : req.flash('validationErrLocation')[0]
+    validationErrLocation   : req.flash('validationErrLocation')[0],
+    validationErrAvaterImage: req.flash('validationErrAvaterImage')[0]
   });
 });
 

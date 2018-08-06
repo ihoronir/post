@@ -1,21 +1,12 @@
 'use strict';
 
-/*
- * app.js アプリケーションプログラム
- */
-
-
-// ------------------------------ モジュールの読み込み ------------------------------
-
-const path          = require('path');                    // パスユーティリティ
-
-const express       = require('express');                 // express 本体
-const cookieParser  = require('cookie-parser');           // express クッキー
-const bodyParser    = require('body-parser');             // express body parser
-const logger        = require('morgan');                  // express logger
-const csrf          = require('csurf');                   // express csrf 対策
-const flash         = require('connect-flash');           // express flash
-
+const path         = require('path');
+const express      = require('express');
+const cookieParser = require('cookie-parser');
+const bodyParser   = require('body-parser');
+const logger       = require('morgan');
+const flash        = require('connect-flash');
+const csrf         = require('csurf');
 
 
 // ------------------------------ 設定ファイル ------------------------------
@@ -59,15 +50,12 @@ app.use(logger('dev')); // ログを表示
 
 app.use(express.static(path.join(__dirname, '../public'))); // 静的リソース
 
-app.use(bodyParser.urlencoded({ extended: false })); // urlencoded
-app.use(bodyParser.json());                          // json
-app.use(cookieParser(config.secret.cookie));         // cookieParser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(cookieParser(config.secret.cookie));
 
 // session
 require('./middlewares/session')(app);
-
-// csrf 対策
-app.use(csrf());
 
 // flash
 app.use(flash());
@@ -77,6 +65,12 @@ app.use(require('./middlewares/language'));
 
 // passport 関連
 require('./middlewares/passport')(app);
+
+// multipart
+require('./routes/multipart')(app);
+
+// csrf
+app.use(csrf());
 
 // ルーティング
 require('./routes')(app);

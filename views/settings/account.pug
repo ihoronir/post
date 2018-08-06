@@ -9,8 +9,8 @@ block settings-content
       label= string.input.user.screenNameLabel
       div.input-text-with-addon
         span @
-        //- input(type='text', name='screen_name', maxlength=config.pattern.user.screenName.maxlength, pattern=config.pattern.user.screenName.string, title=string.input.user.screenNameTitle, value=user.screenName, placeholder=string.input.user.screenNameTitle, required)
-        input(type='text', name='screen_name', title=string.input.user.screenNameTitle, value=user.screenName, placeholder=string.input.user.screenNameTitle)
+        input(type='text', name='screen_name', maxlength=config.pattern.user.screenName.maxlength, pattern=config.pattern.user.screenName.string, title=string.input.user.screenNameTitle, value=user.screenName, placeholder=string.input.user.screenNameTitle, required)
+        //- input(type='text', name='screen_name', title=string.input.user.screenNameTitle, value=user.screenName, placeholder=string.input.user.screenNameTitle)
       if validationErrScreenName
         span.flash= validationErrScreenName
     div.input-group

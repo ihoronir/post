@@ -1,0 +1,2 @@
+# This is Directory config file
+uploads: # 空の状態ではプロジェクトディレクトリ直下の uploads ディレクトリ

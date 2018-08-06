@@ -11,7 +11,7 @@ res.render = function(view, opts, fn) {
 
   const variables = {
     isAuthenticated: this.req.isAuthenticated(),
-    csrftoken      : this.req.csrfToken(),
+    csrftoken      : this.req.csrfToken ? this.req.csrfToken() : '',
     user           : this.req.user,
     query          : this.req.query,
     string         : this.req.string,

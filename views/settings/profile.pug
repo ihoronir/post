@@ -26,3 +26,19 @@ block settings-content
     div.input-group
       input(type='submit', value=string.word.saveChanges).input-submit
       input(type='hidden', name='_csrf' value=csrftoken)
+  h1.widget-hd: span プロフィール画像
+  form(action='/settings/avater', method='post', enctype='multipart/form-data').form
+    if successSaveChanges
+      p.success= successSaveChanges
+    div.input-group
+      label プロフィール画像のアップロード
+      div.input-file-with-thumbnail
+        img(src='https://pbs.twimg.com/profile_images/850583916196974593/-ry_lD1X_400x400.jpg')
+        div
+          input(type='file', name='avater_image', accept='image/png, image/jpeg')
+          p 10MB まで
+      if validationErrAvaterImage
+        span.flash= validationErrAvaterImage
+    div.input-group
+      input(type='submit', value=string.word.saveChanges).input-submit
+      input(type='hidden', name='_csrf' value=csrftoken)

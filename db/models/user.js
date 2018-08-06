@@ -80,6 +80,13 @@ module.exports = sequelize => {
       allowNull: false,
     },
 
+    avaterImage: {
+      type: Sequelize.CHAR(32),
+      field: 'avater_image',
+      defaultValue: '',
+      allowNull: false
+    },
+
     createdAt: {
       type: Sequelize.DATE(),
       field: 'created_at'

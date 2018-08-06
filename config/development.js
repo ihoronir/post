@@ -10,8 +10,9 @@ pattern.addFromPath('user', './pattern/user');
 
 const config = new Config();
 config.addFromPath('mariadb', './environment/devMariaDB')
-      .addFromPath('redis'  , './environment/devRedis')
-      .addFromPath('secret' , './environment/devSecrets')
+      .addFromPath('redis', './environment/devRedis')
+      .addFromPath('secret', './environment/devSecrets')
+      .addFromPath('directory', './environment/devDirectory')
       .addFromObject('pattern'  , pattern)
       .addFromObject('languages', languages);
 

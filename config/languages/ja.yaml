@@ -27,6 +27,8 @@ message:
     isDescription: 160字以下の自己紹介を入力してください。
     isUrl: URLの形式かつ255字以下で入力してください。
     isLocation: 30字以下で入力してください。
+    emptyAvaterImage: 画像を選択してください。
+    isAvaterImage: 10MB 以下の png または jpg の画像を送信してください。
 
 
 word:

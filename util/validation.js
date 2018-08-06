@@ -21,7 +21,11 @@ module.exports = {
       return val.length <= config.pattern.user.description.maxlength;
     },
     isUrlOrEmpty: val => {
-      return validator.isURL(val) && val.length <= config.pattern.user.url.maxlength;
+      if (!val) {
+        return true;
+      } else {
+        return validator.isURL(val) && val.length <= config.pattern.user.url.maxlength;
+      }
     },
     isLocatioin: val => {
       return val.length <= config.pattern.user.location.maxlength;
