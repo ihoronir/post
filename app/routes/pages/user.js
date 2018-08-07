@@ -27,4 +27,17 @@ router.get('/:screen_name', (req, res, next) => {
   });
 });
 
+/*
+router.get('/:screen_name/items', (req, res, next) => {
+  res.json(req.params);
+  console.log('route2');
+});
+
+
+router.get('/:screen_name/items/:item', (req, res, next) => {
+  res.json(req.params);
+  console.log('route3');
+});*/
+
+
 module.exports = router;

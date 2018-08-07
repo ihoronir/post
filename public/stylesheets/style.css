@@ -147,7 +147,7 @@ h2.widget-hd {
 }
 
 /* auth */
-.auth-grid {
+#auth-grid {
   display: grid;
   grid-row-gap: 16px;
 }
@@ -158,7 +158,7 @@ h2.widget-hd {
   font-size: 32px;
 }
 @media screen and (min-width: 900px) {
-  .auth-grid {
+  #auth-grid {
     grid-template-columns: 0.25fr 0.25fr 0.25fr 0.25fr;
     grid-column-gap: 16px;
   }
@@ -173,8 +173,45 @@ h2.widget-hd {
   }
 }
 
+/* upload */
+#upload-grid {
+  display: grid;
+  grid-row-gap: 16px;
+}
+#upload-header {
+  text-align: center;
+}
+#upload-header h1 {
+  font-size: 32px;
+}
+#upload-main h1 {
+  font-size: 32px;
+  text-align: center;
+}
+#upload-main p {
+  text-align: center;
+}
+#upload-ways {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+#upload-ways a {
+  display: block;
+  width: 240px;
+  margin: 10px;
+  padding-bottom: 200px;
+  background-color: yellow;
+}
+
+#upload-form {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
 /* profile */
-.profile-grid {
+#profile-grid {
   display: grid;
   grid-row-gap: 16px;
 }
@@ -207,7 +244,7 @@ h2.widget-hd {
   }
 }
 @media screen and (min-width: 1080px) {
-  .profile-grid {
+  #profile-grid {
     grid-column-gap: 16px;
     grid-template-columns: 240px;
     grid-template-rows: max-content;
@@ -237,7 +274,7 @@ h2.widget-hd {
 }
 
 /* settings */
-.settings-grid {
+#settings-grid {
   display: grid;
   grid-row-gap: 16px;
 }
@@ -282,7 +319,7 @@ h2.widget-hd {
   border-left: #4a148c 8px solid;
 }
 @media screen and (min-width: 760px) {
-  .settings-grid {
+  #settings-grid {
     grid-column-gap: 16px;
     grid-template-columns: 240px;
     grid-template-rows: max-content;

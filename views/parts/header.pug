@@ -1,17 +1,17 @@
 header#header
-    div#header-container.container
-      h1#header-logo: a(href="/")= string.site.title
-      ul#header-nav
-        li: a(href='#')= string.word.home
-        li: a(href='#')= string.word.community
-      form(action='/search', method='get')#header-search
-        input(type="text" name="q")
-      if isAuthenticated 
-        form(action='/logout', method='post')#header-end
-          input(type='submit', value='ログアウト' + user.name)
-          input(type='hidden', name='_csrf' value=csrftoken)
-          input(type='hidden', name='redirect_to' value=decodeURIComponent(originalUrl))
-      else 
-        div#header-end
-          a(href='/signup').header-button= string.word.signup
-          a(href='/login').header-button= string.word.login
+  div#header-container.container
+    h1#header-logo: a(href="/")= string.site.title
+    ul#header-nav
+      li: a(href='#')= string.word.home
+      li: a(href='#')= string.word.community
+    form(action='/search', method='get')#header-search
+      input(type="text" name="q")
+    if isAuthenticated 
+      form(action='/logout', method='post')#header-end
+        input(type='submit', value='ログアウト' + user.name)
+        input(type='hidden', name='_csrf' value=csrftoken)
+        input(type='hidden', name='redirect_to' value=decodeURIComponent(originalUrl))
+    else 
+      div#header-end
+        a(href='/signup').header-button= string.word.signup
+        a(href='/login').header-button= string.word.login

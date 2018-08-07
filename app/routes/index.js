@@ -1,10 +1,11 @@
 'use strict';
 
 const indexRouter    = require('./pages/index');    // / (index)
-const userRouter     = require('./pages/user');     // /user
 const loginRouter    = require('./pages/login');    // /login
 const signupRouter   = require('./pages/signup');   // /signup 
 const settingsRouter = require('./pages/settings'); // /settings
+const uploadRouter   = require('./pages/upload');
+const userRouter     = require('./pages/user');     // /:screen_name
 
 const loginController  = require('./controllers/login');  // /login
 const logoutController = require('./controllers/logout'); // /logout
@@ -19,10 +20,13 @@ module.exports = app => {
 
   // router
   app.use('/', indexRouter);
-  app.use('/user', userRouter);
   app.use('/login', loginRouter);
   app.use('/signup', signupRouter);
   app.use('/settings', onlyLoggedIn, settingsRouter);
+  app.use('/upload', uploadRouter);
+
+  // :screen_name
+  app.use('/', userRouter);
 
   // controller
   // ここでは application/x-www-form-urlencoded の post を扱う。
