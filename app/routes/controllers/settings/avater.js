@@ -5,19 +5,34 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const crypto = require('crypto');
 const User = require('../../../../db/models').user;
 const avaterResizer = require('../../../../util/resizeImage').avater;
 const router  = express.Router();
 
 const destDirectory = config.directory.uploads ? path.join(config.directory.uploads, './avater/') : path.join(__dirname, '../../../../uploads/avater/');
 
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, destDirectory);
+  },
+  filename: function (req, file, cb) {
+    const ext = path.extname(file.originalname).toLowerCase();
+    crypto.pseudoRandomBytes(16, function (err, raw) {
+      cb(err, err ? undefined : raw.toString('hex') + ext);
+    });
+  }
+});
+
 const avaterUpload = multer({
-  dest: destDirectory,
+  storage: storage,
   limits: {
     fileSize: 1e+7 // 10MB までに制限
   },
-  fileFilter: function (req, file, cb) {
+  fileFilter: (req, file, cb) => {
+    //console.log(fs.readFileSync());
     // 画像（png, jpg）のみ受け付ける
+    // これだけではゆるい？（どっちにしろ画像じゃなかったら gm でエラーが出る）
     const filetypes = /jpeg|jpg|png/;
     const mimetype = filetypes.test(file.mimetype);
     const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
@@ -62,17 +77,13 @@ router.post('/', (req, res, next) => {
           res.redirect('/settings/profile');
           // 元画像削除
           if (beforeAvaterImage !== '') {
-            fs.unlink(path.join(destDirectory, beforeAvaterImage)/*, err => {
-              // ファイル削除に失敗した時はログを残す（要検討）
-            }*/);
+            fs.unlink(path.join(destDirectory, beforeAvaterImage), (/* err */) => {/* ログを残す */});
           }
           return null; // Measure for Bluebird warning
         }).catch(err => {
           next(err);
           // 新画像削除
-          fs.unlink(req.file.path/*, err => {
-            // ファイル削除に失敗した時はログを残す（要検討）
-          }*/);
+          fs.unlink(req.file.path,  (/* err */) => {/* ログを残す */});
           return null; // Measure for Bluebird warning
         });
         
@@ -80,9 +91,7 @@ router.post('/', (req, res, next) => {
         // リサイズ失敗時
         next(err);
         // 新画像削除
-        fs.unlink(req.file.path/*, err => {
-          // ファイル削除に失敗した時はログを残す（要検討）
-        }*/);
+        fs.unlink(req.file.path,  (/* err */) => {/* ログを残す */});
       });
     }
   });

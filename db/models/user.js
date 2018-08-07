@@ -81,7 +81,7 @@ module.exports = sequelize => {
     },
 
     avaterImage: {
-      type: Sequelize.CHAR(32),
+      type: Sequelize.CHAR(32 + 5), // 32文字のランダム文字列 + 拡張子（.jpeg の 5 文字）
       field: 'avater_image',
       defaultValue: '',
       allowNull: false

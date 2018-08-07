@@ -4,7 +4,7 @@ block content
   div.profile-grid
     div.widget#profile-left
       div#profile-meta
-        img(src="https://pbs.twimg.com/profile_images/850583916196974593/-ry_lD1X_400x400.jpg")#profile-image
+        img(src='/avater/' + profile.avaterImage)#profile-image
         div
           h3#profile-name= profile.name
           p#profile-screenname= '@' + profile.screenName

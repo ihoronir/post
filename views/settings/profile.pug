@@ -33,9 +33,9 @@ block settings-content
     div.input-group
       label プロフィール画像のアップロード
       div.input-file-with-thumbnail
-        img(src='https://pbs.twimg.com/profile_images/850583916196974593/-ry_lD1X_400x400.jpg')
+        img(src='/avater/' + user.avaterImage)
         div
-          input(type='file', name='avater_image', accept='image/png, image/jpeg')
+          input(type='file', name='avater_image', accept='image/png, image/jpeg' required)
           p 10MB まで
       if validationErrAvaterImage
         span.flash= validationErrAvaterImage
