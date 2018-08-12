@@ -5,7 +5,9 @@ const router = express.Router();
 
 router.get('/', (req, res, next) => {
 
-  res.render('upload');
+  res.render('upload', {
+    validationErrTitle: req.flash('validationErrTitle')[0]
+  });
   
 });
 

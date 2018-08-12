@@ -28,12 +28,14 @@ module.exports = sequelize => {
     description: {
       type: Sequelize.STRING(2047),
       field: 'description',
+      defaultValue: '',
       allowNull: false
     },
 
     publicLevel: {
       type: Sequelize.ENUM('private', 'semi-public', 'public'),
       field: 'public_level',
+      defaultValue: 'private',
       allowNull: false
     },
 

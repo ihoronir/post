@@ -14,10 +14,10 @@ block content
       p まずはゲームのタイトルを入力してください。
       form(action='/upload', method='post')#upload-form
         div.input-group
-          label ゲームのタイトル
-          input(type='text', name='title', placeholder='50文字以下のゲームのタイトルを入力してください。' required).input-text.big
-          if notMatchedPassword
-            span.flash= notMatchedPassword
+          label= string.input.game.titleLabel
+          input(type='text', name='title', placeholder= string.input.game.titleTitle, required).input-text.big
+          if validationErrTitle
+            span.flash= validationErrTitle
         div.input-group
           input(type='submit', value='次へ').input-submit.big
           input(type='hidden', name='_csrf' value=csrftoken)

@@ -1,7 +1,7 @@
 extends layout
 
 block settings-content
-  h1.widget-hd: span= string.view.settings.profile.title
+  h1.widget-hd: span= string.view.settings.profile.profile
   form(action='/settings/profile', method='post').form
     if successSaveChanges
       p.success= successSaveChanges
@@ -23,20 +23,22 @@ block settings-content
     div.input-group
       label= string.input.user.descriptionLabel 
       textarea(name='description', maxlength=config.pattern.user.description.maxlength, title=string.input.user.descriptionTitle, placeholder=string.input.user.descriptionTitle).input-textarea= user.description
+      if validationErrDescription
+        span.flash= validationErrDescription
     div.input-group
       input(type='submit', value=string.word.saveChanges).input-submit
       input(type='hidden', name='_csrf' value=csrftoken)
-  h1.widget-hd: span プロフィール画像
+  h1.widget-hd: span= string.view.settings.profile.avater
   form(action='/settings/avater', method='post', enctype='multipart/form-data').form
     if successSaveChanges
       p.success= successSaveChanges
     div.input-group
-      label プロフィール画像のアップロード
+      label= string.input.user.avaterImageLabel 
       div.input-file-with-thumbnail
         img(src='/avater/' + user.avaterImage)
         div
           input(type='file', name='avater_image', accept='image/png, image/jpeg' required)
-          p 10MB まで
+          p= string.input.user.avaterImageTitle 
       if validationErrAvaterImage
         span.flash= validationErrAvaterImage
     div.input-group

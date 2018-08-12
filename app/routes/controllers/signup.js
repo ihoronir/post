@@ -57,14 +57,14 @@ router.post('/', (req, res, next) => {
     const passwordHash = encrypt(req.body.password, passwordSalt);
     const emailHash = encrypt(req.body.email);
 
-    User.build({
+    User.create({
       screenName: req.body.screen_name,
       name: req.body.name,
       email: req.body.email,
       emailHash: emailHash,
       passwordHash: passwordHash,
       passwordSalt: passwordSalt
-    }).save().then(() => {
+    }).then(() => {
 
       res.redirect('/login');
       return null; // Measure for Bluebird warning

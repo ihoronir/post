@@ -20,9 +20,11 @@ const config = require('config');
 
 // ------------------------------ データベース接続 ------------------------------
 
-const sequelize = require('../db/models').sequelize;
+const User = require('../db/models').user;
+const Game = require('../db/models').game;
 
-sequelize.sync({force: false});
+User.sync({force: false});
+Game.sync({force: false});
 
 
 

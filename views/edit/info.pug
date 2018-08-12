@@ -1,0 +1,20 @@
+extends layout
+
+block settings-content
+  h1.widget-hd: span ゲームタイトル / 基本情報
+  form(action='/settings/account', method='post').form
+    if successSaveChanges
+      p.success= successSaveChanges
+    div.input-group
+      label ゲームのタイトル
+      input(type='text', name='name', maxlength=config.pattern.user.name.maxlength, title=string.input.user.nameTitle, value=user.name, placeholder=string.input.user.nameTitle, required).input-text
+      if validationErrName
+        span.flash= validationErrName
+    div.input-group
+      label ゲームの説明文
+      textarea(name='description', maxlength=config.pattern.user.description.maxlength, title=string.input.user.descriptionTitle, placeholder=string.input.user.descriptionTitle).input-textarea= user.description
+      if validationErrDescription
+        span.flash= validationErrDescription
+    div.input-group
+      input(type='submit', value=string.word.saveChanges).input-submit
+      input(type='hidden', name='_csrf' value=csrftoken)

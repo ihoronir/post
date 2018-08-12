@@ -13,6 +13,7 @@ message:
     notFoundUser: ユーザー名が間違っています。
     notMatchedPassword: パスワードが間違っています。
   validationError:
+    # user
     emptyScreenName: ユーザー名を入力してください。
     isScreenName: 半角英数または_のみで15字以下のユーザー名を入力してください。
     usedScreenName: ユーザー名（%s）はすでに使用されています。
@@ -29,6 +30,9 @@ message:
     isLocation: 30字以下で入力してください。
     emptyAvaterImage: 画像を選択してください。
     isAvaterImage: 10MB 以下の png または jpg の画像を送信してください。
+    # game
+    emptyTitle: ゲームのタイトルを入力してください
+    isTitle: 50字以下のゲームのタイトルを入力してください。
 
 
 word:
@@ -52,6 +56,7 @@ word:
   login: ログイン
   signup: ユーザー登録
   saveChanges: 変更を保存する
+  next: 次へ
 
 input:
   user:
@@ -78,6 +83,12 @@ input:
     urlTitle: 255字まで
     locationLabel: 場所
     locationTitle: 30字まで
+    avaterImageLabel: プロフィール画像のアップロード
+    avaterImageTitle: 10MB までの png または jpeg ファイル
+  game:
+    titleLabel: ゲームのタイトル
+    titleTitle: 50字まで
+
 
 # view
 view:
@@ -112,6 +123,8 @@ view:
     profile:
       title: プロフィール設定
       linkTitle: プロフィール
+      profile: プロフィール設定
+      avater: プロフィール画像設定
 
   user:
     title: ユーザー
