@@ -29,7 +29,7 @@ block settings-content
         img(src='/thumbnail/' + game.thumbnailImage)
         div
           input(type='file', name='thumbnail_image', accept='image/png, image/jpeg' required)
-          p= string.input.user.thumbnailImageTitle
+          p= string.input.game.thumbnailImageTitle
       if validationErrThumbnailImage
         span.flash= validationErrThumbnailImage
     div.input-group

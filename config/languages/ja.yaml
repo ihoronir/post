@@ -90,6 +90,7 @@ input:
     locationTitle: 30字まで
     avaterImageLabel: プロフィール画像のアップロード
     avaterImageTitle: 10MB までの png または jpeg ファイル
+    avaterImageParagraph: 自動で 400(px) x 400(px) に調整されます。
   game:
     titleLabel: ゲームのタイトル
     titleTitle: 50字まで
@@ -97,7 +98,7 @@ input:
     descriptionTitle: 2000字まで
     thumbnailImageLabel: サムネイル画像のアップロード
     thumbnailImageTitle: 10MB までの png または jpeg ファイル
-    thumbnailImageParagraph: 自動で 640(px) x 640(px) に調整されます。
+    thumbnailImageParagraph: 自動で 400(px) x 400(px) に調整されます。
 
 
 # view

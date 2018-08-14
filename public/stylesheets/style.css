@@ -278,6 +278,24 @@ h2.widget-hd {
   display: grid;
   grid-row-gap: 16px;
 }
+#settings-addon {
+  display: flex;
+  align-items: center;
+}
+#settings-addon-image {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+  border: #4a148c 3px solid;
+  border-radius: 10px;
+}
+#settings-addon-big {
+  font-size: 18px;
+  font-weight: bold;
+}
+#settings-addon-small {
+  word-wrap: break-word;
+}
 #settings-left {
   padding: 0;
 }
@@ -324,12 +342,24 @@ h2.widget-hd {
     grid-template-columns: 240px;
     grid-template-rows: max-content;
   }
+  #settings-addon {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    display: block;
+  }
+  #settings-addon-image {
+    width: 120px;
+    height: 120px;
+    display: block;
+    margin: 0 auto 20px;
+  }
   #settings-left {
     grid-column: 1 / 2;
+    grid-row: 2 / max-content;
   }
   #settings-right {
     grid-column: 2 / 3;
-    grid-row: 1 / end;
+    grid-row: 1 / 4;
   }
 }
 
