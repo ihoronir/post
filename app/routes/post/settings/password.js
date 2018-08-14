@@ -17,13 +17,13 @@ module.exports = [loginFilter, (req, res, next) => {
   }
   // パスワード
   if (!req.body.new_password) {
-    req.flash('validationErrPassword', req.string.message.validationError.emptyPassword);
+    req.flash('validationErrPassword', req.string.message.validationError.user.emptyPassword);
     errFlag = true;
   } else if (!uservalid.isPassword(req.body.new_password)) {
-    req.flash('validationErrPassword', req.string.message.validationError.isPassword);
+    req.flash('validationErrPassword', req.string.message.validationError.user.isPassword);
     errFlag = true;
   } else if (req.body.new_password !== req.body.new_password_confirm) {
-    req.flash('validationErrPasswordConfirm', req.string.message.validationError.matchedPassword);
+    req.flash('validationErrPasswordConfirm', req.string.message.validationError.user.matchedPassword);
     errFlag = true;
   }
 

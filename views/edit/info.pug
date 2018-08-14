@@ -2,24 +2,24 @@ extends layout
 
 block settings-content
   h1.widget-hd: span 基本情報
-  form(action='', method='post').form
+  form(action='./info', method='post').form
     if successSaveChanges
       p.success= successSaveChanges
     div.input-group
       label ゲームのタイトル
-      input(type='text', name='name', maxlength=config.pattern.user.name.maxlength, title=string.input.user.nameTitle, value=game.title, placeholder=string.input.user.nameTitle, required).input-text
-      if validationErrName
-        span.flash= validationErrName
+      input(type='text', name='title', maxlength=config.pattern.game.title.maxlength, title=string.input.user.nameTitle, value=game.title, placeholder=string.input.user.nameTitle, required).input-text
+      if validationErrTitle
+        span.flash= validationErrTitle
     div.input-group
       label ゲームの説明文
-      textarea(name='description', maxlength=config.pattern.user.description.maxlength, title=string.input.user.descriptionTitle, placeholder=string.input.user.descriptionTitle).input-textarea= game.description
+      textarea(name='description', maxlength=config.pattern.game.description.maxlength, title=string.input.user.descriptionTitle, placeholder=string.input.user.descriptionTitle).input-textarea= game.description
       if validationErrDescription
         span.flash= validationErrDescription
     div.input-group
       input(type='submit', value=string.word.saveChanges).input-submit
       input(type='hidden', name='_csrf' value=csrftoken)
   h1.widget-hd: span サムネイル
-  form(action='/settings/account', method='post').form
+  form(action='./thumbnail', method='post').form
     if successSaveChanges
       p.success= successSaveChanges
     div.input-group

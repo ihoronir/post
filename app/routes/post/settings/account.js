@@ -11,10 +11,10 @@ module.exports = [loginFilter, (req, res, next) => {
 
   // ユーザー名
   if (!req.body.screen_name) {
-    req.flash('validationErrScreenName', req.string.message.validationError.emptyScreenName);
+    req.flash('validationErrScreenName', req.string.message.validationError.user.emptyScreenName);
     errFlag = true;
   } else if (!uservalid.isScreenName(req.body.screen_name)) {
-    req.flash('validationErrScreenName', req.string.message.validationError.isScreenName);
+    req.flash('validationErrScreenName', req.string.message.validationError.user.isScreenName);
     errFlag = true;
   }
 
@@ -33,7 +33,7 @@ module.exports = [loginFilter, (req, res, next) => {
       return null; // Measure for Bluebird warning
     }).catch(err => {
       if (err.name === 'SequelizeUniqueConstraintError' && err.fields.screen_name) {
-        req.flash('validationErrScreenName', util.format(req.string.message.validationError.usedScreenName, req.body.screen_name));
+        req.flash('validationErrScreenName', util.format(req.string.message.validationError.user.usedScreenName, req.body.screen_name));
         res.redirect('/settings/account');
       } else {
         next(err);

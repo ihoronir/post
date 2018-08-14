@@ -7,6 +7,7 @@ const fs = require('fs');
 const crypto = require('crypto');
 const User = require('../../../../db/models').user;
 const avaterResizer = require('../../../../util/resizeImage').avater;
+const loginFilter = require('../../filters/login');
 
 
 const destDirectory = config.directory.uploads ? path.join(config.directory.uploads, './avater/') : path.join(__dirname, '../../../../uploads/avater/');
@@ -44,12 +45,12 @@ const avaterUpload = multer({
   }
 }).single('avater_image');
 
-module.exports = [(req, res, next) => {
+module.exports = [loginFilter, (req, res, next) => {
   avaterUpload(req, res, err => {
 
     if (err) {
       if (err.message === 'File too large' || err.message === 'File is not image') {
-        req.flash('validationErrAvaterImage', req.string.message.validationError.isAvaterImage);
+        req.flash('validationErrAvaterImage', req.string.message.validationError.user.isAvaterImage);
         res.redirect('/settings/profile');
       } else {
         next(err);
@@ -57,7 +58,7 @@ module.exports = [(req, res, next) => {
 
     } else if (!req.file) {
 
-      req.flash('validationErrAvaterImage', req.string.message.validationError.emptyAvaterImage);
+      req.flash('validationErrAvaterImage', req.string.message.validationError.user.emptyAvaterImage);
       res.redirect('/settings/profile');
 
     } else {

@@ -1,3 +1,4 @@
 title:
   maxlength: 50
-  description: 2000
+description:
+  maxlength: 2000

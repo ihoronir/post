@@ -14,25 +14,28 @@ message:
     notMatchedPassword: パスワードが間違っています。
   validationError:
     # user
-    emptyScreenName: ユーザー名を入力してください。
-    isScreenName: 半角英数または_のみで15字以下のユーザー名を入力してください。
-    usedScreenName: ユーザー名（%s）はすでに使用されています。
-    emptyName: 名前を入力してください。
-    isName: 50字以下の名前を入力してください。
-    emptyEmail: メールアドレスを入力してください。
-    isEmail: メールアドレスのフォーマットが正しくありません。
-    usedEmail: メールアドレス（%s）はすでに使用されています。
-    emptyPassword: パスワードを入力してください。
-    isPassword: 小文字、大文字、数字をそれぞれ含み8字以上のパスワードを入力してください。
-    matchedPassword: 同じパスワードを入力してください。
-    isDescription: 160字以下の自己紹介を入力してください。
-    isUrl: URLの形式かつ255字以下で入力してください。
-    isLocation: 30字以下で入力してください。
-    emptyAvaterImage: 画像を選択してください。
-    isAvaterImage: 10MB 以下の png または jpg の画像を送信してください。
-    # game
-    emptyTitle: ゲームのタイトルを入力してください
-    isTitle: 50字以下のゲームのタイトルを入力してください。
+    user:
+      emptyScreenName: ユーザー名を入力してください。
+      isScreenName: 半角英数または_のみで15字以下のユーザー名を入力してください。
+      usedScreenName: ユーザー名（%s）はすでに使用されています。
+      emptyName: 名前を入力してください。
+      isName: 50字以下の名前を入力してください。
+      emptyEmail: メールアドレスを入力してください。
+      isEmail: メールアドレスのフォーマットが正しくありません。
+      usedEmail: メールアドレス（%s）はすでに使用されています。
+      emptyPassword: パスワードを入力してください。
+      isPassword: 小文字、大文字、数字をそれぞれ含み8字以上のパスワードを入力してください。
+      matchedPassword: 同じパスワードを入力してください。
+      isDescription: 160字以下の自己紹介を入力してください。
+      isUrl: URLの形式かつ255字以下で入力してください。
+      isLocation: 30字以下で入力してください。
+      emptyAvaterImage: 画像を選択してください。
+      isAvaterImage: 10MB 以下の png または jpg の画像を送信してください。
+    game:
+      emptyTitle: ゲームのタイトルを入力してください
+      isTitle: 50字以下のゲームのタイトルを入力してください。
+      emptyDescription: ゲームの説明文を入力してください。
+      isDescription: 2000字以内のゲームの説明文を入力してください。
 
 
 word:

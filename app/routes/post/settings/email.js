@@ -12,10 +12,10 @@ module.exports = [loginFilter, (req, res, next) => {
 
   // メアド
   if (!req.body.email) {
-    req.flash('validationErrEmail', req.string.message.validationError.emptyEmail);
+    req.flash('validationErrEmail', req.string.message.validationError.user.emptyEmail);
     errFlag = true;
   } else if (!uservalid.isEmail(req.body.email)) {
-    req.flash('validationErrEmail', req.string.message.validationError.isEmail);
+    req.flash('validationErrEmail', req.string.message.validationError.user.isEmail);
     errFlag = true;
   }
 
@@ -40,7 +40,7 @@ module.exports = [loginFilter, (req, res, next) => {
     }).catch(err => {
 
       if (err.name === 'SequelizeUniqueConstraintError' && err.fields.email_hash) {
-        req.flash('validationErrEmail', util.format(req.string.message.validationError.usedEmail, req.body.email));
+        req.flash('validationErrEmail', util.format(req.string.message.validationError.user.usedEmail, req.body.email));
         res.redirect('/settings/notifications');
       } else {
         next(err);

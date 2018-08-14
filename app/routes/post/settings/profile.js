@@ -10,25 +10,25 @@ module.exports = [loginFilter, (req, res, next) => {
 
   // 名前
   if (!req.body.name) {
-    req.flash('validationErrName', req.string.message.validationError.emptyName);
+    req.flash('validationErrName', req.string.message.validationError.user.emptyName);
     errFlag = true;
   } else if (!uservalid.isName(req.body.name)) {
-    req.flash('validationErrName', req.string.message.validationError.isName);
+    req.flash('validationErrName', req.string.message.validationError.user.isName);
     errFlag = true;
   }
   // 説明
   if (!uservalid.isDescription(req.body.name)) {
-    req.flash('validationErrDescription', req.string.message.validationError.isDescription);
+    req.flash('validationErrDescription', req.string.message.validationError.user.isDescription);
     errFlag = true;
   }
   // サイト / ブログ
   if (!uservalid.isUrlOrEmpty(req.body.url)) {
-    req.flash('validationErrUrl', req.string.message.validationError.isUrl);
+    req.flash('validationErrUrl', req.string.message.validationError.user.isUrl);
     errFlag = true;
   }
   // 場所
   if (!uservalid.isLocatioin(req.body.location)) {
-    req.flash('validationErrLocation', req.string.message.validationError.isLocatioin);
+    req.flash('validationErrLocation', req.string.message.validationError.user.isLocatioin);
     errFlag = true;
   }
 
