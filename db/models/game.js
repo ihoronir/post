@@ -26,7 +26,7 @@ module.exports = sequelize => {
     },
 
     description: {
-      type: Sequelize.STRING(2047),
+      type: Sequelize.STRING(2000),
       field: 'description',
       defaultValue: '',
       allowNull: false

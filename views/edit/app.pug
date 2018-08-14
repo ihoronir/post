@@ -1,0 +1,48 @@
+extends layout
+
+block settings-content
+  h1.widget-hd: span ゲーム本体のアップロード
+  p このゲームの本体はすでにアップロードされています！
+  p ゲーム本体は ZIP ファイルからアップロードするか Git レポジトリからインポートすることができます。また、自分のサーバーで公開しているゲームを登録することもできます。
+  p ※ ゲーム本体のアップロードには時間がかかる場合があります。
+  h2.widget-hd: span ZIPファイルでゲーム本体をアップロード
+  form(action='/settings/account', method='post').form
+    if successSaveChanges
+      p.success= successSaveChanges
+    div.input-group
+      label ZIP ファイルのアップロード
+      div.input-file
+        input(type='file', name='avater_image', accept='image/png, image/jpeg' required)
+        p 10MBまでアップロード可能
+      if validationErrAvaterImage
+        span.flash= validationErrAvaterImage
+    div.input-group
+      input(type='submit', value='アップロード').input-submit
+      input(type='hidden', name='_csrf' value=csrftoken)
+
+  //- ここから下は未整備
+  h2.widget-hd: span Git レポジトリからインポート
+  form(action='/settings/account', method='post').form
+    if successSaveChanges
+      p.success= successSaveChanges
+    div.input-group
+      label レポジトリの URL または SSH キー
+      input(type='text', name='name', maxlength=config.pattern.user.name.maxlength, title=string.input.user.nameTitle, value=user.name, placeholder=string.input.user.nameTitle, required).input-text
+      if validationErrName
+        span.flash= validationErrName
+    div.input-group
+      input(type='submit', value='Git レポジトリからインポート').input-submit
+      input(type='hidden', name='_csrf' value=csrftoken)
+
+  h2.widget-hd: span 自分のサーバーのゲームを登録
+  form(action='/settings/account', method='post').form
+    if successSaveChanges
+      p.success= successSaveChanges
+    div.input-group
+      label ゲームの URL
+      input(type='text', name='name', maxlength=config.pattern.user.name.maxlength, title=string.input.user.nameTitle, value=user.name, placeholder=string.input.user.nameTitle, required).input-text
+      if validationErrName
+        span.flash= validationErrName
+    div.input-group
+      input(type='submit', value='自分のサーバーのゲームを登録').input-submit
+      input(type='hidden', name='_csrf' value=csrftoken)

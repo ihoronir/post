@@ -4,7 +4,7 @@ const express = require('express');
 const url = require('url');
 const router = express.Router();
 
-router.use('/', (req, res, next) => {
+router.use((req, res, next) => {
   if (!req.isAuthenticated()) {
     res.redirect(url.format({
       pathname: '/login', 

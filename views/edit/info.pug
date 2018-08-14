@@ -1,20 +1,37 @@
 extends layout
 
 block settings-content
-  h1.widget-hd: span ゲームタイトル / 基本情報
-  form(action='/settings/account', method='post').form
+  h1.widget-hd: span 基本情報
+  form(action='', method='post').form
     if successSaveChanges
       p.success= successSaveChanges
     div.input-group
       label ゲームのタイトル
-      input(type='text', name='name', maxlength=config.pattern.user.name.maxlength, title=string.input.user.nameTitle, value=user.name, placeholder=string.input.user.nameTitle, required).input-text
+      input(type='text', name='name', maxlength=config.pattern.user.name.maxlength, title=string.input.user.nameTitle, value=game.title, placeholder=string.input.user.nameTitle, required).input-text
       if validationErrName
         span.flash= validationErrName
     div.input-group
       label ゲームの説明文
-      textarea(name='description', maxlength=config.pattern.user.description.maxlength, title=string.input.user.descriptionTitle, placeholder=string.input.user.descriptionTitle).input-textarea= user.description
+      textarea(name='description', maxlength=config.pattern.user.description.maxlength, title=string.input.user.descriptionTitle, placeholder=string.input.user.descriptionTitle).input-textarea= game.description
       if validationErrDescription
         span.flash= validationErrDescription
+    div.input-group
+      input(type='submit', value=string.word.saveChanges).input-submit
+      input(type='hidden', name='_csrf' value=csrftoken)
+  h1.widget-hd: span サムネイル
+  form(action='/settings/account', method='post').form
+    if successSaveChanges
+      p.success= successSaveChanges
+    div.input-group
+      label サムネイル画像のアップロード
+      p 自動で 640(px) x 640(px) に調整されます。
+      div.input-file-with-thumbnail
+        img(src='/avater/' + user.avaterImage)
+        div
+          input(type='file', name='avater_image', accept='image/png, image/jpeg' required)
+          p= string.input.user.avaterImageTitle 
+      if validationErrAvaterImage
+        span.flash= validationErrAvaterImage
     div.input-group
       input(type='submit', value=string.word.saveChanges).input-submit
       input(type='hidden', name='_csrf' value=csrftoken)

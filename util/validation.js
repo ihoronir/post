@@ -36,7 +36,7 @@ module.exports = {
       return val.length <= config.pattern.game.title.maxlength;
     },
     isDescription(val) {
-
+      return val.length <= config.pattern.game.description.maxlength;
     }
   }
 };
