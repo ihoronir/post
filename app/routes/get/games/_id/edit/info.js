@@ -8,6 +8,7 @@ module.exports = [loginFilter, editFilter, (req, res, next) => {
     successSaveChanges      : req.flash('successSaveChanges')[0],
     validationErrTitle      : req.flash('validationErrTitle')[0],
     validationErrDescription: req.flash('validationErrDescription')[0],
+    validationErrThumbnailImage: req.flash('validationErrThumbnailImage')[0],
     game: req.game
   });
 }];

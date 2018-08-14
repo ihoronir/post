@@ -24,7 +24,7 @@ module.exports = [loginFilter, (req, res, next) => {
       userId: req.user.id,
       title: req.body.title
     }).then(result => {
-      res.redirect('/' + req.user.screen_name + '/items/' + result.id);
+      res.redirect('/games/' + result.id + '/edit');
     }).catch(err => {
       next(err);
     });

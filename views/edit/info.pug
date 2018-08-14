@@ -1,37 +1,37 @@
 extends layout
 
 block settings-content
-  h1.widget-hd: span 基本情報
+  h1.widget-hd: span= string.view.edit.info.info
   form(action='./info', method='post').form
     if successSaveChanges
       p.success= successSaveChanges
     div.input-group
-      label ゲームのタイトル
-      input(type='text', name='title', maxlength=config.pattern.game.title.maxlength, title=string.input.user.nameTitle, value=game.title, placeholder=string.input.user.nameTitle, required).input-text
+      label= string.input.game.titleLabel
+      input(type='text', name='title', maxlength=config.pattern.game.title.maxlength, title=string.input.game.titleTitle, value=game.title, placeholder=string.input.game.titleTitle, required).input-text
       if validationErrTitle
         span.flash= validationErrTitle
     div.input-group
-      label ゲームの説明文
-      textarea(name='description', maxlength=config.pattern.game.description.maxlength, title=string.input.user.descriptionTitle, placeholder=string.input.user.descriptionTitle).input-textarea= game.description
+      label= string.input.game.descriptionLabel
+      textarea(name='description', maxlength=config.pattern.game.description.maxlength, title=string.input.game.descriptionTitle, placeholder=string.input.game.descriptionTitle).input-textarea= game.description
       if validationErrDescription
         span.flash= validationErrDescription
     div.input-group
       input(type='submit', value=string.word.saveChanges).input-submit
       input(type='hidden', name='_csrf' value=csrftoken)
-  h1.widget-hd: span サムネイル
-  form(action='./thumbnail', method='post').form
+  h1.widget-hd: span= string.view.edit.info.thumbnail
+  form(action='./thumbnail', method='post' enctype='multipart/form-data').form
     if successSaveChanges
       p.success= successSaveChanges
     div.input-group
-      label サムネイル画像のアップロード
-      p 自動で 640(px) x 640(px) に調整されます。
+      label= string.input.game.thumbnailImageLabel
+      p= string.input.game.thumbnailImageParagraph
       div.input-file-with-thumbnail
-        img(src='/avater/' + user.avaterImage)
+        img(src='/thumbnail/' + game.thumbnailImage)
         div
-          input(type='file', name='avater_image', accept='image/png, image/jpeg' required)
-          p= string.input.user.avaterImageTitle 
-      if validationErrAvaterImage
-        span.flash= validationErrAvaterImage
+          input(type='file', name='thumbnail_image', accept='image/png, image/jpeg' required)
+          p= string.input.user.thumbnailImageTitle
+      if validationErrThumbnailImage
+        span.flash= validationErrThumbnailImage
     div.input-group
       input(type='submit', value=string.word.saveChanges).input-submit
       input(type='hidden', name='_csrf' value=csrftoken)

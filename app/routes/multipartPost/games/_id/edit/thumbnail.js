@@ -5,12 +5,13 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const crypto = require('crypto');
-const User = require('../../../../db/models').user;
-const avaterResizer = require('../../../../util/resizeImage').avater;
-const loginFilter = require('../../filters/login');
+const Game = require('../../../../../../db/models').game;
+const thumbnailResizer = require('../../../../../../util/resizeImage').thumbnail;
+const loginFilter = require('../../../../filters/login');
+const editFilter = require('../../../../filters/edit');
 
 
-const destDirectory = config.directory.uploads ? path.join(config.directory.uploads, './avater/') : path.join(__dirname, '../../../../uploads/avater/');
+const destDirectory = config.directory.uploads ? path.join(config.directory.uploads, './thumbnail/') : path.join(__dirname, '../../../../../../uploads/thumbnail/');
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -24,7 +25,7 @@ const storage = multer.diskStorage({
   }
 });
 
-const avaterUpload = multer({
+const thumbnailUpload = multer({
   storage: storage,
   limits: {
     fileSize: 1e+7 // 10MB までに制限
@@ -43,41 +44,41 @@ const avaterUpload = multer({
       cb(new Error('File is not image'));
     }
   }
-}).single('avater_image');
+}).single('thumbnail_image');
 
-module.exports = [loginFilter, (req, res, next) => {
-  avaterUpload(req, res, err => {
+module.exports = [loginFilter, editFilter, (req, res, next) => {
+  thumbnailUpload(req, res, err => {
 
     if (err) {
       if (err.message === 'File too large' || err.message === 'File is not image') {
-        req.flash('validationErrAvaterImage', req.string.message.validationError.user.isAvaterImage);
-        res.redirect('/settings/profile');
+        req.flash('validationErrThumbnailImage', req.string.message.validationError.game.isThumbnailImage);
+        res.redirect('./info');
       } else {
         next(err);
       }
 
     } else if (!req.file) {
 
-      req.flash('validationErrAvaterImage', req.string.message.validationError.user.emptyAvaterImage);
-      res.redirect('/settings/profile');
+      req.flash('validationErrThumbnailImage', req.string.message.validationError.game.emptyThumbnailImage);
+      res.redirect('./info');
 
     } else {
 
-      avaterResizer(req.file.path).then(() => {
+      thumbnailResizer(req.file.path).then(() => {
         // リサイズ成功時
-        const beforeAvaterImage = req.user.avaterImage;
-        User.update({
-          avaterImage: req.file.filename
+        const beforeThumbnailImage = req.game.thumbnailImage;
+        Game.update({
+          thumbnailImage: req.file.filename
         }, {
           where: {
-            id: req.user.id
+            id: req.params.id
           }
         }).then(() => {
           req.flash('successSaveChanges', req.string.message.success.saveChanges);
-          res.redirect('/settings/profile');
+          res.redirect('./info');
           // 元画像削除
-          if (beforeAvaterImage !== '') {
-            fs.unlink(path.join(destDirectory, beforeAvaterImage), (/* err */) => {/* ログを残す */});
+          if (beforeThumbnailImage !== '') {
+            fs.unlink(path.join(destDirectory, beforeThumbnailImage), (/* err */) => {/* ログを残す */});
           }
           return null; // Measure for Bluebird warning
         }).catch(err => {

@@ -36,6 +36,8 @@ message:
       isTitle: 50字以下のゲームのタイトルを入力してください。
       emptyDescription: ゲームの説明文を入力してください。
       isDescription: 2000字以内のゲームの説明文を入力してください。
+      emptyThumbnailImage: 画像を選択してください。
+      isThumbnailImage: 10MB 以下の png または jpg の画像を送信してください。
 
 
 word:
@@ -66,7 +68,7 @@ input:
     screenNameLabel: ユーザー名
     screenNameTitle: 半角英数または_のみで15字以下
     nameLabel: 名前
-    nameTitle: 50字以下
+    nameTitle: 50字まで
     emailLabel: メールアドレス
     emailTitle: メールアドレス
     publicEmailLabel: メールアドレスの公開
@@ -91,6 +93,11 @@ input:
   game:
     titleLabel: ゲームのタイトル
     titleTitle: 50字まで
+    descriptionLabel: ゲームの説明文
+    descriptionTitle: 2000字まで
+    thumbnailImageLabel: サムネイル画像のアップロード
+    thumbnailImageTitle: 10MB までの png または jpeg ファイル
+    thumbnailImageParagraph: 自動で 640(px) x 640(px) に調整されます。
 
 
 # view
@@ -128,6 +135,13 @@ view:
       linkTitle: プロフィール
       profile: プロフィール設定
       avater: プロフィール画像設定
+
+  edit:
+    info:
+      title: 基本情報（%s）
+      linkTitle: 基本情報
+      info: 基本情報
+      thumbnail: サムネイル画像
 
   user:
     title: ユーザー
