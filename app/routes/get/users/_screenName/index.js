@@ -8,17 +8,19 @@ module.exports = (req, res, next) => {
     where: {
       screenName: req.params.screenName
     }
-  }).then(user => {
-    if (!user) {
-      return next(createError(404));
-    }
+  })
+    .then(user => {
+      if (!user) {
+        return next(createError(404));
+      }
 
-    res.render('user', {
-      profile: user
+      res.render('user', {
+        profile: user
+      });
+      return null; // Measure for Bluebird warning
+    })
+    .catch(err => {
+      next(err);
+      return null; // Measure for Bluebird warning
     });
-    return null; // Measure for Bluebird warning
-  }).catch(err => {
-    next(err);
-    return null; // Measure for Bluebird warning
-  });
 };

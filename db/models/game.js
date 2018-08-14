@@ -3,58 +3,60 @@
 const Sequelize = require('sequelize');
 
 module.exports = sequelize => {
+  const Game = sequelize.define(
+    'games',
+    {
+      id: {
+        type: Sequelize.CHAR(32),
+        field: 'id',
+        primaryKey: true,
+        allowNull: false
+      },
 
-  const Game = sequelize.define('games', {
+      userId: {
+        type: Sequelize.INTEGER.UNSIGNED,
+        field: 'user_id',
+        allowNull: false
+      },
 
-    id: {
-      type: Sequelize.CHAR(32),
-      field: 'id',
-      primaryKey: true,
-      allowNull: false
+      title: {
+        type: Sequelize.STRING(50),
+        field: 'title',
+        allowNull: false
+      },
+
+      description: {
+        type: Sequelize.STRING(2000),
+        field: 'description',
+        defaultValue: '',
+        allowNull: false
+      },
+
+      publicLevel: {
+        type: Sequelize.ENUM('private', 'semi-public', 'public'),
+        field: 'public_level',
+        defaultValue: 'private',
+        allowNull: false
+      },
+
+      thumbnailImage: {
+        type: Sequelize.CHAR(32 + 5), // 32文字のランダム文字列 + 拡張子（.jpeg の 5 文字）
+        field: 'thumbnail_image',
+        defaultValue: '',
+        allowNull: false
+      }
     },
+    {
+      // createdAt, updatedAt
+      timestamps: true,
 
-    userId: {
-      type: Sequelize.INTEGER.UNSIGNED,
-      field: 'user_id',
-      allowNull: false
-    },
+      // テーブルネーム
+      tableName: 'games',
 
-    title: {
-      type: Sequelize.STRING(50),
-      field: 'title',
-      allowNull: false
-    },
-
-    description: {
-      type: Sequelize.STRING(2000),
-      field: 'description',
-      defaultValue: '',
-      allowNull: false
-    },
-
-    publicLevel: {
-      type: Sequelize.ENUM('private', 'semi-public', 'public'),
-      field: 'public_level',
-      defaultValue: 'private',
-      allowNull: false
-    },
-
-    thumbnailImage: {
-      type: Sequelize.CHAR(32 + 5), // 32文字のランダム文字列 + 拡張子（.jpeg の 5 文字）
-      field: 'thumbnail_image',
-      defaultValue: '',
-      allowNull: false
+      // underscore
+      underscored: true
     }
-  }, {
-    // createdAt, updatedAt
-    timestamps: true,
-
-    // テーブルネーム
-    tableName: 'games',
-
-    // underscore
-    underscored: true,
-  });
+  );
 
   return Game;
 };

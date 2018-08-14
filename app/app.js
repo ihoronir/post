@@ -1,12 +1,11 @@
 'use strict';
 
-const path         = require('path');
-const express      = require('express');
+const path = require('path');
+const express = require('express');
 const cookieParser = require('cookie-parser');
-const bodyParser   = require('body-parser');
-const logger       = require('morgan');
-const flash        = require('connect-flash');
-
+const bodyParser = require('body-parser');
+const logger = require('morgan');
+const flash = require('connect-flash');
 
 // ------------------------------ 設定ファイル ------------------------------
 
@@ -15,17 +14,13 @@ process.env.NODE_ENV = 'development';
 
 const config = require('config');
 
-
-
 // ------------------------------ データベース接続 ------------------------------
 
 const User = require('../db/models').user;
 const Game = require('../db/models').game;
 
-User.sync({force: false});
-Game.sync({force: false});
-
-
+User.sync({ force: false });
+Game.sync({ force: false });
 
 // ------------------------------ アプリケーション作成 ------------------------------
 
@@ -42,8 +37,6 @@ app.set('x-powered-by', false);
 
 // render 設定 & 拡張
 require('./expand/render')(app);
-
-
 
 // ------------------------------ ミドルウェア ------------------------------
 
@@ -75,6 +68,6 @@ require('./routes')(app);
 // エラーハンドラ
 
 require('./middlewares/notFoundHandler')(app); // 404
-require('./middlewares/errorHandler')(app);    // 404 以外
+require('./middlewares/errorHandler')(app); // 404 以外
 
 module.exports = app;

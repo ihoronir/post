@@ -1,53 +1,56 @@
 'use strict';
 
-const util      = require('util');
-const User      = require('../../../../db/models').user;
-const encrypt   = require('../../../../util/hash').encrypt;
+const util = require('util');
+const User = require('../../../../db/models').user;
+const encrypt = require('../../../../util/hash').encrypt;
 const uservalid = require('../../../../util/validation').user;
 const loginFilter = require('../../filters/login');
 
-module.exports = [loginFilter, (req, res, next) => {
+module.exports = [
+  loginFilter,
+  (req, res, next) => {
+    let errFlag = false;
 
-  let errFlag = false;
+    // メアド
+    if (!req.body.email) {
+      req.flash('validationErrEmail', req.string.message.validationError.user.emptyEmail);
+      errFlag = true;
+    } else if (!uservalid.isEmail(req.body.email)) {
+      req.flash('validationErrEmail', req.string.message.validationError.user.isEmail);
+      errFlag = true;
+    }
 
-  // メアド
-  if (!req.body.email) {
-    req.flash('validationErrEmail', req.string.message.validationError.user.emptyEmail);
-    errFlag = true;
-  } else if (!uservalid.isEmail(req.body.email)) {
-    req.flash('validationErrEmail', req.string.message.validationError.user.isEmail);
-    errFlag = true;
-  }
-
-  if (errFlag) {
-    res.redirect('/settings/notifications');
-  } else {
-
-    const emailHash = encrypt(req.body.email);
-
-    User.update({
-      email: req.body.email,
-      emailHash: emailHash,
-      publicEmail: !!req.body.public_email
-    }, {
-      where: {
-        id: req.user.id
-      }
-    }).then(() => {
-      req.flash('successSaveChanges', req.string.message.success.saveChanges);
+    if (errFlag) {
       res.redirect('/settings/notifications');
-      return null; // Measure for Bluebird warning
-    }).catch(err => {
+    } else {
+      const emailHash = encrypt(req.body.email);
 
-      if (err.name === 'SequelizeUniqueConstraintError' && err.fields.email_hash) {
-        req.flash('validationErrEmail', util.format(req.string.message.validationError.user.usedEmail, req.body.email));
-        res.redirect('/settings/notifications');
-      } else {
-        next(err);
-      }
-      return null; // Measure for Bluebird warning
-    });
-
+      User.update(
+        {
+          email: req.body.email,
+          emailHash: emailHash,
+          publicEmail: !!req.body.public_email
+        },
+        {
+          where: {
+            id: req.user.id
+          }
+        }
+      )
+        .then(() => {
+          req.flash('successSaveChanges', req.string.message.success.saveChanges);
+          res.redirect('/settings/notifications');
+          return null; // Measure for Bluebird warning
+        })
+        .catch(err => {
+          if (err.name === 'SequelizeUniqueConstraintError' && err.fields.email_hash) {
+            req.flash('validationErrEmail', util.format(req.string.message.validationError.user.usedEmail, req.body.email));
+            res.redirect('/settings/notifications');
+          } else {
+            next(err);
+          }
+          return null; // Measure for Bluebird warning
+        });
+    }
   }
-    
-}];
+];

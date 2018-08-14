@@ -1,5 +1,5 @@
 {
-  "extends": ["eslint:recommended"],
+  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
   "plugins": [],
   "parserOptions": {},
   "env": {
@@ -8,15 +8,25 @@
   },
   "globals": {},
   "rules": {
-    "no-unused-vars": ["error", {
-      "argsIgnorePattern": "req|res|next"
-    }],
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "req|res|next"
+      }
+    ],
     "no-var": 2,
     "semi": ["error", "always"],
-    "semi-spacing": ["error", {"after": true, "before": false}],
+    "semi-spacing": ["error", { "after": true, "before": false }],
     "semi-style": ["error", "last"],
     "no-extra-semi": "error",
     "no-unexpected-multiline": "error",
-    "no-unreachable": "error"
+    "no-unreachable": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 160,
+        "singleQuote": true
+      }
+    ]
   }
 }

@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
   passport.authenticate('local', {
     successRedirect: redirectURL,
     failureRedirect: url.format({
-      pathname: '/login', 
+      pathname: '/login',
       query: { redirect_to: req.body.redirect_to }
     })
   })(req, res, next);

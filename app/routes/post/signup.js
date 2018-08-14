@@ -1,13 +1,12 @@
 'use strict';
 
-const util      = require('util');
-const User      = require('../../../db/models').user;
-const encrypt   = require('../../../util/hash').encrypt;
-const saltgen   = require('../../../util/hash').salt;
+const util = require('util');
+const User = require('../../../db/models').user;
+const encrypt = require('../../../util/hash').encrypt;
+const saltgen = require('../../../util/hash').salt;
 const uservalid = require('../../../util/validation').user;
 
 module.exports = (req, res, next) => {
-
   let errFlag = false;
 
   // ユーザー名
@@ -49,7 +48,6 @@ module.exports = (req, res, next) => {
   if (errFlag) {
     res.redirect('/signup');
   } else {
-
     const passwordSalt = saltgen();
     const passwordHash = encrypt(req.body.password, passwordSalt);
     const emailHash = encrypt(req.body.email);
@@ -61,28 +59,24 @@ module.exports = (req, res, next) => {
       emailHash: emailHash,
       passwordHash: passwordHash,
       passwordSalt: passwordSalt
-    }).then(() => {
-
-      res.redirect('/login');
-      return null; // Measure for Bluebird warning
-
-    }).catch((err) => {
-
-      if (err.name === 'SequelizeUniqueConstraintError') {
-        if (err.fields.screen_name) {
-          req.flash('validationErrScreenName', util.format(req.string.message.validationError.usedScreenName, req.body.screen_name));
+    })
+      .then(() => {
+        res.redirect('/login');
+        return null; // Measure for Bluebird warning
+      })
+      .catch(err => {
+        if (err.name === 'SequelizeUniqueConstraintError') {
+          if (err.fields.screen_name) {
+            req.flash('validationErrScreenName', util.format(req.string.message.validationError.usedScreenName, req.body.screen_name));
+          }
+          if (err.fields.email_hash) {
+            req.flash('validationErrEmail', util.format(req.string.message.validationError.usedEmail, req.body.email));
+          }
+          res.redirect('/signup');
+        } else {
+          next(err);
         }
-        if (err.fields.email_hash) {
-          req.flash('validationErrEmail', util.format(req.string.message.validationError.usedEmail, req.body.email));
-        }
-        res.redirect('/signup');
-      } else {
-        next(err);
-      }
-      return null; // Measure for Bluebird warning
-
-    });
-
+        return null; // Measure for Bluebird warning
+      });
   }
-    
 };
