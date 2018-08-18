@@ -7,7 +7,7 @@ module.exports = {
     return new Promise((resolve, reject) => {
       gm(path)
         .resize(400, 400, '!')
-        .quality(70)
+        .quality(60)
         .noProfile()
         .write(path, function(err) {
           if (!err) {
@@ -22,7 +22,7 @@ module.exports = {
     return new Promise((resolve, reject) => {
       gm(path)
         .resize(400, 400, '!')
-        .quality(70)
+        .quality(60)
         .noProfile()
         .write(path, function(err) {
           if (!err) {
