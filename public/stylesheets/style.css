@@ -304,6 +304,8 @@ h2.widget-hd {
   height: 112px;
   border-radius: 8px;
   margin-right: 16px;
+  border: #4a148c 3px solid;
+  box-sizing: border-box;
 }
 #profile-name {
   font-size: 20px;
