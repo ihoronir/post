@@ -3,7 +3,7 @@
 const crypto = require('crypto');
 
 module.exports = {
-  encrypt: (text, _salt) => {
+  encrypt(text, _salt) {
     const salt = _salt || '';
     for (let i = 0; i < 10; i++) {
       text = crypto
@@ -13,7 +13,7 @@ module.exports = {
     }
     return text;
   },
-  salt: () => {
+  salt() {
     return crypto
       .createHash('sha256')
       .update(Date.now().toString())

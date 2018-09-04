@@ -1,7 +1,9 @@
 {
   "extends": ["eslint:recommended", "plugin:prettier/recommended"],
   "plugins": [],
-  "parserOptions": {},
+  "parserOptions": {
+    "sourceType": "module"
+  },
   "env": {
     "es6": true,
     "node": true
