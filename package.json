@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "lint": "eslint ./app ./config",
+    "lint": "eslint ./app ./config ./src",
     "format": "prettier --write ",
     "build": "webpack",
     "building": "webpack --watch"

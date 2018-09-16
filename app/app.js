@@ -27,7 +27,7 @@ Game.sync({ force: false });
 const app = express();
 
 // テンプレートフォルダを指定
-app.set('views', path.join(__dirname, '../views'));
+app.set('views', path.join(__dirname, '../views/pages'));
 
 // strict ルーティング 調査中
 app.set('strict routing', true);

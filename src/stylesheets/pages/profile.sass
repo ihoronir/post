@@ -1,0 +1,56 @@
+/* profile
+
+#profile-grid
+  display: grid
+  grid-row-gap: 16px
+
+#profile-meta
+  display: flex
+
+#profile-image
+  width: 112px
+  height: 112px
+  border-radius: 8px
+  margin-right: 16px
+  border: #4a148c 3px solid
+  box-sizing: border-box
+
+#profile-name
+  font-size: 20px
+  font-weight: bold
+
+#profile-description
+  margin-top: 8px
+
+@media screen and (min-width: 960px)
+  #profile-left
+    display: flex
+    justify-content: space-between
+  #profile-description
+    width: 60%
+    padding-left: 16px
+    border-left: #ddd 1px solid
+    box-sizing: border-box
+
+@media screen and (min-width: 1080px)
+  #profile-grid
+    grid-column-gap: 16px
+    grid-template-columns: 240px
+    grid-template-rows: max-content
+  #profile-left
+    grid-column: 1 / 2
+    display: block
+  #profile-meta
+    display: block
+  #profile-description
+    width: 100%
+    padding-left: 0
+    padding-top: 8px
+    border-left: none
+    border-top: #ddd 1px solid
+  #profile-right
+    grid-column: 2 / 3
+    grid-row: 1 / end
+  #profile-image
+    width: 100%
+    height: 100%

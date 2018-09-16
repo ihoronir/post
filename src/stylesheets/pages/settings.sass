@@ -1,0 +1,81 @@
+
+/* settings
+
+#settings-grid
+  display: grid
+  grid-row-gap: 16px
+
+#settings-addon
+  display: flex
+  align-items: center
+
+#settings-addon-image
+  width: 60px
+  height: 60px
+  margin-right: 10px
+  border: #4a148c 3px solid
+  border-radius: 10px
+
+#settings-addon-big
+  font-size: 18px
+  font-weight: bold
+
+#settings-addon-small
+  word-wrap: break-word
+
+#settings-left
+  padding: 0
+
+#settings-list
+  li:not(:last-child)
+    border-bottom: 3px #eee solid
+  a
+    display: block
+    padding: 12px 16px
+    position: relative
+    &::before
+      content: ""
+      display: inline-block
+      width: 0
+      height: 0
+      border: transparent 8px solid
+      border-left: #aaa 8px solid
+      margin-top: 3px
+      position: absolute
+      right: 0
+    &::after
+      content: ""
+      display: inline-block
+      width: 0
+      height: 0
+      border: transparent 8px solid
+      border-left: #fff 8px solid
+      margin-top: 3px
+      position: absolute
+      right: 3px
+    &:hover
+      background-color: #4a148c
+      color: #fff
+      &::after
+        border-left: #4a148c 8px solid
+
+@media screen and (min-width: 760px)
+  #settings-grid
+    grid-column-gap: 16px
+    grid-template-columns: 240px
+    grid-template-rows: max-content
+  #settings-addon
+    grid-column: 1 / 2
+    grid-row: 1 / 2
+    display: block
+  #settings-addon-image
+    width: 120px
+    height: 120px
+    display: block
+    margin: 0 auto 20px
+  #settings-left
+    grid-column: 1 / 2
+    grid-row: 2 / max-content
+  #settings-right
+    grid-column: 2 / 3
+    grid-row: 1 / 4

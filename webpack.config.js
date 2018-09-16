@@ -24,7 +24,6 @@ module.exports = {
             loader: 'css-loader',
             options: {
               url: false,
-              minimize: true,
               sourceMap: ENABLED_SOURCEMAP
             }
           },
@@ -33,7 +32,6 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               sourceMap: ENABLED_SOURCEMAP,
-              minimize: true,
               plugins: [require('autoprefixer')({ grid: true })]
             }
           },
