@@ -31,26 +31,29 @@ module.exports = [
     if (errFlag) {
       res.redirect('./info');
     } else {
-      Game.update(
-        {
-          title: req.body.title,
-          description: req.body.description
-        },
-        {
-          where: {
-            id: req.params.id
-          }
-        }
-      )
-        .then(() => {
-          req.flash('successSaveChanges', req.string.message.success.saveChanges);
-          res.redirect(req.originalUrl);
-          return null; // Measure for Bluebird warning
-        })
-        .catch(err => {
-          next(err);
-          return null; // Measure for Bluebird warning
-        });
+      next();
     }
+  },
+  (req, res, next) => {
+    Game.update(
+      {
+        title: req.body.title,
+        description: req.body.description
+      },
+      {
+        where: {
+          id: req.params.id
+        }
+      }
+    )
+      .then(() => {
+        req.flash('successSaveChanges', req.string.message.success.saveChanges);
+        res.redirect(req.originalUrl);
+        return null; // Measure for Bluebird warning
+      })
+      .catch(err => {
+        next(err);
+        return null; // Measure for Bluebird warning
+      });
   }
 ];

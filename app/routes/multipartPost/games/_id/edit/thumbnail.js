@@ -51,6 +51,7 @@ module.exports = [
   loginFilter,
   editFilter,
   (req, res, next) => {
+    // ミドルウェア切り分けをすすめる。
     thumbnailUpload(req, res, err => {
       if (err) {
         if (err.message === 'File too large' || err.message === 'File is not image') {

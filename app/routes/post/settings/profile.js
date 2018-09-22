@@ -36,28 +36,31 @@ module.exports = [
     if (errFlag) {
       res.redirect('/settings/profile');
     } else {
-      User.update(
-        {
-          name: req.body.name,
-          description: req.body.description,
-          url: req.body.url,
-          location: req.body.location
-        },
-        {
-          where: {
-            id: req.user.id
-          }
-        }
-      )
-        .then(() => {
-          req.flash('successSaveChanges', req.string.message.success.saveChanges);
-          res.redirect('/settings/profile');
-          return null; // Measure for Bluebird warning
-        })
-        .catch(err => {
-          next(err);
-          return null; // Measure for Bluebird warning
-        });
+      next();
     }
+  },
+  (req, res, next) => {
+    User.update(
+      {
+        name: req.body.name,
+        description: req.body.description,
+        url: req.body.url,
+        location: req.body.location
+      },
+      {
+        where: {
+          id: req.user.id
+        }
+      }
+    )
+      .then(() => {
+        req.flash('successSaveChanges', req.string.message.success.saveChanges);
+        res.redirect('/settings/profile');
+        return null; // Measure for Bluebird warning
+      })
+      .catch(err => {
+        next(err);
+        return null; // Measure for Bluebird warning
+      });
   }
 ];

@@ -20,17 +20,20 @@ module.exports = [
     if (errFlag) {
       res.redirect('/upload');
     } else {
-      Game.create({
-        id: crypto.pseudoRandomBytes(16).toString('hex'),
-        userId: req.user.id,
-        title: req.body.title
-      })
-        .then(result => {
-          res.redirect('/games/' + result.id + '/edit');
-        })
-        .catch(err => {
-          next(err);
-        });
+      next();
     }
+  },
+  (req, res, next) => {
+    Game.create({
+      id: crypto.pseudoRandomBytes(16).toString('hex'),
+      userId: req.user.id,
+      title: req.body.title
+    })
+      .then(result => {
+        res.redirect('/games/' + result.id + '/edit');
+      })
+      .catch(err => {
+        next(err);
+      });
   }
 ];

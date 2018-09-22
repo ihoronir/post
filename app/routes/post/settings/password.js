@@ -31,29 +31,32 @@ module.exports = [
     if (errFlag) {
       res.redirect('/settings/password');
     } else {
-      const passwordSalt = saltgen();
-      const passwordHash = encrypt(req.body.new_password, passwordSalt);
-
-      User.update(
-        {
-          passwordHash: passwordHash,
-          passwordSalt: passwordSalt
-        },
-        {
-          where: {
-            id: req.user.id
-          }
-        }
-      )
-        .then(() => {
-          req.flash('successSaveChanges', req.string.message.success.saveChanges);
-          res.redirect('/settings/password');
-          return null; // Measure for Bluebird warning
-        })
-        .catch(err => {
-          next(err);
-          return null; // Measure for Bluebird warning
-        });
+      next();
     }
+  },
+  (req, res, next) => {
+    const passwordSalt = saltgen();
+    const passwordHash = encrypt(req.body.new_password, passwordSalt);
+
+    User.update(
+      {
+        passwordHash: passwordHash,
+        passwordSalt: passwordSalt
+      },
+      {
+        where: {
+          id: req.user.id
+        }
+      }
+    )
+      .then(() => {
+        req.flash('successSaveChanges', req.string.message.success.saveChanges);
+        res.redirect('/settings/password');
+        return null; // Measure for Bluebird warning
+      })
+      .catch(err => {
+        next(err);
+        return null; // Measure for Bluebird warning
+      });
   }
 ];

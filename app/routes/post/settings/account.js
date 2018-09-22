@@ -22,30 +22,33 @@ module.exports = [
     if (errFlag) {
       res.redirect('/settings/account');
     } else {
-      User.update(
-        {
-          screenName: req.body.screen_name
-        },
-        {
-          where: {
-            id: req.user.id
-          }
-        }
-      )
-        .then(() => {
-          req.flash('successSaveChanges', req.string.message.success.saveChanges);
-          res.redirect('/settings/account');
-          return null; // Measure for Bluebird warning
-        })
-        .catch(err => {
-          if (err.name === 'SequelizeUniqueConstraintError' && err.fields.screen_name) {
-            req.flash('validationErrScreenName', util.format(req.string.message.validationError.user.usedScreenName, req.body.screen_name));
-            res.redirect('/settings/account');
-          } else {
-            next(err);
-          }
-          return null; // Measure for Bluebird warning
-        });
+      next();
     }
+  },
+  (req, res, next) => {
+    User.update(
+      {
+        screenName: req.body.screen_name
+      },
+      {
+        where: {
+          id: req.user.id
+        }
+      }
+    )
+      .then(() => {
+        req.flash('successSaveChanges', req.string.message.success.saveChanges);
+        res.redirect('/settings/account');
+        return null; // Measure for Bluebird warning
+      })
+      .catch(err => {
+        if (err.name === 'SequelizeUniqueConstraintError' && err.fields.screen_name) {
+          req.flash('validationErrScreenName', util.format(req.string.message.validationError.user.usedScreenName, req.body.screen_name));
+          res.redirect('/settings/account');
+        } else {
+          next(err);
+        }
+        return null; // Measure for Bluebird warning
+      });
   }
 ];
