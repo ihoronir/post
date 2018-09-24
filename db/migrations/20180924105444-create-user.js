@@ -1,11 +1,10 @@
 'use strict';
 
-module.exports = (sequelize, DataTypes) => {
-  const user = sequelize.define(
-    'user',
-    {
+module.exports = {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable('users', {
       id: {
-        type: DataTypes.INTEGER.UNSIGNED,
+        type: Sequelize.INTEGER.UNSIGNED,
         field: 'id',
         autoIncrement: true,
         primaryKey: true,
@@ -13,103 +12,90 @@ module.exports = (sequelize, DataTypes) => {
       },
 
       screenName: {
-        type: DataTypes.CHAR(15),
+        type: Sequelize.CHAR(15),
         field: 'screen_name',
         unique: true,
         allowNull: false
       },
 
       name: {
-        type: DataTypes.STRING(50),
+        type: Sequelize.STRING(50),
         field: 'name',
         allowNull: false
       },
 
       email: {
-        type: DataTypes.STRING(254),
+        type: Sequelize.STRING(254),
         field: 'email',
         allowNull: false
       },
 
       emailHash: {
-        type: DataTypes.CHAR(64),
+        type: Sequelize.CHAR(64),
         field: 'email_hash',
         unique: true,
         allowNull: false
       },
 
       publicEmail: {
-        type: DataTypes.BOOLEAN(),
+        type: Sequelize.BOOLEAN(),
         field: 'public_email',
         defaultValue: false,
         allowNull: false
       },
 
       passwordHash: {
-        type: DataTypes.CHAR(64),
+        type: Sequelize.CHAR(64),
         field: 'password',
         allowNull: false
       },
 
       passwordSalt: {
-        type: DataTypes.CHAR(64),
+        type: Sequelize.CHAR(64),
         field: 'password_salt',
         allowNull: false
       },
 
       description: {
-        type: DataTypes.STRING(160),
+        type: Sequelize.STRING(160),
         field: 'description',
         defaultValue: '',
         allowNull: false
       },
 
       url: {
-        type: DataTypes.STRING(2100),
+        type: Sequelize.STRING(2100),
         field: 'url',
         defaultValue: '',
         allowNull: false
       },
 
       location: {
-        type: DataTypes.STRING(30),
+        type: Sequelize.STRING(30),
         field: 'location',
         defaultValue: '',
         allowNull: false
       },
 
       avaterImage: {
-        type: DataTypes.CHAR(32 + 5), // 32文字のランダム文字列 + 拡張子（.jpeg の 5 文字）
+        type: Sequelize.CHAR(32 + 5), // 32文字のランダム文字列 + 拡張子（.jpeg の 5 文字）
         field: 'avater_image',
         defaultValue: '',
         allowNull: false
       },
 
       createdAt: {
-        type: DataTypes.DATE(),
+        type: Sequelize.DATE(),
         field: 'created_at'
       },
 
       updatedAt: {
-        type: DataTypes.DATE(),
+        type: Sequelize.DATE(),
         field: 'updated_at'
       }
-    },
-    {
-      // createdAt, updatedAt
-      timestamps: true,
-
-      // テーブルネーム
-      tableName: 'users',
-
-      // underscore
-      underscored: true
-    }
-  );
-  /*
-  user.associate = function(models) {
-    // associations can be defined here
-  };
-  */
-  return user;
+    });
+  },
+  down: (queryInterface /*, Sequelize*/) => {
+    return queryInterface.dropTable('users');
+  }
 };
