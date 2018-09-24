@@ -4,7 +4,6 @@ site:
   description: ゲームを投稿できるサイトだよ！！
   copyright: © 2018 shioleap
 
-
 # message
 message:
   success:
@@ -38,7 +37,8 @@ message:
       isDescription: 2000字以内のゲームの説明文を入力してください。
       emptyThumbnailImage: 画像を選択してください。
       isThumbnailImage: 10MB 以下の png または jpg の画像を送信してください。
-
+      emptyAppZip: ZIP ファイルを選択してください。
+      isAppZip: 10MB 以下の ZIP ファイルを送信してください。
 
 word:
   home: ホーム
@@ -100,10 +100,8 @@ input:
     thumbnailImageTitle: 10MB までの png または jpeg ファイル
     thumbnailImageParagraph: 自動で 400(px) x 400(px) に調整されます。
 
-
 # view
 view:
-
   footer:
     about: Xenon について
 
@@ -147,4 +145,3 @@ view:
   user:
     title: ユーザー
     joinDate: 登録日
-

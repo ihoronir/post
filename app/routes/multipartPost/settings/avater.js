@@ -29,7 +29,6 @@ const avaterUpload = multer({
     fileSize: 1e7 // 10MB までに制限
   },
   fileFilter: (req, file, cb) => {
-    //console.log(fs.readFileSync());
     // 画像（png, jpg）のみ受け付ける
     // これだけではゆるい？（どっちにしろ画像じゃなかったら gm でエラーが出る）
     const filetypes = /jpeg|jpg|png/;
@@ -59,49 +58,53 @@ module.exports = [
         req.flash('validationErrAvaterImage', req.string.message.validationError.user.emptyAvaterImage);
         res.redirect('/settings/profile');
       } else {
-        avaterResizer(req.file.path)
-          .then(() => {
-            // リサイズ成功時
-            const beforeAvaterImage = req.user.avaterImage;
-            User.update(
-              {
-                avaterImage: req.file.filename
-              },
-              {
-                where: {
-                  id: req.user.id
-                }
-              }
-            )
-              .then(() => {
-                req.flash('successSaveChanges', req.string.message.success.saveChanges);
-                res.redirect('/settings/profile');
-                // 元画像削除
-                if (beforeAvaterImage !== '') {
-                  fs.unlink(path.join(destDirectory, beforeAvaterImage), (/* err */) => {
-                    /* ログを残す */
-                  });
-                }
-                return null; // Measure for Bluebird warning
-              })
-              .catch(err => {
-                next(err);
-                // 新画像削除
-                fs.unlink(req.file.path, (/* err */) => {
-                  /* ログを残す */
-                });
-                return null; // Measure for Bluebird warning
-              });
-          })
-          .catch(err => {
-            // リサイズ失敗時
-            next(err);
-            // 新画像削除
-            fs.unlink(req.file.path, (/* err */) => {
-              /* ログを残す */
-            });
-          });
+        next();
       }
     });
+  },
+  (req, res, next) => {
+    avaterResizer(req.file.path)
+      .then(next)
+      .catch(err => {
+        // リサイズ失敗時
+        next(err);
+        // 新画像削除
+        fs.unlink(req.file.path, (/* err */) => {
+          /* ログを残す */
+        });
+      });
+  },
+  (req, res, next) => {
+    // リサイズ成功時
+    const beforeAvaterImage = req.user.avaterImage;
+    User.update(
+      {
+        avaterImage: req.file.filename
+      },
+      {
+        where: {
+          id: req.user.id
+        }
+      }
+    )
+      .then(() => {
+        req.flash('successSaveChanges', req.string.message.success.saveChanges);
+        res.redirect('/settings/profile');
+        // 元画像削除
+        if (beforeAvaterImage !== '') {
+          fs.unlink(path.join(destDirectory, beforeAvaterImage), (/* err */) => {
+            /* ログを残す */
+          });
+        }
+        return null; // Measure for Bluebird warning
+      })
+      .catch(err => {
+        next(err);
+        // 新画像削除
+        fs.unlink(req.file.path, (/* err */) => {
+          /* ログを残す */
+        });
+        return null; // Measure for Bluebird warning
+      });
   }
 ];

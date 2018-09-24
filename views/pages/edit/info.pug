@@ -19,7 +19,7 @@ block settings-content
       input(type='submit', value=string.word.saveChanges).input-submit
       input(type='hidden', name='_csrf' value=csrftoken)
   h1.widget-hd: span= string.view.edit.info.thumbnail
-  form(action='./thumbnail', method='post' enctype='multipart/form-data').form
+  form(action='./thumbnail', method='post', enctype='multipart/form-data').form
     if successSaveChanges
       p.success= successSaveChanges
     div.input-group

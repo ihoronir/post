@@ -32,7 +32,6 @@ const thumbnailUpload = multer({
     fileSize: 1e7 // 10MB までに制限
   },
   fileFilter: (req, file, cb) => {
-    //console.log(fs.readFileSync());
     // 画像（png, jpg）のみ受け付ける
     // これだけではゆるい？（どっちにしろ画像じゃなかったら gm でエラーが出る）
     const filetypes = /jpeg|jpg|png/;
@@ -51,7 +50,6 @@ module.exports = [
   loginFilter,
   editFilter,
   (req, res, next) => {
-    // ミドルウェア切り分けをすすめる。
     thumbnailUpload(req, res, err => {
       if (err) {
         if (err.message === 'File too large' || err.message === 'File is not image') {
@@ -64,49 +62,53 @@ module.exports = [
         req.flash('validationErrThumbnailImage', req.string.message.validationError.game.emptyThumbnailImage);
         res.redirect('./info');
       } else {
-        thumbnailResizer(req.file.path)
-          .then(() => {
-            // リサイズ成功時
-            const beforeThumbnailImage = req.game.thumbnailImage;
-            Game.update(
-              {
-                thumbnailImage: req.file.filename
-              },
-              {
-                where: {
-                  id: req.params.id
-                }
-              }
-            )
-              .then(() => {
-                req.flash('successSaveChanges', req.string.message.success.saveChanges);
-                res.redirect('./info');
-                // 元画像削除
-                if (beforeThumbnailImage !== '') {
-                  fs.unlink(path.join(destDirectory, beforeThumbnailImage), (/* err */) => {
-                    /* ログを残す */
-                  });
-                }
-                return null; // Measure for Bluebird warning
-              })
-              .catch(err => {
-                next(err);
-                // 新画像削除
-                fs.unlink(req.file.path, (/* err */) => {
-                  /* ログを残す */
-                });
-                return null; // Measure for Bluebird warning
-              });
-          })
-          .catch(err => {
-            // リサイズ失敗時
-            next(err);
-            // 新画像削除
-            fs.unlink(req.file.path, (/* err */) => {
-              /* ログを残す */
-            });
-          });
+        next();
       }
     });
+  },
+  (req, res, next) => {
+    thumbnailResizer(req.file.path)
+      .then(next)
+      .catch(err => {
+        // リサイズ失敗時
+        next(err);
+        // 新画像削除
+        fs.unlink(req.file.path, (/* err */) => {
+          /* ログを残す */
+        });
+      });
+  },
+  (req, res, next) => {
+    // リサイズ成功時
+    const beforeThumbnailImage = req.game.thumbnailImage;
+    Game.update(
+      {
+        thumbnailImage: req.file.filename
+      },
+      {
+        where: {
+          id: req.params.id
+        }
+      }
+    )
+      .then(() => {
+        req.flash('successSaveChanges', req.string.message.success.saveChanges);
+        res.redirect('./info');
+        // 元画像削除
+        if (beforeThumbnailImage !== '') {
+          fs.unlink(path.join(destDirectory, beforeThumbnailImage), (/* err */) => {
+            /* ログを残す */
+          });
+        }
+        return null; // Measure for Bluebird warning
+      })
+      .catch(err => {
+        next(err);
+        // 新画像削除
+        fs.unlink(req.file.path, (/* err */) => {
+          /* ログを残す */
+        });
+        return null; // Measure for Bluebird warning
+      });
   }
 ];

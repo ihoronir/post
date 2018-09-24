@@ -8,6 +8,7 @@ module.exports = [
   editFilter,
   (req, res, next) => {
     res.render('edit/app', {
+      validationErrAppZip: req.flash('validationErrAppZip')[0],
       game: req.game
     });
   }

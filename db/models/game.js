@@ -39,6 +39,13 @@ module.exports = sequelize => {
         allowNull: false
       },
 
+      source: {
+        type: Sequelize.STRING(32),
+        field: 'source',
+        defaultValue: '',
+        allowNull: false
+      },
+
       thumbnailImage: {
         type: Sequelize.CHAR(32 + 5), // 32文字のランダム文字列 + 拡張子（.jpeg の 5 文字）
         field: 'thumbnail_image',
