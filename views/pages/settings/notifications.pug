@@ -5,31 +5,31 @@ block settings-content
   form(action='/settings/email', method='post').form
     if successSaveChanges
       p.success= successSaveChanges
-    div.input-group
+    .input-group
       label= string.input.user.emailLabel
       input(type='email', name='email', maxlength=config.pattern.user.email.maxlength, value=user.email, title=string.input.user.emailTitle, placeholder=string.input.user.emailTitle, required).input-text
       if validationErrEmail
         span.flash= validationErrEmail
-    div.input-group
+    .input-group
       label= string.input.user.publicEmailLabel
       p= string.input.user.publicEmailMessage
-      div.input-checkbox
+      .input-checkbox
         input(type='checkbox' name='public_email' checked=user.publicEmail)
         label= string.input.user.publicEmailString
-    div.input-group
+    .input-group
       input(type='submit', value=string.word.saveChanges).input-submit
       input(type='hidden', name='_csrf' value=csrftoken)
   //- 通知設定は未実装 別ページにするかも
   h1.widget-hd: span= string.view.settings.notifications.notifications
   form(action='/settings/notifications', method='post').form
-    div.input-group
+    .input-group
       label NAMEからのお知らせ
       p NAME からお知らせメールが届きます。
-      div.input-checkbox
+      .input-checkbox
         input(type='checkbox')
         label メール
         input(type='checkbox')
         label Web
-    div.input-group
+    .input-group
       input(type='submit', value=string.word.saveChanges).input-submit
       input(type='hidden', name='_csrf' value=csrftoken)

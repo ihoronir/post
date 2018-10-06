@@ -1,17 +1,17 @@
 extends ../../layout
 
 block content
-  div#settings-grid
-    div.widget#settings-addon
+  #settings-grid
+    .widget#settings-addon
       img(src='/avater/' + user.avaterImage)#settings-addon-image
       div
         h3#settings-addon-big= user.name
         p#settings-addon-small= '@' + user.screenName
-    div.widget#settings-left
+    .widget#settings-left
       ul#settings-list
         li: a(href='/settings/account')= string.view.settings.account.linkTitle
         li: a(href='/settings/password')= string.view.settings.password.linkTitle
         li: a(href='/settings/profile')= string.view.settings.profile.linkTitle
         li: a(href='/settings/notifications')= string.view.settings.notifications.linkTitle
-    div.widget#settings-right
+    .widget#settings-right
       block settings-content

@@ -11,12 +11,12 @@ module.exports = (req, res, next) => {
   })
     .then(user => {
       if (!user) {
-        return next(createError(404));
+        next(createError(404));
+      } else {
+        res.render('user', {
+          profile: user
+        });
       }
-
-      res.render('user', {
-        profile: user
-      });
       return null; // Measure for Bluebird warning
     })
     .catch(err => {

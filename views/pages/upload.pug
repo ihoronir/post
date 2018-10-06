@@ -1,24 +1,24 @@
 extends ../layout
 
 block content
-  div#upload-grid
-    div.widget#upload-header 
+  #upload-grid
+    .widget#upload-header 
       h1 Xenon にゲームを投稿
       p あなたのゲームを世界中に公開しましょう
-    div.widget#upload-main
+    .widget#upload-main
       p Zip ファイルや Git レポジトリからゲームをアップロードできます。また、自分のサーバーで公開しているゲームを登録することもできます。
-      div#upload-ways
+      #upload-ways
         a(href='/upload/zip') Zip ファイルをアップロード
         a(href='') Git レポジトリからインポート
         a(href='') 自分のサーバーのゲームを登録
       p まずはゲームのタイトルを入力してください。
       form(action='/upload', method='post')#upload-form
-        div.input-group
+        .input-group
           label= string.input.game.titleLabel
           input(type='text', name='title', placeholder= string.input.game.titleTitle, required).input-text.big
           if validationErrTitle
             span.flash= validationErrTitle
-        div.input-group
+        .input-group
           input(type='submit', value='次へ').input-submit.big
           input(type='hidden', name='_csrf' value=csrftoken)
           input(type='hidden', name='redirect_to' value=decodeURIComponent(query.redirect_to))

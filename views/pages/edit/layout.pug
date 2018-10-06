@@ -1,13 +1,13 @@
 extends ../../layout
 
 block content
-  div#settings-grid
-    div.widget#settings-addon
+  #settings-grid
+    .widget#settings-addon
       img(src='/thumbnail/' + game.thumbnailImage)#settings-addon-image
       div
         h3#settings-addon-big= game.title
-        p#settings-addon-small= game.id
-    div.widget#settings-left
+        p#settings-addon-small= 'ID:' + game.id
+    .widget#settings-left
       ul#settings-list
         li: a(href='./info')= string.view.edit.info.linkTitle
         li: a(href='./app') ゲーム本体
@@ -15,5 +15,5 @@ block content
         li: a(href='./api') API キー
         li: a(href='./license') ライセンス
         li: a(href='./public') 公開設定
-    div.widget#settings-right
+    .widget#settings-right
       block settings-content

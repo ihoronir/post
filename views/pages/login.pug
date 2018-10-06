@@ -1,25 +1,25 @@
 extends ../layout
 
 block content
-  div#auth-grid
-    div.widget#auth-header
+  #auth-grid
+    .widget#auth-header
       h1= string.view.login.header
       p!= string.view.login.message
-    div.widget#auth-left ここには他サービスとの連携ログインのボタンを置く予定だよ！！
+    .widget#auth-left ここには他サービスとの連携ログインのボタンを置く予定だよ！！
     form(action='/login', method='post')#auth-right.widget
-      div.input-group
+      .input-group
         label= string.input.user.screenNameLabel
-        div.input-text-with-addon.big
+        .input-text-with-addon.big
           span @
           input(type='text', name='screen_name', placeholder='Your screen name')
         if notFoundUser
           span.flash= notFoundUser
-      div.input-group
+      .input-group
         label= string.input.user.passwordLabel
         input(type='password', name='password', placeholder='Your password' required).input-text.big
         if notMatchedPassword
           span.flash= notMatchedPassword
-      div.input-group
+      .input-group
         input(type='submit', value=string.view.login.submitLabel).input-submit.big
         input(type='hidden', name='_csrf' value=csrftoken)
         input(type='hidden', name='redirect_to' value=decodeURIComponent(query.redirect_to))

@@ -5,43 +5,43 @@ block settings-content
   form(action='/settings/profile', method='post').form
     if successSaveChanges
       p.success= successSaveChanges
-    div.input-group
+    .input-group
       label= string.input.user.nameLabel
       input(type='text', name='name', maxlength=config.pattern.user.name.maxlength, title=string.input.user.nameTitle, value=user.name, placeholder=string.input.user.nameTitle, required).input-text
       if validationErrName
         span.flash= validationErrName
-    div.input-group
+    .input-group
       label= string.input.user.urlLabel
       input(type='url', name='url', maxlength=config.pattern.user.url.maxlength, title=string.input.user.urlTitle, value=user.url, placeholder=string.input.user.urlTitle).input-text
       if validationErrUrl
         span.flash= validationErrUrl
-    div.input-group
+    .input-group
       label= string.input.user.locationLabel
       input(type='text', name='location', maxlength=config.pattern.user.location.maxlength, title=string.input.user.locationTitle, value=user.location, placeholder=string.input.user.locationTitle).input-text
       if validationErrLocation
         span.flash= validationErrLocation
-    div.input-group
+    .input-group
       label= string.input.user.descriptionLabel 
       textarea(name='description', maxlength=config.pattern.user.description.maxlength, title=string.input.user.descriptionTitle, placeholder=string.input.user.descriptionTitle).input-textarea= user.description
       if validationErrDescription
         span.flash= validationErrDescription
-    div.input-group
+    .input-group
       input(type='submit', value=string.word.saveChanges).input-submit
       input(type='hidden', name='_csrf' value=csrftoken)
   h1.widget-hd: span= string.view.settings.profile.avater
   form(action='/settings/avater', method='post', enctype='multipart/form-data').form
     if successSaveChanges
       p.success= successSaveChanges
-    div.input-group
+    .input-group
       label= string.input.user.avaterImageLabel 
       p= string.input.user.avaterImageParagraph
-      div.input-file-with-thumbnail
+      .input-file-with-thumbnail
         img(src='/avater/' + user.avaterImage)
         div
           input(type='file', name='avater_image', accept='image/png, image/jpeg' required)
           p= string.input.user.avaterImageTitle 
       if validationErrAvaterImage
         span.flash= validationErrAvaterImage
-    div.input-group
+    .input-group
       input(type='submit', value=string.word.saveChanges).input-submit
       input(type='hidden', name='_csrf' value=csrftoken)

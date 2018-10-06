@@ -5,33 +5,33 @@ block settings-content
   form(action='./info', method='post').form
     if successSaveChanges
       p.success= successSaveChanges
-    div.input-group
+    .input-group
       label= string.input.game.titleLabel
       input(type='text', name='title', maxlength=config.pattern.game.title.maxlength, title=string.input.game.titleTitle, value=game.title, placeholder=string.input.game.titleTitle, required).input-text
       if validationErrTitle
         span.flash= validationErrTitle
-    div.input-group
+    .input-group
       label= string.input.game.descriptionLabel
       textarea(name='description', maxlength=config.pattern.game.description.maxlength, title=string.input.game.descriptionTitle, placeholder=string.input.game.descriptionTitle).input-textarea= game.description
       if validationErrDescription
         span.flash= validationErrDescription
-    div.input-group
+    .input-group
       input(type='submit', value=string.word.saveChanges).input-submit
       input(type='hidden', name='_csrf' value=csrftoken)
   h1.widget-hd: span= string.view.edit.info.thumbnail
   form(action='./thumbnail', method='post', enctype='multipart/form-data').form
     if successSaveChanges
       p.success= successSaveChanges
-    div.input-group
+    .input-group
       label= string.input.game.thumbnailImageLabel
       p= string.input.game.thumbnailImageParagraph
-      div.input-file-with-thumbnail
+      .input-file-with-thumbnail
         img(src='/thumbnail/' + game.thumbnailImage)
         div
           input(type='file', name='thumbnail_image', accept='image/png, image/jpeg' required)
           p= string.input.game.thumbnailImageTitle
       if validationErrThumbnailImage
         span.flash= validationErrThumbnailImage
-    div.input-group
+    .input-group
       input(type='submit', value=string.word.saveChanges).input-submit
       input(type='hidden', name='_csrf' value=csrftoken)

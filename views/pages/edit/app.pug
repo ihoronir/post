@@ -8,14 +8,14 @@ block settings-content
   form(action='./app/zip', method='post' enctype='multipart/form-data').form
     if successSaveChanges
       p.success= successSaveChanges
-    div.input-group
+    .input-group
       label ZIP ファイルのアップロード
-      div.input-file
+      .input-file
         input(type='file', name='app_zip', accept='application/zip' required)
         p 10MBまでアップロード可能
       if validationErrAppZip
         span.flash= validationErrAppZip
-    div.input-group
+    .input-group
       input(type='submit', value=game.source ? '既存のゲーム本体を上書きして更新' : 'アップロード').input-submit
       input(type='hidden', name='_csrf' value=csrftoken)
 
@@ -24,12 +24,12 @@ block settings-content
   //- form(action='/settings/account', method='post').form
   //-   if successSaveChanges
   //-     p.success= successSaveChanges
-  //-   div.input-group
+  //-   .input-group
   //-     label レポジトリの URL または SSH キー
   //-     input(type='text', name='name', maxlength=config.pattern.user.name.maxlength, title=string.input.user.nameTitle, value=user.name, placeholder=string.input.user.nameTitle, required).input-text
   //-     if validationErrName
   //-       span.flash= validationErrName
-  //-   div.input-group
+  //-   .input-group
   //-     input(type='submit', value='Git レポジトリからインポート').input-submit
   //-     input(type='hidden', name='_csrf' value=csrftoken)
 
@@ -37,11 +37,11 @@ block settings-content
   //- form(action='/settings/account', method='post').form
   //-   if successSaveChanges
   //-     p.success= successSaveChanges
-  //-   div.input-group
+  //-   .input-group
   //-     label ゲームの URL
   //-     input(type='text', name='name', maxlength=config.pattern.user.name.maxlength, title=string.input.user.nameTitle, value=user.name, placeholder=string.input.user.nameTitle, required).input-text
   //-     if validationErrName
   //-       span.flash= validationErrName
-  //-   div.input-group
+  //-   .input-group
   //-     input(type='submit', value='自分のサーバーのゲームを登録').input-submit
   //-     input(type='hidden', name='_csrf' value=csrftoken)
