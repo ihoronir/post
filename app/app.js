@@ -18,9 +18,13 @@ const config = require('config');
 
 const User = require('../db/models').user;
 const Game = require('../db/models').game;
+const Tag = require('../db/models').tag;
+const GameTag = require('../db/models').gameTag;
 
 User.sync({ force: false });
+GameTag.sync({ force: true });
 Game.sync({ force: false });
+Tag.sync({ force: true });
 
 // ------------------------------ アプリケーション作成 ------------------------------
 

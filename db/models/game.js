@@ -62,10 +62,21 @@ module.exports = (sequelize, DataTypes) => {
       underscored: true
     }
   );
-  /*
+
   game.associate = function(models) {
-    // associations can be defined here
+    game.belongsTo(models.user, {
+      as: 'user',
+      foreignKey: 'userId',
+      targetKey: 'id'
+    });
+
+    game.belongsToMany(models.tag, {
+      through: 'games_tags',
+      as: 'tags',
+      foreignKey: 'game_id',
+      otherKey: 'tag_id'
+    });
   };
-  */
+
   return game;
 };

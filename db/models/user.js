@@ -83,16 +83,6 @@ module.exports = (sequelize, DataTypes) => {
         field: 'avater_image',
         defaultValue: '',
         allowNull: false
-      },
-
-      createdAt: {
-        type: DataTypes.DATE(),
-        field: 'created_at'
-      },
-
-      updatedAt: {
-        type: DataTypes.DATE(),
-        field: 'updated_at'
       }
     },
     {
@@ -106,10 +96,14 @@ module.exports = (sequelize, DataTypes) => {
       underscored: true
     }
   );
-  /*
+
   user.associate = function(models) {
-    // associations can be defined here
+    user.hasMany(models.game, {
+      foreignKey: 'userId',
+      sourceKey: 'id',
+      as: 'games'
+    });
   };
-  */
+
   return user;
 };

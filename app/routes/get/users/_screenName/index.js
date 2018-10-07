@@ -1,12 +1,17 @@
 'use strict';
 
 const User = require('../../../../../db/models').user;
+const Game = require('../../../../../db/models').game;
 const createError = require('http-errors');
 
 module.exports = (req, res, next) => {
   User.findOne({
     where: {
       screenName: req.params.screenName
+    },
+    include: {
+      model: Game,
+      as: 'games'
     }
   })
     .then(user => {

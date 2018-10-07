@@ -48,6 +48,18 @@ module.exports = {
         field: 'thumbnail_image',
         defaultValue: '',
         allowNull: false
+      },
+
+      createdAt: {
+        type: Sequelize.DATE(),
+        field: 'created_at',
+        allowNull: false
+      },
+
+      updatedAt: {
+        type: Sequelize.DATE(),
+        field: 'updated_at',
+        allowNull: false
       }
     });
   },
