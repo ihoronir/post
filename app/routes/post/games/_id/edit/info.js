@@ -19,6 +19,20 @@ module.exports = [
       req.flash('validationErrTitle', req.string.message.validationError.game.isTitle);
       errFlag = true;
     }
+
+    // タグ
+    {
+      const tags = req.body.tags.split(',');
+      const len = tags.length;
+      if (len > 10) {
+        req.flash('validationErrTags', '指定できるタグは10個までです。');
+      }
+      for (const i = 0, l = tags.length; i < l; i++) {
+        tags[i] = tags[i].trim();
+      }
+      console.log(tags);
+    }
+
     // 説明文
     if (!req.body.description) {
       req.flash('validationErrDescription', req.string.message.validationError.game.emptyDescription);

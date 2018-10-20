@@ -11,36 +11,11 @@ block settings-content
       if validationErrTitle
         span.flash= validationErrTitle
     .input-group
-      label タグ
-      p ゲームに関連付けるタグを 10 個まで登録できます。
-      .input-chip
-        ul
-          li 塩リープ
-        input(type='text', name='title', maxlength=config.pattern.game.title.maxlength, title=string.input.game.titleTitle, value=game.title, placeholder=string.input.game.titleTitle, required)
-      if validationErrTitle
-        span.flash= validationErrTitle
-    .input-group
-      label タグ
-      p ゲームに関連付けるタグを 10 個まで登録できます。
-      .input-chip
-        ul
-          li 塩リープ
-          li enchant.js
-          li enchant.js
-          li enchant.js
-          li enchant.js
-          li enchant.js
-          li enchant.js
-          li enchant.js
-          li enchant.js
-          li enchant.js
-          li enchant.js
-          li enchant.js
-          li enchant.js
-          li enchant.js
-        input(type='text', name='title', maxlength=config.pattern.game.title.maxlength, title=string.input.game.titleTitle, value=game.title, placeholder=string.input.game.titleTitle, required)
-      if validationErrTitle
-        span.flash= validationErrTitle
+      label= string.input.game.tagsLabel
+      p!= string.input.game.tagsMessage
+      input(type='text', name='tags', title=string.input.game.tagsTitle, placeholder=string.input.game.tagsTitle, required).input-text
+      if validationErrTags
+        span.flash= validationErrTags
     .input-group
       label= string.input.game.descriptionLabel
       textarea(name='description', maxlength=config.pattern.game.description.maxlength, title=string.input.game.descriptionTitle, placeholder=string.input.game.descriptionTitle).input-textarea= game.description

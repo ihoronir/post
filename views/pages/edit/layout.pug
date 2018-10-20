@@ -10,10 +10,10 @@ block content
     .widget#settings-left
       ul#settings-list
         li: a(href='./info')= string.view.edit.info.linkTitle
-        li: a(href='./app') ゲーム本体
-        li: a(href='./meta') メタデータ
-        li: a(href='./api') API キー
-        li: a(href='./license') ライセンス
-        li: a(href='./public') 公開設定
+        li: a(href='./app')= string.view.edit.app.linkTitle
+        li: a(href='./meta')= string.view.edit.meta.linkTitle
+        li: a(href='./api')= string.view.edit.api.linkTitle
+        li: a(href='./license')= string.view.edit.license.linkTitle
+        li: a(href='./public')= string.view.edit.public.linkTitle
     .widget#settings-right
       block settings-content

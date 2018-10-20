@@ -94,6 +94,9 @@ input:
   game:
     titleLabel: ゲームのタイトル
     titleTitle: 50字まで
+    tagsLabel: タグ
+    tagsTitle: コンマ区切りで10個まで登録可能
+    tagsMessage: ゲームに関連付けるタグを10個まで指定できます。タグはコンマ（ , ）で区切って入力してください。<br>（コンマの前後の空白は除去されます。）
     descriptionLabel: ゲームの説明文
     descriptionTitle: 2000字まで
     thumbnailImageLabel: サムネイル画像のアップロード
@@ -137,10 +140,30 @@ view:
 
   edit:
     info:
-      title: 基本情報（%s）
+      title: 基本情報
       linkTitle: 基本情報
       info: 基本情報
       thumbnail: サムネイル画像
+    app:
+      title: ゲーム本体
+      linkTitle: ゲーム本体
+      app: ゲーム本体のアップロード
+    meta:
+      title: メタ情報
+      linkTitle: メタ情報
+      meta: メタ情報の編集
+    api:
+      title: メタ情報
+      linkTitle: API 情報
+      api: API キー
+    license:
+      title: ライセンス
+      linkTitle: ライセンス
+      license: ライセンス情報の編集
+    public:
+      title: 公開設定
+      linkTitle: 公開設定
+      license: 公開設定
 
   user:
     title: ユーザー
