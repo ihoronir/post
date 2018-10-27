@@ -27,13 +27,13 @@ module.exports = [
       const tags = req.body.tags.split(',');
       const len = tags.length;
       if (len > 10) {
-        req.flash('validationErrTags', '指定できるタグは10個までです。');
+        req.flash('validationErrTags', req.string.message.validationError.game.isTags);
         errFlag = true;
       } else {
         for (let i = 0, l = tags.length; i < l; i++) {
           tags[i] = tags[i].trim();
         }
-        req.tagsArr = tags;
+        req.tagsArr = tags.filter(tag => !!tag);
       }
     }
 

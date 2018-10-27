@@ -33,6 +33,7 @@ message:
     game:
       emptyTitle: ゲームのタイトルを入力してください
       isTitle: 50字以下のゲームのタイトルを入力してください。
+      isTags: 指定できるタグは10個までです。
       emptyDescription: ゲームの説明文を入力してください。
       isDescription: 2000字以内のゲームの説明文を入力してください。
       emptyThumbnailImage: 画像を選択してください。
@@ -96,7 +97,7 @@ input:
     titleTitle: 50字まで
     tagsLabel: タグ
     tagsTitle: コンマ区切りで10個まで登録可能
-    tagsMessage: ゲームに関連付けるタグを10個まで指定できます。タグはコンマ（ , ）で区切って入力してください。<br>（コンマの前後の空白は除去されます。）
+    tagsMessage: ゲームに関連付けるタグを10個まで指定できます。タグはコンマ（ , ）で区切って入力してください。<br>（タグの前後の空白は除去されます。）
     descriptionLabel: ゲームの説明文
     descriptionTitle: 2000字まで
     thumbnailImageLabel: サムネイル画像のアップロード

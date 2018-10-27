@@ -4,9 +4,18 @@
 
 const createError = require('http-errors');
 const Game = require('../../../db/models').game;
+const Tag = require('../../../db/models').tag;
 
 module.exports = (req, res, next) => {
-  Game.findByPk(req.params.id)
+  Game.findOne({
+    where: {
+      id: req.params.id
+    },
+    include: {
+      model: Tag,
+      as: 'tags'
+    }
+  })
     .then(game => {
       if (!game) {
         next(createError(404));

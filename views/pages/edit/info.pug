@@ -13,7 +13,7 @@ block settings-content
     .input-group
       label= string.input.game.tagsLabel
       p!= string.input.game.tagsMessage
-      input(type='text', name='tags', title=string.input.game.tagsTitle, placeholder=string.input.game.tagsTitle, required).input-text
+      input(type='text' name='tags' title=string.input.game.tagsTitle value=gameTags placeholder=string.input.game.tagsTitle required).input-text
       if validationErrTags
         span.flash= validationErrTags
     .input-group

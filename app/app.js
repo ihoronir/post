@@ -22,9 +22,9 @@ const Tag = require('../db/models').tag;
 const GameTag = require('../db/models').gameTag;
 
 User.sync({ force: false });
-GameTag.sync({ force: true });
+GameTag.sync({ force: false });
 Game.sync({ force: false });
-Tag.sync({ force: true });
+Tag.sync({ force: false });
 
 // ------------------------------ アプリケーション作成 ------------------------------
 
