@@ -6,8 +6,6 @@ import './stylesheets/style.sass';
 // import 文を使って sub.js ファイルを読み込む。
 import { hello } from './scripts/sub';
 
-import { a } from './scripts/components/form';
-
 const Turbolinks = require('turbolinks');
 Turbolinks.start();
 
