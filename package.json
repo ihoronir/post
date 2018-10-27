@@ -31,7 +31,7 @@
     "pug": "^2.0.3",
     "rmdir": "^1.2.0",
     "sequelize": "^4.38.0",
-    "sequelize-cli": "^4.1.1",
+    "turbolinks": "^5.2.0",
     "unzip": "^0.1.11",
     "validator": "^10.4.0"
   },
@@ -45,6 +45,7 @@
     "postcss-loader": "^3.0.0",
     "prettier": "^1.14.2",
     "sass-loader": "^7.1.0",
+    "sequelize-cli": "^4.1.1",
     "style-loader": "^0.23.0",
     "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0"

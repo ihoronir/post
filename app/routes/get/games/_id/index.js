@@ -3,7 +3,7 @@
 const createError = require('http-errors');
 const Game = require('../../../../../db/models').game;
 const User = require('../../../../../db/models').user;
-const Tag = require('../../../../../db/models').tag;
+// const Tag = require('../../../../../db/models').tag;
 
 module.exports = [
   (req, res, next) => {

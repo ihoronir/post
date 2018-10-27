@@ -1,6 +1,8 @@
 'use strict';
 
+const sequelize = require('../../../../../../db/models').sequelize;
 const Game = require('../../../../../../db/models').game;
+const Tag = require('../../../../../../db/models').tag;
 const gamevalid = require('../../../../../../util/validation').game;
 const loginFilter = require('../../../../filters/login');
 const editFilter = require('../../../../filters/edit');
@@ -26,11 +28,13 @@ module.exports = [
       const len = tags.length;
       if (len > 10) {
         req.flash('validationErrTags', '指定できるタグは10個までです。');
+        errFlag = true;
+      } else {
+        for (let i = 0, l = tags.length; i < l; i++) {
+          tags[i] = tags[i].trim();
+        }
+        req.tagsArr = tags;
       }
-      for (const i = 0, l = tags.length; i < l; i++) {
-        tags[i] = tags[i].trim();
-      }
-      console.log(tags);
     }
 
     // 説明文
@@ -49,25 +53,51 @@ module.exports = [
     }
   },
   (req, res, next) => {
-    Game.update(
-      {
-        title: req.body.title,
-        description: req.body.description
-      },
-      {
-        where: {
-          id: req.params.id
+    // タグのゴミが残ってしまう。要検討
+    sequelize
+      .transaction(tx => {
+        const promises1 = [];
+        const promises2 = [];
+        for (let i = 0; i < req.tagsArr.length; i++) {
+          promises2.push(
+            Tag.findOrCreate({
+              where: {
+                name: req.tagsArr[i]
+              },
+              transaction: tx
+            })
+          );
         }
-      }
-    )
+        promises1.push(
+          Promise.all(promises2).then(tags => {
+            const tagsList = [];
+            for (let i = 0; i < tags.length; i++) {
+              tagsList.push(tags[i][0]);
+            }
+            return req.game.setTags(tagsList, { transaction: tx });
+          })
+        );
+        promises1.push(
+          Game.update(
+            {
+              title: req.body.title,
+              description: req.body.description
+            },
+            {
+              where: {
+                id: req.params.id
+              }
+            }
+          )
+        );
+        return Promise.all(promises1);
+      })
       .then(() => {
         req.flash('successSaveChanges', req.string.message.success.saveChanges);
         res.redirect(req.originalUrl);
-        return null; // Measure for Bluebird warning
       })
       .catch(err => {
         next(err);
-        return null; // Measure for Bluebird warning
       });
   }
 ];

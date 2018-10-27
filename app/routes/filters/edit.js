@@ -6,7 +6,7 @@ const createError = require('http-errors');
 const Game = require('../../../db/models').game;
 
 module.exports = (req, res, next) => {
-  Game.findById(req.params.id)
+  Game.findByPk(req.params.id)
     .then(game => {
       if (!game) {
         next(createError(404));

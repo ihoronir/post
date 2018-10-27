@@ -14,7 +14,7 @@ passport.serializeUser((user, done) => {
 
 // デシリアライズ（セッションにシリアライズした情報を req.user に入れる）
 passport.deserializeUser((id, done) => {
-  User.findById(id)
+  User.findByPk(id)
     .then(user => {
       // req.user に ユーザーオブジェクト保存
       done(null, user);

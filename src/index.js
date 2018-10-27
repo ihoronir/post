@@ -8,6 +8,9 @@ import { hello } from './scripts/sub';
 
 import { a } from './scripts/components/form';
 
+const Turbolinks = require('turbolinks');
+Turbolinks.start();
+
 // sub.jsに定義されたJavaScriptを実行する。
 hello();
 
