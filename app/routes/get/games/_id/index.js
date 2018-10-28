@@ -30,17 +30,6 @@ module.exports = [
             game: game,
             creator: game.user
           });
-          /*
-          Tag.create({
-            name: 'phinajs'
-          })
-            .then(tag => {
-              game.setTags([tag]);
-            })
-            .catch(err => {
-              console.log(err);
-            });
-          */
         }
         return null; // Measure for Bluebird warning
       })
