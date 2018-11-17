@@ -1,8 +1,8 @@
 'use strict';
 
 const util = require('util');
+const crypto = require('crypto');
 const User = require('../../../../db/models').user;
-const encrypt = require('../../../../util/hash').encrypt;
 const uservalid = require('../../../../util/validation').user;
 const loginFilter = require('../../filters/login');
 
@@ -27,7 +27,10 @@ module.exports = [
     }
   },
   (req, res, next) => {
-    const emailHash = encrypt(req.body.email);
+    const emailHash = crypto
+      .createHash('sha256')
+      .update(req.body.email)
+      .digest('hex');
 
     User.update(
       {

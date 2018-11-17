@@ -1,21 +1,27 @@
 'use strict';
 
+const bcrypt = require('bcrypt');
 const User = require('../../../../db/models').user;
-const encrypt = require('../../../../util/hash').encrypt;
-const saltgen = require('../../../../util/hash').salt;
 const uservalid = require('../../../../util/validation').user;
 const loginFilter = require('../../filters/login');
 
 module.exports = [
   loginFilter,
   (req, res, next) => {
+    bcrypt.compare(req.body.current_password, req.user.passwordHash, (err, same) => {
+      if (err) {
+        next(err);
+      } else if (same) {
+        next();
+      } else {
+        req.flash('notMatchedPassword', req.string.message.error.notMatchedPassword);
+        res.redirect('/settings/password');
+      }
+    });
+  },
+  (req, res, next) => {
     let errFlag = false;
 
-    // 現在のパスワードチェック
-    if (encrypt(req.body.current_password, req.user.passwordSalt) !== req.user.passwordHash) {
-      req.flash('notMatchedPassword', req.string.message.error.notMatchedPassword);
-      errFlag = true;
-    }
     // パスワード
     if (!req.body.new_password) {
       req.flash('validationErrPassword', req.string.message.validationError.user.emptyPassword);
@@ -35,13 +41,25 @@ module.exports = [
     }
   },
   (req, res, next) => {
-    const passwordSalt = saltgen();
-    const passwordHash = encrypt(req.body.new_password, passwordSalt);
-
+    bcrypt.genSalt(10, (err, salt) => {
+      if (err) {
+        next(err);
+      } else {
+        bcrypt.hash(req.body.new_password, salt, (err, hash) => {
+          if (err) {
+            next(err);
+          } else {
+            req.passwordHash = hash;
+            next();
+          }
+        });
+      }
+    });
+  },
+  (req, res, next) => {
     User.update(
       {
-        passwordHash: passwordHash,
-        passwordSalt: passwordSalt
+        passwordHash: req.passwordHash
       },
       {
         where: {

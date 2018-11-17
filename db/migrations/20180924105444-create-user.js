@@ -45,14 +45,8 @@ module.exports = {
       },
 
       passwordHash: {
-        type: Sequelize.CHAR(64),
-        field: 'password',
-        allowNull: false
-      },
-
-      passwordSalt: {
-        type: Sequelize.CHAR(64),
-        field: 'password_salt',
+        type: Sequelize.CHAR(60),
+        field: 'password_hash',
         allowNull: false
       },
 

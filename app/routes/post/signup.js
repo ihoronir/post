@@ -1,9 +1,9 @@
 'use strict';
 
+const crypto = require('crypto');
 const util = require('util');
+const bcrypt = require('bcrypt');
 const User = require('../../../db/models').user;
-const encrypt = require('../../../util/hash').encrypt;
-const saltgen = require('../../../util/hash').salt;
 const uservalid = require('../../../util/validation').user;
 
 module.exports = [
@@ -53,17 +53,33 @@ module.exports = [
     }
   },
   (req, res, next) => {
-    const passwordSalt = saltgen();
-    const passwordHash = encrypt(req.body.password, passwordSalt);
-    const emailHash = encrypt(req.body.email);
+    bcrypt.genSalt(10, (err, salt) => {
+      if (err) {
+        next(err);
+      } else {
+        bcrypt.hash(req.body.password, salt, (err, hash) => {
+          if (err) {
+            next(err);
+          } else {
+            req.passwordHash = hash;
+            next();
+          }
+        });
+      }
+    });
+  },
+  (req, res, next) => {
+    const emailHash = crypto
+      .createHash('sha256')
+      .update(req.body.email)
+      .digest('hex');
 
     User.create({
       screenName: req.body.screen_name,
       name: req.body.name,
       email: req.body.email,
       emailHash: emailHash,
-      passwordHash: passwordHash,
-      passwordSalt: passwordSalt
+      passwordHash: req.passwordHash
     })
       .then(() => {
         res.redirect('/login');

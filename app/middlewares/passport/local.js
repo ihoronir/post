@@ -2,7 +2,7 @@
 
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../../../db/models').user;
-const encrypt = require('../../../util/hash').encrypt;
+const bcrypt = require('bcrypt');
 
 module.exports = new LocalStrategy(
   {
@@ -20,16 +20,19 @@ module.exports = new LocalStrategy(
         if (!user) {
           req.flash('notFoundUser', req.string.message.error.notFoundUser);
           done(null, false);
-          return null; // Measure for Bluebird warning
+        } else {
+          bcrypt.compare(password, user.passwordHash, (err, same) => {
+            if (err) {
+              done(err);
+            } else if (same) {
+              done(null, user);
+            } else {
+              req.flash('notMatchedPassword', req.string.message.error.notMatchedPassword);
+              done(null, false);
+            }
+          });
         }
 
-        if (encrypt(password, user.passwordSalt) !== user.passwordHash) {
-          req.flash('notMatchedPassword', req.string.message.error.notMatchedPassword);
-          done(null, false);
-          return null; // Measure for Bluebird warning
-        }
-
-        done(null, user);
         return null; // Measure for Bluebird warning
       })
       .catch(err => {
