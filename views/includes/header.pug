@@ -1,17 +1,26 @@
-header#header
-  div#header-container.container
-    h1#header-logo: a(href="/")= string.site.title
-    ul#header-nav
-      li: a(href='#')= string.word.home
-      li: a(href='#')= string.word.community
-    form(action='/search', method='get')#header-search
-      input(type="text" name="q")
-    if isAuthenticated 
-      form(action='/logout', method='post')#header-end
-        input(type='submit', value='ログアウト' + user.name)
-        input(type='hidden', name='_csrf' value=csrftoken)
-        input(type='hidden', name='redirect_to' value=decodeURIComponent(originalUrl))
-    else 
-      div#header-end
-        a(href='/signup').header-button= string.word.signup
-        a(href='/login').header-button= string.word.login
+header.l-header
+  .l-header__container
+    .l-header__start
+      h1.l-header__logo: a(href="/").l-header__logo-link= string.site.title
+      ul.l-header__nav
+        li.l-header__nav-list: a(href='#').l-header__nav-link= string.word.home
+        li.l-header__nav-list: a(href='#').l-header__nav-link= string.word.community
+      form(action='/search', method='get').l-header__search
+        input(type="text" placeholder="Input Keyword" name="q").l-header__search-input
+    .l-header__end
+      if isAuthenticated 
+        .l-header__notifications
+        .u-relative
+          .l-header__login-user
+            //- TODO 再実装
+            p 通知
+          .l-header__dropdown
+            //- TODO 再実装
+            form(action='/logout' method='post')
+              input(type='submit' value='ログアウト' + user.name)
+              input(type='hidden' name='_csrf' value=csrftoken)
+              input(type='hidden' name='redirect_to' value=decodeURIComponent(originalUrl))
+      else 
+        ul.l-header__login
+          li.l-header__login-list: a(href='/signup').l-header__login-link= string.word.signup
+          li.l-header__login-list: a(href='/login').l-header__login-link= string.word.login

@@ -1,0 +1,39 @@
+/*
+ * Main
+ */
+
+#main {
+  padding: 16px;
+}
+
+.widget {
+  background-color: #fff;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
+  padding: 16px;
+  a {
+    color: #4a148c;
+  }
+}
+
+.widget-hd {
+  border-bottom: #ddd 2px solid;
+  margin-bottom: 16px;
+  span {
+    display: inline-block;
+    border-bottom: #4a148c 2px solid;
+    position: relative;
+    bottom: -2px;
+    padding: 0 2px;
+  }
+  &:not(:first-child) {
+    margin-top: 48px;
+  }
+}
+
+h1.widget-hd {
+  font-size: 24px;
+}
+
+h2.widget-hd {
+  font-size: 22px;
+}

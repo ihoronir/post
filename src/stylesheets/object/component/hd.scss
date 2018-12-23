@@ -1,0 +1,22 @@
+// widget
+
+.c-hd {
+  border-bottom: #ddd 2px solid;
+  margin-bottom: 16px;
+  &:not(:first-child) {
+    margin-top: 48px;
+  }
+}
+
+.c-hd__underline {
+  display: inline-block;
+  border-bottom: #4a148c 2px solid;
+  position: relative;
+  bottom: -2px;
+  padding: 0 2px;
+}
+
+.c-hd--h1 {
+  @extend .c-hd;
+  font-size: 24px;
+}

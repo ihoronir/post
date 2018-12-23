@@ -1,21 +1,20 @@
 extends layout
 
 block settings-content
-  h1.widget-hd: span= string.view.settings.account.title
-  form(action='/settings/account', method='post').form
+  h1.c-hd--h1: span.c-hd__underline= string.view.settings.account.title
+  form(action='/settings/account', method='post').p-form
     if successSaveChanges
       p.success= successSaveChanges
-    .input-group
-      label= string.input.user.screenNameLabel
-      .input-text-with-addon
-        span @
-        input(type='text', name='screen_name', maxlength=config.pattern.user.screenName.maxlength, pattern=config.pattern.user.screenName.string, title=string.input.user.screenNameTitle, value=user.screenName, placeholder=string.input.user.screenNameTitle, required)
-        //- input(type='text', name='screen_name', title=string.input.user.screenNameTitle, value=user.screenName, placeholder=string.input.user.screenNameTitle)
+    .p-form__input-group
+      label.p-form__label= string.input.user.screenNameLabel
+      .c-input--text-with-addon
+        span.c-input--text-with-addon__addon @
+        input(type='text', name='screen_name', maxlength=config.pattern.user.screenName.maxlength, pattern=config.pattern.user.screenName.string, title=string.input.user.screenNameTitle, value=user.screenName, placeholder=string.input.user.screenNameTitle, required).c-input--text-with-addon__input
       if validationErrScreenName
-        span.flash= validationErrScreenName
-    .input-group
-      input(type='submit', value=string.word.saveChanges).input-submit
+        span.p-form__warn= validationErrScreenName
+    .p-form__input-group
+      input(type='submit', value=string.word.saveChanges).c-input--submit
       input(type='hidden', name='_csrf' value=csrftoken)
   //- TODO: そのうち整備
-  h2.widget-hd: span 外部サービス連携
+  h1.c-hd--h1: span.c-hd__underline 外部サービス連携
   p ここはそのうち整備するよ！

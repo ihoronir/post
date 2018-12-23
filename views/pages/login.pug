@@ -1,25 +1,30 @@
 extends ../layout
 
-block content
-  #auth-grid
-    .widget#auth-header
-      h1= string.view.login.header
-      p!= string.view.login.message
-    .widget#auth-left ここには他サービスとの連携ログインのボタンを置く予定だよ！！
-    form(action='/login', method='post')#auth-right.widget
-      .input-group
-        label= string.input.user.screenNameLabel
-        .input-text-with-addon.big
-          span @
-          input(type='text', name='screen_name', placeholder='Your screen name')
-        if notFoundUser
-          span.flash= notFoundUser
-      .input-group
-        label= string.input.user.passwordLabel
-        input(type='password', name='password', placeholder='Your password' required).input-text.big
-        if notMatchedPassword
-          span.flash= notMatchedPassword
-      .input-group
-        input(type='submit', value=string.view.login.submitLabel).input-submit.big
-        input(type='hidden', name='_csrf' value=csrftoken)
-        input(type='hidden', name='redirect_to' value=decodeURIComponent(query.redirect_to))
+block main
+  main.l-main--auth
+    .p-widget.l-main--auth__header
+      h1.l-main--auth__catch= string.view.login.header
+      p.l-main--auth__message!= string.view.login.message
+    .p-widget.l-main--auth__left
+      h1.c-hd--h1: span.c-hd__underline このサイトについて
+      p このサイトはゲーム投稿サイトだよ！
+        br
+        | 初心者でも作ったブラウザゲームを投稿できるよ！ みんなも投稿しよう！
+    .p-widget.l-main--auth__right
+      form(action='/login', method='post').p-form
+        .p-form__input-group
+          label.p-form__label= string.input.user.screenNameLabel
+          .c-input--text-with-addon--big
+            span.c-input--text-with-addon--big__addon @
+            input(type='text', name='screen_name', placeholder='Your screen name').c-input--text-with-addon--big__input
+          if notFoundUser
+            span.p-form__warn= notFoundUser
+        .p-form__input-group
+          label.p-form__label= string.input.user.passwordLabel
+          input(type='password', name='password', placeholder='Your password' required).c-input--text--big
+          if notMatchedPassword
+            span.p-form__warn= notMatchedPassword
+        .p-form__input-group
+          input(type='submit', value=string.view.login.submitLabel).c-input--submit--big
+          input(type='hidden', name='_csrf' value=csrftoken)
+          input(type='hidden', name='redirect_to' value=decodeURIComponent(query.redirect_to))

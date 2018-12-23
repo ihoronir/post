@@ -1,47 +1,47 @@
 extends layout
 
 block settings-content
-  h1.widget-hd: span= string.view.settings.profile.profile
-  form(action='/settings/profile', method='post').form
+  h1.c-hd--h1: span.c-hd__underline= string.view.settings.profile.profile
+  form(action='/settings/profile', method='post').p-form
     if successSaveChanges
       p.success= successSaveChanges
-    .input-group
-      label= string.input.user.nameLabel
-      input(type='text', name='name', maxlength=config.pattern.user.name.maxlength, title=string.input.user.nameTitle, value=user.name, placeholder=string.input.user.nameTitle, required).input-text
+    .p-form__input-group
+      label.p-form__label= string.input.user.nameLabel
+      input(type='text', name='name', maxlength=config.pattern.user.name.maxlength, title=string.input.user.nameTitle, value=user.name, placeholder=string.input.user.nameTitle, required).c-input--text
       if validationErrName
-        span.flash= validationErrName
-    .input-group
-      label= string.input.user.urlLabel
-      input(type='url', name='url', maxlength=config.pattern.user.url.maxlength, title=string.input.user.urlTitle, value=user.url, placeholder=string.input.user.urlTitle).input-text
+        span.p-form__warn= validationErrName
+    .p-form__input-group
+      label.p-form__label= string.input.user.urlLabel
+      input(type='url', name='url', maxlength=config.pattern.user.url.maxlength, title=string.input.user.urlTitle, value=user.url, placeholder=string.input.user.urlTitle).c-input--text
       if validationErrUrl
-        span.flash= validationErrUrl
-    .input-group
-      label= string.input.user.locationLabel
-      input(type='text', name='location', maxlength=config.pattern.user.location.maxlength, title=string.input.user.locationTitle, value=user.location, placeholder=string.input.user.locationTitle).input-text
+        span.p-form__warn= validationErrUrl
+    .p-form__input-group
+      label.p-form__label= string.input.user.locationLabel
+      input(type='text', name='location', maxlength=config.pattern.user.location.maxlength, title=string.input.user.locationTitle, value=user.location, placeholder=string.input.user.locationTitle).c-input--text
       if validationErrLocation
-        span.flash= validationErrLocation
-    .input-group
-      label= string.input.user.descriptionLabel 
-      textarea(name='description', maxlength=config.pattern.user.description.maxlength, title=string.input.user.descriptionTitle, placeholder=string.input.user.descriptionTitle).input-textarea= user.description
+        span.p-form__warn= validationErrLocation
+    .p-form__input-group
+      label.p-form__label= string.input.user.descriptionLabel 
+      textarea(name='description', maxlength=config.pattern.user.description.maxlength, title=string.input.user.descriptionTitle, placeholder=string.input.user.descriptionTitle).c-input--textarea= user.description
       if validationErrDescription
-        span.flash= validationErrDescription
-    .input-group
-      input(type='submit', value=string.word.saveChanges).input-submit
+        span.p-form__warn= validationErrDescription
+    .p-form__input-group
+      input(type='submit', value=string.word.saveChanges).c-input--submit
       input(type='hidden', name='_csrf' value=csrftoken)
-  h1.widget-hd: span= string.view.settings.profile.avater
+  h1.c-hd--h1: span.c-hd__underline= string.view.settings.profile.avater
   form(action='/settings/avater', method='post', enctype='multipart/form-data').form
     if successSaveChanges
       p.success= successSaveChanges
-    .input-group
-      label= string.input.user.avaterImageLabel 
-      p= string.input.user.avaterImageParagraph
-      .input-file-with-thumbnail
-        img(src='/avater/' + user.avaterImage)
-        div
-          input(type='file', name='avater_image', accept='image/png, image/jpeg' required)
-          p= string.input.user.avaterImageTitle 
+    .p-form__input-group
+      label.p-form__label= string.input.user.avaterImageLabel 
+      p.p-form__paragraph= string.input.user.avaterImageParagraph
+      .c-input--file-with-thumbnail
+        img(src='/avater/' + user.avaterImage).c-input--file-with-thumbnail__thumbnail
+        div.c-input-file-with-thumbnail__file
+          input(type='file', name='avater_image', accept='image/png, image/jpeg' required).c-input--file-with-thumbnail__input
+          label.c-input--file-with-thumbnail__label= string.input.user.avaterImageTitle
       if validationErrAvaterImage
-        span.flash= validationErrAvaterImage
-    .input-group
-      input(type='submit', value=string.word.saveChanges).input-submit
+        span.p-form__warn= validationErrAvaterImage
+    .p-form__input-group
+      input(type='submit', value=string.word.saveChanges).c-input--submit
       input(type='hidden', name='_csrf' value=csrftoken)

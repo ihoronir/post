@@ -1,0 +1,27 @@
+// Footer
+
+.l-footer {
+  border-top: rgba(0, 0, 0, 0.2) 1px solid;
+  padding: 4px;
+  font-size: 80%;
+  max-width: 1280px;
+  margin: 30px auto 0;
+}
+
+.l-footer__start,
+.l-footer__end {
+  overflow: hidden;
+}
+
+.l-footer__start-list,
+.l-footer__end-list {
+  float: left;
+  margin: 10px;
+}
+
+@media screen and (min-width: 900px) {
+  .l-footer {
+    display: flex;
+    justify-content: space-between;
+  }
+}
