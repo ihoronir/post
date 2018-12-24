@@ -5,12 +5,12 @@ block main
     .p-widget.l-main--auth__header
       h1.l-main--auth__catch= string.view.login.header
       p.l-main--auth__message!= string.view.login.message
-    .p-widget.l-main--auth__left
+    .p-widget.l-main--auth__side
       h1.c-hd--h1: span.c-hd__underline このサイトについて
       p このサイトはゲーム投稿サイトだよ！
         br
         | 初心者でも作ったブラウザゲームを投稿できるよ！ みんなも投稿しよう！
-    .p-widget.l-main--auth__right
+    .p-widget.l-main--auth__main
       form(action='/login', method='post').p-form
         .p-form__input-group
           label.p-form__label= string.input.user.screenNameLabel

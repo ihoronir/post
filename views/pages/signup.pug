@@ -1,45 +1,45 @@
 extends ../layout
 
-block content
-  #auth-grid
-    .widget#auth-header
-      h1= string.view.signup.header
-      p!= string.view.signup.message
-    .widget#auth-left ここには他サービスとの連携サインアップのボタンを置く予定だよ！！
-    form(action='/signup', method='post').widget#auth-right
-      .input-group
-        label= string.input.user.screenNameLabel
-        .input-text-with-addon.big
-          span @
-          input(type='text', name='screen_name', maxlength=config.pattern.user.screenName.maxlength, pattern=config.pattern.user.screenName.string, title=string.input.user.screenNameTitle, placeholder=string.input.user.screenNameTitle, required)
-          //- input(type='text', name='screen_name', title=string.input.user.screenNameTitle, placeholder=string.input.user.screenNameTitle)
-        if validationErrScreenName
-          span.flash= validationErrScreenName
-      .input-group
-        label= string.input.user.nameLabel
-        input(type='text', name='name', maxlength=config.pattern.user.name.maxlength, title=string.input.user.nameTitle, placeholder=string.input.user.nameTitle, required).input-text.big
-        //- input(type='text', name='name', title=string.input.user.nameTitle, placeholder=string.input.user.nameTitle).input-text.big
-        if validationErrName
-          span.flash= validationErrName
-      .input-group
-        label= string.input.user.emailLabel
-        input(type='email', name='email', maxlength=config.pattern.user.email.maxlength, title=string.input.user.emailTitle, placeholder=string.input.user.emailTitle, required).input-text.big
-        //- input(type='text', name='email', title=string.input.user.emailTitle, placeholder=string.input.user.emailTitle).input-text.big
-        if validationErrEmail
-          span.flash= validationErrEmail
-      .input-group
-        label= string.input.user.passwordLabel
-        input(type='password', name='password', pattern=config.pattern.user.password.string, title=string.input.user.passwordTitle, placeholder=string.input.user.passwordTitle, required).input-text.big
-        //- input(type='password', name='password', title=string.input.user.passwordTitle, placeholder=string.input.user.passwordTitle).input-text.big
-        if validationErrPassword
-          span.flash= validationErrPassword
-      //- TODO: validation 強化
-      .input-group
-        label= string.input.user.passwordConfirmLabel
-        input(type='password', name='password_confirm', title=string.input.user.passwordConfirmTitle, placeholder=string.input.user.passwordConfirmTitle, required).input-text.big
-        //- input(type='password', name='password_confirm', title=string.input.user.passwordConfirmTitle, placeholder=string.input.user.passwordConfirmTitle).input-text.big
-        if validationErrPasswordConfirm
-          span.flash= validationErrPasswordConfirm
-      .input-group
-        input(type='submit', value=string.view.signup.submitLabel).input-submit.big
-        input(type='hidden', name='_csrf' value=csrftoken)
+block main
+  main.l-main--auth
+    .p-widget.l-main--auth__header
+      h1.l-main--auth__catch= string.view.signup.header
+      p.l-main--auth__message!= string.view.signup.message
+    .p-widget.l-main--auth__side
+      h1.c-hd--h1: span.c-hd__underline このサイトについて
+      p このサイトはゲーム投稿サイトだよ！
+        br
+        | 初心者でも作ったブラウザゲームを投稿できるよ！ みんなも投稿しよう！
+    .p-widget.l-main--auth__main
+      form(action='/signup', method='post').p-form
+        .p-form__input-group
+          label.p-form__label= string.input.user.screenNameLabel
+          .c-input--text-with-addon--big
+            span.c-input--text-with-addon--big__addon @
+            input(type='text', name='screen_name', maxlength=config.pattern.user.screenName.maxlength, pattern=config.pattern.user.screenName.string, title=string.input.user.screenNameTitle, placeholder=string.input.user.screenNameTitle, required).c-input--text-with-addon--big__input
+          if validationErrScreenName
+            span.p-form__warn= validationErrScreenName
+        .p-form__input-group
+          label.p-form__label= string.input.user.nameLabel
+          input(type='text', name='name', maxlength=config.pattern.user.name.maxlength, title=string.input.user.nameTitle, placeholder=string.input.user.nameTitle, required).c-input--text--big
+          if validationErrName
+            span.p-form__warn= validationErrName
+        .p-form__input-group
+          label.p-form__label= string.input.user.emailLabel
+          input(type='email', name='email', maxlength=config.pattern.user.email.maxlength, title=string.input.user.emailTitle, placeholder=string.input.user.emailTitle, required).c-input--text--big
+          if validationErrEmail
+            span.p-form__warn= validationErrEmail
+        .p-form__input-group
+          label.p-form__label= string.input.user.passwordLabel
+          input(type='password', name='password', pattern=config.pattern.user.password.string, title=string.input.user.passwordTitle, placeholder=string.input.user.passwordTitle, required).c-input--text--big
+          if validationErrPassword
+            span.p-form__warn= validationErrPassword
+        //- TODO: validation 強化
+        .p-form__input-group
+          label.p-form__label= string.input.user.passwordConfirmLabel
+          input(type='password', name='password_confirm', title=string.input.user.passwordConfirmTitle, placeholder=string.input.user.passwordConfirmTitle, required).c-input--text--big
+          if validationErrPasswordConfirm
+            span.p-form__warn= validationErrPasswordConfirm
+        .p-form__input-group
+          input(type='submit', value=string.view.signup.submitLabel).c-input--submit--big
+          input(type='hidden', name='_csrf' value=csrftoken)
