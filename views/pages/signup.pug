@@ -11,35 +11,35 @@ block main
         br
         | 初心者でも作ったブラウザゲームを投稿できるよ！ みんなも投稿しよう！
     .p-widget.l-main--auth__main
-      form(action='/signup', method='post').p-form
+      form(action='/signup' method='post').p-form
         .p-form__input-group
           label.p-form__label= string.input.user.screenNameLabel
           .c-input--text-with-addon--big
             span.c-input--text-with-addon--big__addon @
-            input(type='text', name='screen_name', maxlength=config.pattern.user.screenName.maxlength, pattern=config.pattern.user.screenName.string, title=string.input.user.screenNameTitle, placeholder=string.input.user.screenNameTitle, required).c-input--text-with-addon--big__input
+            input(type='text' name='screen_name' maxlength=config.pattern.user.screenName.maxlength pattern=config.pattern.user.screenName.string title=string.input.user.screenNameTitle placeholder=string.input.user.screenNameTitle required).c-input--text-with-addon--big__input
           if validationErrScreenName
             span.p-form__warn= validationErrScreenName
         .p-form__input-group
           label.p-form__label= string.input.user.nameLabel
-          input(type='text', name='name', maxlength=config.pattern.user.name.maxlength, title=string.input.user.nameTitle, placeholder=string.input.user.nameTitle, required).c-input--text--big
+          input(type='text' name='name' maxlength=config.pattern.user.name.maxlength title=string.input.user.nameTitle placeholder=string.input.user.nameTitle required).c-input--text--big
           if validationErrName
             span.p-form__warn= validationErrName
         .p-form__input-group
           label.p-form__label= string.input.user.emailLabel
-          input(type='email', name='email', maxlength=config.pattern.user.email.maxlength, title=string.input.user.emailTitle, placeholder=string.input.user.emailTitle, required).c-input--text--big
+          input(type='email' name='email' maxlength=config.pattern.user.email.maxlength title=string.input.user.emailTitle placeholder=string.input.user.emailTitle required).c-input--text--big
           if validationErrEmail
             span.p-form__warn= validationErrEmail
         .p-form__input-group
           label.p-form__label= string.input.user.passwordLabel
-          input(type='password', name='password', pattern=config.pattern.user.password.string, title=string.input.user.passwordTitle, placeholder=string.input.user.passwordTitle, required).c-input--text--big
+          input(type='password' name='password' pattern=config.pattern.user.password.string title=string.input.user.passwordTitle placeholder=string.input.user.passwordTitle required).c-input--text--big
           if validationErrPassword
             span.p-form__warn= validationErrPassword
         //- TODO: validation 強化
         .p-form__input-group
           label.p-form__label= string.input.user.passwordConfirmLabel
-          input(type='password', name='password_confirm', title=string.input.user.passwordConfirmTitle, placeholder=string.input.user.passwordConfirmTitle, required).c-input--text--big
+          input(type='password' name='password_confirm' title=string.input.user.passwordConfirmTitle placeholder=string.input.user.passwordConfirmTitle required).c-input--text--big
           if validationErrPasswordConfirm
             span.p-form__warn= validationErrPasswordConfirm
         .p-form__input-group
-          input(type='submit', value=string.view.signup.submitLabel).c-input--submit--big
-          input(type='hidden', name='_csrf' value=csrftoken)
+          input(type='submit' value=string.view.signup.submitLabel).c-input--submit--big
+          input(type='hidden' name='_csrf' value=csrftoken)

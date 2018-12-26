@@ -12,13 +12,13 @@ block content
         a(href='') Git レポジトリからインポート
         a(href='') 自分のサーバーのゲームを登録
       p まずはゲームのタイトルを入力してください。
-      form(action='/upload', method='post')#upload-form
+      form(action='/upload' method='post')#upload-form
         .input-group
           label= string.input.game.titleLabel
-          input(type='text', name='title', placeholder= string.input.game.titleTitle, required).input-text.big
+          input(type='text' name='title' placeholder= string.input.game.titleTitle required).input-text.big
           if validationErrTitle
             span.flash= validationErrTitle
         .input-group
-          input(type='submit', value='次へ').input-submit.big
-          input(type='hidden', name='_csrf' value=csrftoken)
-          input(type='hidden', name='redirect_to' value=decodeURIComponent(query.redirect_to))
+          input(type='submit' value='次へ').input-submit.big
+          input(type='hidden' name='_csrf' value=csrftoken)
+          input(type='hidden' name='redirect_to' value=decodeURIComponent(query.redirect_to))

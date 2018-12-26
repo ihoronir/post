@@ -2,14 +2,14 @@ extends layout
 
 block settings-content
   h1.widget-hd: span ゲームタイトル / ライセンス
-  form(action='/settings/account', method='post').form
+  form(action='/settings/account' method='post').form
     if successSaveChanges
       p.success= successSaveChanges
     .input-group
       label てすと
-      input(type='text', name='name', maxlength=config.pattern.user.name.maxlength, title=string.input.user.nameTitle, value=user.name, placeholder=string.input.user.nameTitle, required).input-text
+      input(type='text' name='name' maxlength=config.pattern.user.name.maxlength title=string.input.user.nameTitle value=user.name placeholder=string.input.user.nameTitle required).input-text
       if validationErrName
         span.flash= validationErrName
     .input-group
-      input(type='submit', value=string.word.saveChanges).input-submit
-      input(type='hidden', name='_csrf' value=csrftoken)
+      input(type='submit' value=string.word.saveChanges).input-submit
+      input(type='hidden' name='_csrf' value=csrftoken)

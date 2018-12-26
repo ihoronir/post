@@ -2,12 +2,12 @@ extends layout
 
 block settings-content
   h1.widget-hd: span= string.view.edit.info.info
-  form(action='./info', method='post').form
+  form(action='./info' method='post').form
     if successSaveChanges
       p.success= successSaveChanges
     .input-group
       label= string.input.game.titleLabel
-      input(type='text', name='title', maxlength=config.pattern.game.title.maxlength, title=string.input.game.titleTitle, value=game.title, placeholder=string.input.game.titleTitle, required).input-text
+      input(type='text' name='title' maxlength=config.pattern.game.title.maxlength title=string.input.game.titleTitle value=game.title placeholder=string.input.game.titleTitle required).input-text
       if validationErrTitle
         span.flash= validationErrTitle
     .input-group
@@ -18,14 +18,14 @@ block settings-content
         span.flash= validationErrTags
     .input-group
       label= string.input.game.descriptionLabel
-      textarea(name='description', maxlength=config.pattern.game.description.maxlength, title=string.input.game.descriptionTitle, placeholder=string.input.game.descriptionTitle).input-textarea= game.description
+      textarea(name='description' maxlength=config.pattern.game.description.maxlength title=string.input.game.descriptionTitle placeholder=string.input.game.descriptionTitle).input-textarea= game.description
       if validationErrDescription
         span.flash= validationErrDescription
     .input-group
-      input(type='submit', value=string.word.saveChanges).input-submit
-      input(type='hidden', name='_csrf' value=csrftoken)
+      input(type='submit' value=string.word.saveChanges).input-submit
+      input(type='hidden' name='_csrf' value=csrftoken)
   h1.widget-hd: span= string.view.edit.info.thumbnail
-  form(action='./thumbnail', method='post', enctype='multipart/form-data').form
+  form(action='./thumbnail' method='post' enctype='multipart/form-data').form
     if successSaveChanges
       p.success= successSaveChanges
     .input-group
@@ -34,10 +34,10 @@ block settings-content
       .input-file-with-thumbnail
         img(src='/thumbnail/' + game.thumbnailImage)
         div
-          input(type='file', name='thumbnail_image', accept='image/png, image/jpeg' required)
+          input(type='file' name='thumbnail_image' accept='image/png image/jpeg' required)
           p= string.input.game.thumbnailImageTitle
       if validationErrThumbnailImage
         span.flash= validationErrThumbnailImage
     .input-group
-      input(type='submit', value=string.word.saveChanges).input-submit
-      input(type='hidden', name='_csrf' value=csrftoken)
+      input(type='submit' value=string.word.saveChanges).input-submit
+      input(type='hidden' name='_csrf' value=csrftoken)

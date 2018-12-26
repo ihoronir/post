@@ -2,34 +2,34 @@ extends layout
 
 block settings-content
   h1.c-hd--h1: span.c-hd__underline= string.view.settings.profile.profile
-  form(action='/settings/profile', method='post').p-form
+  form(action='/settings/profile' method='post').p-form
     if successSaveChanges
       p.success= successSaveChanges
     .p-form__input-group
       label.p-form__label= string.input.user.nameLabel
-      input(type='text', name='name', maxlength=config.pattern.user.name.maxlength, title=string.input.user.nameTitle, value=user.name, placeholder=string.input.user.nameTitle, required).c-input--text
+      input(type='text' name='name' maxlength=config.pattern.user.name.maxlength title=string.input.user.nameTitle value=user.name placeholder=string.input.user.nameTitle required).c-input--text
       if validationErrName
         span.p-form__warn= validationErrName
     .p-form__input-group
       label.p-form__label= string.input.user.urlLabel
-      input(type='url', name='url', maxlength=config.pattern.user.url.maxlength, title=string.input.user.urlTitle, value=user.url, placeholder=string.input.user.urlTitle).c-input--text
+      input(type='url' name='url' maxlength=config.pattern.user.url.maxlength title=string.input.user.urlTitle value=user.url placeholder=string.input.user.urlTitle).c-input--text
       if validationErrUrl
         span.p-form__warn= validationErrUrl
     .p-form__input-group
       label.p-form__label= string.input.user.locationLabel
-      input(type='text', name='location', maxlength=config.pattern.user.location.maxlength, title=string.input.user.locationTitle, value=user.location, placeholder=string.input.user.locationTitle).c-input--text
+      input(type='text' name='location' maxlength=config.pattern.user.location.maxlength title=string.input.user.locationTitle value=user.location placeholder=string.input.user.locationTitle).c-input--text
       if validationErrLocation
         span.p-form__warn= validationErrLocation
     .p-form__input-group
       label.p-form__label= string.input.user.descriptionLabel 
-      textarea(name='description', maxlength=config.pattern.user.description.maxlength, title=string.input.user.descriptionTitle, placeholder=string.input.user.descriptionTitle).c-input--textarea= user.description
+      textarea(name='description' maxlength=config.pattern.user.description.maxlength title=string.input.user.descriptionTitle placeholder=string.input.user.descriptionTitle).c-input--textarea= user.description
       if validationErrDescription
         span.p-form__warn= validationErrDescription
     .p-form__input-group
-      input(type='submit', value=string.word.saveChanges).c-input--submit
-      input(type='hidden', name='_csrf' value=csrftoken)
+      input(type='submit' value=string.word.saveChanges).c-input--submit
+      input(type='hidden' name='_csrf' value=csrftoken)
   h1.c-hd--h1: span.c-hd__underline= string.view.settings.profile.avater
-  form(action='/settings/avater', method='post', enctype='multipart/form-data').form
+  form(action='/settings/avater' method='post' enctype='multipart/form-data').form
     if successSaveChanges
       p.success= successSaveChanges
     .p-form__input-group
@@ -38,10 +38,10 @@ block settings-content
       .c-input--file-with-thumbnail
         img(src='/avater/' + user.avaterImage).c-input--file-with-thumbnail__thumbnail
         div.c-input-file-with-thumbnail__file
-          input(type='file', name='avater_image', accept='image/png, image/jpeg' required).c-input--file-with-thumbnail__input
+          input(type='file' name='avater_image' accept='image/png image/jpeg' required).c-input--file-with-thumbnail__input
           label.c-input--file-with-thumbnail__label= string.input.user.avaterImageTitle
       if validationErrAvaterImage
         span.p-form__warn= validationErrAvaterImage
     .p-form__input-group
-      input(type='submit', value=string.word.saveChanges).c-input--submit
-      input(type='hidden', name='_csrf' value=csrftoken)
+      input(type='submit' value=string.word.saveChanges).c-input--submit
+      input(type='hidden' name='_csrf' value=csrftoken)

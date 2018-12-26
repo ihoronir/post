@@ -5,43 +5,43 @@ block settings-content
   p ゲーム本体は ZIP ファイルでアップロードできます。既にアップロード済みの場合は上書きされます。
   p ※ ゲーム本体のアップロードには時間がかかる場合があります。
   h2.widget-hd: span ZIPファイルでゲーム本体をアップロード
-  form(action='./app/zip', method='post' enctype='multipart/form-data').form
+  form(action='./app/zip' method='post' enctype='multipart/form-data').form
     if successSaveChanges
       p.success= successSaveChanges
     .input-group
       label ZIP ファイルのアップロード
       .input-file
-        input(type='file', name='app_zip', accept='application/zip' required)
+        input(type='file' name='app_zip' accept='application/zip' required)
         p 10MBまでアップロード可能
       if validationErrAppZip
         span.flash= validationErrAppZip
     .input-group
-      input(type='submit', value=game.source ? '既存のゲーム本体を上書きして更新' : 'アップロード').input-submit
-      input(type='hidden', name='_csrf' value=csrftoken)
+      input(type='submit' value=game.source ? '既存のゲーム本体を上書きして更新' : 'アップロード').input-submit
+      input(type='hidden' name='_csrf' value=csrftoken)
 
   //- ここから下は未整備
   //- h2.widget-hd: span Git レポジトリからインポート（準備中）
-  //- form(action='/settings/account', method='post').form
+  //- form(action='/settings/account' method='post').form
   //-   if successSaveChanges
   //-     p.success= successSaveChanges
   //-   .input-group
   //-     label レポジトリの URL または SSH キー
-  //-     input(type='text', name='name', maxlength=config.pattern.user.name.maxlength, title=string.input.user.nameTitle, value=user.name, placeholder=string.input.user.nameTitle, required).input-text
+  //-     input(type='text' name='name' maxlength=config.pattern.user.name.maxlength title=string.input.user.nameTitle value=user.name placeholder=string.input.user.nameTitle required).input-text
   //-     if validationErrName
   //-       span.flash= validationErrName
   //-   .input-group
-  //-     input(type='submit', value='Git レポジトリからインポート').input-submit
-  //-     input(type='hidden', name='_csrf' value=csrftoken)
+  //-     input(type='submit' value='Git レポジトリからインポート').input-submit
+  //-     input(type='hidden' name='_csrf' value=csrftoken)
 
   //- h2.widget-hd: span 自分のサーバーのゲームを登録（準備中）
-  //- form(action='/settings/account', method='post').form
+  //- form(action='/settings/account' method='post').form
   //-   if successSaveChanges
   //-     p.success= successSaveChanges
   //-   .input-group
   //-     label ゲームの URL
-  //-     input(type='text', name='name', maxlength=config.pattern.user.name.maxlength, title=string.input.user.nameTitle, value=user.name, placeholder=string.input.user.nameTitle, required).input-text
+  //-     input(type='text' name='name' maxlength=config.pattern.user.name.maxlength title=string.input.user.nameTitle value=user.name placeholder=string.input.user.nameTitle required).input-text
   //-     if validationErrName
   //-       span.flash= validationErrName
   //-   .input-group
-  //-     input(type='submit', value='自分のサーバーのゲームを登録').input-submit
-  //-     input(type='hidden', name='_csrf' value=csrftoken)
+  //-     input(type='submit' value='自分のサーバーのゲームを登録').input-submit
+  //-     input(type='hidden' name='_csrf' value=csrftoken)

@@ -2,12 +2,12 @@ extends layout
 
 block settings-content
   h1.c-hd--h1: span.c-hd__underline= string.view.settings.notifications.email
-  form(action='/settings/email', method='post').form
+  form(action='/settings/email' method='post').form
     if successSaveChanges
       p.success= successSaveChanges
     .p-form__input-group
       label.p-form__label= string.input.user.emailLabel
-      input(type='email', name='email', maxlength=config.pattern.user.email.maxlength, value=user.email, title=string.input.user.emailTitle, placeholder=string.input.user.emailTitle, required).c-input--text
+      input(type='email' name='email' maxlength=config.pattern.user.email.maxlength value=user.email title=string.input.user.emailTitle placeholder=string.input.user.emailTitle required).c-input--text
       if validationErrEmail
         span.p-form__warn= validationErrEmail
     .p-form__input-group
@@ -17,11 +17,11 @@ block settings-content
         input(type='checkbox' name='public_email' checked=user.publicEmail).c-input--checkbox__input
         label.c-input--checkbox__label= string.input.user.publicEmailString
     .p-form__input-group
-      input(type='submit', value=string.word.saveChanges).c-input--submit
-      input(type='hidden', name='_csrf' value=csrftoken)
+      input(type='submit' value=string.word.saveChanges).c-input--submit
+      input(type='hidden' name='_csrf' value=csrftoken)
   //- 通知設定は未実装 別ページにするかも
   h1.c-hd--h1: span.c-hd__underline= string.view.settings.notifications.notifications
-  form(action='/settings/notifications', method='post').form
+  form(action='/settings/notifications' method='post').form
     .p-form__input-group
       label.p-form__label NAMEからのお知らせ
       p.p-form__paragraph NAME からお知らせメールが届きます。
@@ -31,5 +31,5 @@ block settings-content
         input(type='checkbox').c-input--checkbox__input
         label.c-input--checkbox__label Web
     .p-form__input-group
-      input(type='submit', value=string.word.saveChanges).c-input--submit
-      input(type='hidden', name='_csrf' value=csrftoken)
+      input(type='submit' value=string.word.saveChanges).c-input--submit
+      input(type='hidden' name='_csrf' value=csrftoken)

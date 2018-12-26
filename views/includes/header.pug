@@ -5,7 +5,7 @@ header.l-header
       ul.l-header__nav
         li.l-header__nav-list: a(href='#').l-header__nav-link= string.word.home
         li.l-header__nav-list: a(href='#').l-header__nav-link= string.word.community
-      form(action='/search', method='get').l-header__search
+      form(action='/search' method='get').l-header__search
         input(type="text" placeholder="Input Keyword" name="q").l-header__search-input
     .l-header__end
       if isAuthenticated 

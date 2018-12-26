@@ -11,20 +11,20 @@ block main
         br
         | 初心者でも作ったブラウザゲームを投稿できるよ！ みんなも投稿しよう！
     .p-widget.l-main--auth__main
-      form(action='/login', method='post').p-form
+      form(action='/login' method='post').p-form
         .p-form__input-group
           label.p-form__label= string.input.user.screenNameLabel
           .c-input--text-with-addon--big
             span.c-input--text-with-addon--big__addon @
-            input(type='text', name='screen_name', placeholder='Your screen name').c-input--text-with-addon--big__input
+            input(type='text' name='screen_name' placeholder='Your screen name').c-input--text-with-addon--big__input
           if notFoundUser
             span.p-form__warn= notFoundUser
         .p-form__input-group
           label.p-form__label= string.input.user.passwordLabel
-          input(type='password', name='password', placeholder='Your password' required).c-input--text--big
+          input(type='password' name='password' placeholder='Your password' required).c-input--text--big
           if notMatchedPassword
             span.p-form__warn= notMatchedPassword
         .p-form__input-group
-          input(type='submit', value=string.view.login.submitLabel).c-input--submit--big
-          input(type='hidden', name='_csrf' value=csrftoken)
-          input(type='hidden', name='redirect_to' value=decodeURIComponent(query.redirect_to))
+          input(type='submit' value=string.view.login.submitLabel).c-input--submit--big
+          input(type='hidden' name='_csrf' value=csrftoken)
+          input(type='hidden' name='redirect_to' value=decodeURIComponent(query.redirect_to))

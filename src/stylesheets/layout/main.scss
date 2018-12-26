@@ -11,7 +11,7 @@
 .l-main--auth {
   @extend .l-main;
   display: grid;
-  grid-gap: 16px;
+  grid-row-gap: 16px;
 }
 .l-main--auth__header {
   text-align: center;
@@ -43,7 +43,7 @@
 .l-main--settings {
   @extend .l-main;
   display: grid;
-  grid-gap: 16px;
+  grid-row-gap: 16px;
 }
 
 .l-main--settings__status {
@@ -116,6 +116,7 @@
 @media screen and (min-width: 760px) {
   .l-main--settings {
     grid-template-columns: 240px;
+    grid-column-gap: 16px;
     grid-template-rows: max-content;
   }
   .l-main--settings__status {
