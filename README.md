@@ -2,14 +2,9 @@
 
 開発用コードネーム: post
 
-別に post ってのはコードネームで、本当の名前はまだ決めてないんだからね！ /////
-
-勘違いしないでよね！ /////
-
-5800daf60e27bd23cbe2f3f5bcd54e7c62b7b8d0 の時点での Tree
+2bb334247e2b14fae71dfaba39cf28eb2543705f の時点での Tree
 
 ```
-.
 ├── README.md
 ├── app
 │   ├── app.js
@@ -57,6 +52,8 @@
 │       │   ├── games
 │       │   │   └── _id
 │       │   │       └── edit
+│       │   │           ├── app
+│       │   │           │   └── zip.js
 │       │   │           └── thumbnail.js
 │       │   └── settings
 │       │       └── avater.js
@@ -100,48 +97,87 @@
 │   │   └── user.yaml
 │   └── production.js
 ├── db
-│   ├── database.md
+│   ├── config.js
 │   ├── migrations
-│   └── models
-│       ├── game.js
-│       ├── index.js
-│       └── user.js
+│   │   ├── 20180924105444-create-user.js
+│   │   ├── 20180924110215-create-game.js
+│   │   ├── 20181006112718-create-tag.js
+│   │   └── 20181006112827-create-game-tag.js
+│   ├── models
+│   │   ├── game.js
+│   │   ├── gameTag.js
+│   │   ├── index.js
+│   │   ├── tag.js
+│   │   └── user.js
+│   └── seeders
 ├── package-lock.json
 ├── package.json
-├── public
-│   ├── images
+├── src
+│   ├── index.js
 │   ├── scripts
-│   │   └── main.js
-│   └── stylesheets
-│       └── style.css
+│   │   └── sub.js
+│   ├── stylesheets
+│   │   ├── app.sass
+│   │   ├── foundation
+│   │   │   ├── base.scss
+│   │   │   └── reset.scss
+│   │   ├── layout
+│   │   │   ├── footer.scss
+│   │   │   ├── header.scss
+│   │   │   └── main.scss
+│   │   └── object
+│   │       ├── component
+│   │       │   ├── hd.scss
+│   │       │   └── input.scss
+│   │       ├── project
+│   │       │   ├── form.scss
+│   │       │   └── widget.scss
+│   │       └── utility
+│   ├── stylesheets_old
+│   │   ├── components
+│   │   │   └── form.sass
+│   │   ├── includes
+│   │   │   ├── footer.sass
+│   │   │   └── header.sass
+│   │   ├── pages
+│   │   │   ├── auth.sass
+│   │   │   ├── game.sass
+│   │   │   ├── profile.sass
+│   │   │   ├── settings.sass
+│   │   │   └── upload.sass
+│   │   └── style.sass
+│   └── turbolinks
+│       ├── index.js
+│       └── style.sass
 ├── util
-│   ├── hash.js
 │   ├── resizeImage.js
 │   └── validation.js
-└── views
-    ├── edit
-    │   ├── api.pug
-    │   ├── app.pug
-    │   ├── info.pug
-    │   ├── layout.pug
-    │   ├── license.pug
-    │   ├── meta.pug
-    │   └── public.pug
-    ├── error.pug
-    ├── index.pug
-    ├── layout.pug
-    ├── login.pug
-    ├── parts
-    │   ├── footer.pug
-    │   └── header.pug
-    ├── settings
-    │   ├── account.pug
-    │   ├── layout.pug
-    │   ├── notifications.pug
-    │   ├── password.pug
-    │   └── profile.pug
-    ├── signup.pug
-    ├── upload.pug
-    └── user.pug
-
+├── views
+│   ├── includes
+│   │   ├── footer.pug
+│   │   └── header.pug
+│   ├── layout.pug
+│   └── pages
+│       ├── edit
+│       │   ├── api.pug
+│       │   ├── app.pug
+│       │   ├── info.pug
+│       │   ├── layout.pug
+│       │   ├── license.pug
+│       │   ├── meta.pug
+│       │   └── public.pug
+│       ├── error.pug
+│       ├── game.pug
+│       ├── index.pug
+│       ├── login.pug
+│       ├── settings
+│       │   ├── account.pug
+│       │   ├── layout.pug
+│       │   ├── notifications.pug
+│       │   ├── password.pug
+│       │   └── profile.pug
+│       ├── signup.pug
+│       ├── upload.pug
+│       └── user.pug
+└── webpack.config.js
 ```
