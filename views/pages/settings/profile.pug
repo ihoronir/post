@@ -37,7 +37,7 @@ block settings-content
       p.p-form__paragraph= string.input.user.avaterImageParagraph
       .c-input--file-with-thumbnail
         img(src='/avater/' + user.avaterImage).c-input--file-with-thumbnail__thumbnail
-        div.c-input-file-with-thumbnail__file
+        .c-input-file-with-thumbnail__file
           input(type='file' name='avater_image' accept='image/png image/jpeg' required).c-input--file-with-thumbnail__input
           label.c-input--file-with-thumbnail__label= string.input.user.avaterImageTitle
       if validationErrAvaterImage

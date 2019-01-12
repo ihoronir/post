@@ -20,3 +20,8 @@
   @extend .c-hd;
   font-size: 24px;
 }
+
+.c-hd--h2 {
+  @extend .c-hd;
+  font-size: 20px;
+}

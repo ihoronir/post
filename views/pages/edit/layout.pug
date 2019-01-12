@@ -1,19 +1,19 @@
 extends ../../layout
 
-block content
-  #settings-grid
-    .widget#settings-addon
-      img(src='/thumbnail/' + game.thumbnailImage)#settings-addon-image
-      div
-        h3#settings-addon-big= game.title
-        p#settings-addon-small= 'ID:' + game.id
-    .widget#settings-left
-      ul#settings-list
-        li: a(href='./info')= string.view.edit.info.linkTitle
-        li: a(href='./app')= string.view.edit.app.linkTitle
-        li: a(href='./meta')= string.view.edit.meta.linkTitle
-        li: a(href='./api')= string.view.edit.api.linkTitle
-        li: a(href='./license')= string.view.edit.license.linkTitle
-        li: a(href='./public')= string.view.edit.public.linkTitle
-    .widget#settings-right
+block main
+  main.l-main--settings
+    .p-widget.l-main--settings__status
+      img(src='/thumbnail/' + game.thumbnailImage).l-main--settings__status-image
+      div.l-main--settings__status-meta
+        h3.l-main--settings__status-object= game.title
+        p.l-main--settings__status-identity= 'ID: ' + game.id
+    .p-widget.l-main--settings__side
+      ul.l-main--settings__nav
+        li.l-main--settings__nav-list: a(href='./info').l-main--settings__nav-link= string.view.edit.info.linkTitle
+        li.l-main--settings__nav-list: a(href='./app').l-main--settings__nav-link= string.view.edit.app.linkTitle
+        li.l-main--settings__nav-list: a(href='./meta').l-main--settings__nav-link= string.view.edit.meta.linkTitle
+        li.l-main--settings__nav-list: a(href='./api').l-main--settings__nav-link= string.view.edit.api.linkTitle
+        li.l-main--settings__nav-list: a(href='./license').l-main--settings__nav-link= string.view.edit.license.linkTitle
+        li.l-main--settings__nav-list: a(href='./public').l-main--settings__nav-link= string.view.edit.public.linkTitle
+    .p-widget.l-main--settings__main
       block settings-content

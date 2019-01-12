@@ -1,23 +1,25 @@
 extends layout
 
 block settings-content
-  h1.widget-hd: span ゲーム本体のアップロード
+  h1.c-hd--h1: span.c-hd__underline ゲーム本体のアップロード
+  //- ここのflocss処理は後々やることにする。
   p ゲーム本体は ZIP ファイルでアップロードできます。既にアップロード済みの場合は上書きされます。
   p ※ ゲーム本体のアップロードには時間がかかる場合があります。
-  h2.widget-hd: span ZIPファイルでゲーム本体をアップロード
-  form(action='./app/zip' method='post' enctype='multipart/form-data').form
-    if successSaveChanges
-      p.success= successSaveChanges
-    .input-group
-      label ZIP ファイルのアップロード
-      .input-file
-        input(type='file' name='app_zip' accept='application/zip' required)
-        p 10MBまでアップロード可能
+  //- ここまで
+  h2.c-hd--h2: span.c-hd__underline ZIPファイルでゲーム本体をアップロード
+  form(action='./app/zip' method='post' enctype='multipart/form-data').p-form
+    .p-form__input-group
+      label.p-form__label ZIP ファイルのアップロード
+      .c-input--file
+        input(type='file' name='app_zip' accept='application/zip' required).c-input--file__input
+        label.c-input--file__label 10MBまでアップロード可能
       if validationErrAppZip
-        span.flash= validationErrAppZip
-    .input-group
-      input(type='submit' value=game.source ? '既存のゲーム本体を上書きして更新' : 'アップロード').input-submit
+        span.p-form__warn= validationErrAppZip
+    .p-form__input-group
+      input(type='submit' value=game.source ? '既存のゲーム本体を上書きして更新' : 'アップロード').c-input--submit
       input(type='hidden' name='_csrf' value=csrftoken)
+  h2.c-hd--h2: span.c-hd__underline ゲームのバージョンを管理
+  p 今後実装予定
 
   //- ここから下は未整備
   //- h2.widget-hd: span Git レポジトリからインポート（準備中）

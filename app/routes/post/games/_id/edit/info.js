@@ -53,7 +53,7 @@ module.exports = [
     }
   },
   (req, res, next) => {
-    // タグのゴミが残ってしまう。要検討
+    // タグのゴミが残ってしまう。（でもそれでいい）
     sequelize
       .transaction(tx => {
         const promises1 = [];

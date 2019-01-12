@@ -1,15 +1,13 @@
 extends layout
 
 block settings-content
-  h1.widget-hd: span ゲームタイトル / メタデータ
-  form(action='/settings/account' method='post').form
-    if successSaveChanges
-      p.success= successSaveChanges
-    .input-group
-      label てすと
-      input(type='text' name='name' maxlength=config.pattern.user.name.maxlength title=string.input.user.nameTitle value=user.name placeholder=string.input.user.nameTitle required).input-text
+  h1.c-hd--h1: span.c-hd__underline ゲームタイトル / メタデータ
+  form(action='/settings/account' method='post').p-form
+    .p-form__input-group
+      label.p-form__label Git のリモートレポジトリ
+      input(type='text' name='name' maxlength=config.pattern.user.name.maxlength title=string.input.user.nameTitle value=user.name placeholder=string.input.user.nameTitle required).c-input--text
       if validationErrName
-        span.flash= validationErrName
-    .input-group
-      input(type='submit' value=string.word.saveChanges).input-submit
+        span.p-form__warn= validationErrName
+    .p-form__input-group
+      input(type='submit' value=string.word.saveChanges).c-input--submit
       input(type='hidden' name='_csrf' value=csrftoken)
