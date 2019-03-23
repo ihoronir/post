@@ -1,6 +1,6 @@
 {
-  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
-  "plugins": [],
+  "extends": ["eslint:recommended", "prettier"],
+  "plugins": ["prettier"],
   "parserOptions": {
     "sourceType": "module"
   },

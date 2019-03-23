@@ -9,7 +9,9 @@ const User = require('../../../../db/models').user;
 const avaterResizer = require('../../../../util/resizeImage').avater;
 const loginFilter = require('../../filters/login');
 
-const destDirectory = config.directory.uploads ? path.join(config.directory.uploads, './avater/') : path.join(__dirname, '../../../../uploads/avater/');
+const destDirectory = config.directory.uploads
+  ? path.join(config.directory.uploads, './avater/')
+  : path.join(__dirname, '../../../../uploads/avater/');
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {

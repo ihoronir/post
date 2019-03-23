@@ -2,6 +2,7 @@
 
 // import 文を使ってstyle.cssファイルを読み込む。
 import './stylesheets/app.sass';
+import './stylesheets_old/style.sass';
 
 // import 文を使って sub.js ファイルを読み込む。
 // import { hello } from './scripts/sub';
